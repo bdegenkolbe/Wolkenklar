@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 14.0 — April 2026 · 187 Quellen · 18 Kapitel  
+**Version:** 15.0 — April 2026 · 189 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -56,7 +56,7 @@ Gesundheitsinstitutionen verarbeiten Patientendaten heute auf einem breiten Spek
 | **DSGVO Art. 9 Abs. 1** | Gesundheitsdaten = besondere Kategorie. Verarbeitung grundsätzlich verboten außer expliziter Rechtsgrundlage. Höchste Schutzkategorie im EU-Recht. | ⚠️ Verletzt durch US-Zugriff |
 | **DSGVO Art. 48** | Datentransfer an ausländische Behörden nur über anerkannte Rechtshilfemechanismen — nicht durch einseitige US-Gesetze. | ⚠️ Verletzt durch CLOUD Act |
 | **§ 393 SGB V (Juli 2024)** | Cloud-Nutzung durch KVen/GKVen erlaubt, wenn BSI-C5-Typ2-Testat vorhanden (BSI = Bundesamt für Sicherheit in der Informationstechnik). Azure hat C5. Formell compliant. | ✅ Formell erfüllt |
-| **BSI C5-Testat** (Cloud Computing Compliance Criteria Catalogue) | Prüft Informationssicherheit und technische Maßnahmen. Prüft **nicht**, ob US-Behörden rechtlich zugreifen können. | ⚠️ Lücke: kein Rechtsschutz |
+| **BSI C5-Testat** (Cloud Computing Compliance Criteria Catalogue) | Prüft Informationssicherheit und technische Maßnahmen. Prüft **nicht**, ob US-Behörden rechtlich zugreifen können. C5:2026 (April 2026, 168 Kriterien) schließt diese Lücke nicht — das BSI plant Souveränitätskriterien als separates Dokument. | ⚠️ Lücke: kein Rechtsschutz |
 
 § 393 SGB V und DSGVO Art. 48 widersprechen sich nicht — sie regeln unterschiedliche Fragen. § 393 SGB V ist eine sozialrechtliche Erlaubnisnorm: Sie erlaubt die Cloud-Verarbeitung von Gesundheitsdaten unter der Bedingung, dass ein BSI C5 Typ 2 Testat die IT-Sicherheit nachweist. Das ist ihr Regelungsgegenstand — und das ist auch der richtige Ort dafür. Die Frage, ob ein Anbieter unter US-Jurisdiktion steht und von einem US-Gericht zur Datenherausgabe gezwungen werden kann, ist hingegen keine Frage der IT-Sicherheit. Sie gehört nicht in § 393 SGB V — sie gehört in die DSGVO und ins internationale Recht. DSGVO Art. 48 beantwortet diese Frage klar: Datentransfer an ausländische Behörden nur über anerkannte Rechtshilfemechanismen. Das BSI C5 Testat prüft Informationssicherheit, nicht Jurisdiktion. Es kann einem US-Anbieter technische Sicherheit attestieren, obwohl US-Bundesbehörden diesen Anbieter per CLOUD Act zur Datenweitergabe verpflichten können — das BSI-Testat ändert daran nichts, weil es dafür nicht gemacht ist.
 
@@ -104,7 +104,7 @@ Das Vollzugsdefizit ist kein Freifahrtschein. Bei einem Schrems-III-Urteil des E
 
 **Zweitens — DPF als Lückenbüßer:** Die zulässige Nutzung von US-Cloud-Diensten stützt sich auf das Data Privacy Framework (DPF) als Angemessenheitsbeschluss. Das DPF hängt an einer US-Präsidialverordnung, nicht an einem Gesetz. Schrems II (2020) hat das identische Vorgängermodell gekippt. Ein Schrems-III-Verfahren ist bei noyb (None of Your Business — europäische Datenschutz-NGO von Max Schrems) bereits anhängig.
 
-**Drittens — C5 als regulatorische Mindestanforderung, nicht als Souveränitätsnachweis:** Der Gesetzgeber hat mit § 393 SGB V BSI C5 als Pflichtstandard eingeführt, weil er verfügbar und praxistauglich ist — nicht weil er vor US-Behördenzugriff schützt. Das BSI selbst weist darauf hin, dass C5 Informationssicherheit, nicht Datensouveränität im geopolitischen Sinne zertifiziert.
+**Drittens — C5 als regulatorische Mindestanforderung, nicht als Souveränitätsnachweis:** Der Gesetzgeber hat mit § 393 SGB V BSI C5 als Pflichtstandard eingeführt, weil er verfügbar und praxistauglich ist — nicht weil er vor US-Behördenzugriff schützt. Auch der am 7. April 2026 veröffentlichte C5:2026 (168 Kriterien, Nachfolger des C5:2020) ändert daran nichts: Das BSI hat Souveränitätskriterien bewusst als separates Dokument angekündigt, das "in Kürze" erscheinen soll [188]. C5 zertifiziert Informationssicherheit, nicht Datensouveränität im geopolitischen Sinne.
 
 #### 1.2.4 Struktureller Interessenkonflikt bei Beratern
 
@@ -368,12 +368,13 @@ Wenn eine dieser Fragen mit Ja beantwortet wird: CLOUD-Act-Risiko real — unabh
 
 | Standard | Land | CLOUD-Act-Immunität | Stärke |
 |---|---|---|---|
-| **BSI C5 Typ 2** | Deutschland | ❌ Nicht geprüft — nur technische Sicherheit | Technische Mindestsicherheit |
-| **SecNumCloud 3.2** | Frankreich | ✅ Explizit — max. 24% nicht-EU-Anteile, EU-Personal | Strenger Souveränitätsstandard |
+| **BSI C5:2026** | Deutschland | ❌ Nicht geprüft — nur technische Sicherheit (168 Kriterien, Apr. 2026) | Technische Mindestsicherheit |
+| **BSI Souveränitätskriterien** | Deutschland | ⏳ Angekündigt — gemeinsam mit ANSSI (Nov. 2025), Veröffentlichung "in Kürze" | Noch nicht verfügbar |
+| **SecNumCloud 3.2** | Frankreich | ✅ Explizit — max. 24%/39% nicht-EU-Anteile, EU-Personal | Strenger Souveränitätsstandard |
 | **BSI Cloud Platform Requirements** | Deutschland | ✅ Implizit — deutsches Personal, kein US-Zugang | Für VS-NfD-Daten |
 | **ISO 27001** | International | ❌ Nicht geprüft | Informationssicherheits-Baseline |
 | **HDS** | Frankreich | ❌ Nicht direkt | Gesundheitsdaten-Hosting |
-| **EUCS (in Entwicklung)** | EU | Geplant auf höchster Stufe | Noch nicht final |
+| **EUCS (blockiert)** | EU | Souveränitätsstufe gestrichen; Pattsituation seit 2024 | Nicht absehbar |
 
 > **Kernaussage:** C5 belegt technische Sicherheit — nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver hat C5 und unterliegt ihm strukturell nicht.
 
@@ -397,11 +398,11 @@ Im Juli 2021 formalisierte Premierminister Jean Castex per Rundschreiben die *Do
 
 **Deutschlands Weg: C5 als pragmatischer Kompromiss**
 
-Deutschland hat eine andere Tradition. Das BSI hat sich historisch als Behörde für **technische** Informationssicherheit definiert — nicht für geopolitische Souveränitätsfragen. Der BSI C5-Katalog (Cloud Computing Compliance Criteria Catalogue) wurde 2016 veröffentlicht, zeitgleich mit SecNumCloud 1.0, aber mit einem fundamental anderen Ansatz: C5 prüft 121 Kontrollen in 17 Domänen — Verschlüsselung, Zugriffskontrolle, Netzwerksicherheit, Verfügbarkeit — und beantwortet die Frage "Ist der Cloud-Dienst technisch sicher?". Die Frage "Kann eine ausländische Regierung den Anbieter zur Herausgabe zwingen?" wird von C5 **bewusst nicht gestellt** [177].
+Deutschland hat eine andere Tradition. Das BSI hat sich historisch als Behörde für **technische** Informationssicherheit definiert — nicht für geopolitische Souveränitätsfragen. Der BSI C5-Katalog (Cloud Computing Compliance Criteria Catalogue) wurde 2016 veröffentlicht, zeitgleich mit SecNumCloud 1.0, aber mit einem fundamental anderen Ansatz. Die am 7. April 2026 veröffentlichte aktuelle Version **C5:2026** prüft 168 Kriterien in 17 Domänen — Verschlüsselung, Zugriffskontrolle, Netzwerksicherheit, Container-Management, Post-Quanten-Kryptographie, Confidential Computing — und beantwortet die Frage "Ist der Cloud-Dienst technisch sicher?" [188]. Die Frage "Kann eine ausländische Regierung den Anbieter zur Herausgabe zwingen?" wird auch in C5:2026 **bewusst nicht gestellt** — obwohl der Katalog strukturell an das europäische EUCS angelehnt wurde [177].
 
 Für den Bereich der Verschlusssachen (VS-NfD und höher) existiert mit den **BSI Cloud Platform Requirements** ein strengerer Maßstab, der de facto Souveränitätsanforderungen stellt: deutsches Personal, keine US-Zugriffsmöglichkeit, BSI-Prüfung aller Updates. Aber dieses Instrument ist nicht als öffentlicher Marktstandard konzipiert — es gilt nur für die Bundesverwaltung und Delos Cloud ist der erste (und bisher einzige) Nutzer im US-Technologie-Kontext. Für den regulären Gesundheitsmarkt bleibt C5 der Referenzstandard — und § 393 SGB V hat C5 als Pflichttestat verankert, ohne eine Souveränitätsprüfung danebenzustellen. Symptomatisch: Das BSI hat mit AWS eine Kooperationsvereinbarung unterzeichnet und begrüßte die AWS European Sovereign Cloud in Brandenburg als Beitrag zur europäischen Souveränität [185] — eine Position, die diametral zu ANSSIs Haltung steht, wonach US-Hyperscaler ohne strukturelle Trennung grundsätzlich nicht souveränitätsfähig sind.
 
-Die kommende C5:2025-Version (Community Draft mit Kommentarfrist bis September 2025) plant zwar erstmals Datensouveränität als Thema — aber das BSI hat angekündigt, Souveränitätskriterien als **separates Dokument** neben C5 zu veröffentlichen, nicht als integralen Bestandteil der Zertifizierung [186]. Der Unterschied zu Frankreich bleibt damit strukturell: ANSSI hat Souveränität in den Zertifizierungsstandard selbst eingebaut. Das BSI hält Souveränität und technische Sicherheit weiterhin getrennt.
+C5:2026 (veröffentlicht 7. April 2026) ist ein substanzieller Fortschritt bei der technischen Sicherheit — 168 statt 121 Kriterien, erstmals Confidential Computing und Post-Quanten-Kryptographie, strukturell an EUCS angelehnt [188]. Aber die Souveränitätsfrage bleibt auch in C5:2026 **ausgeklammert**: Das BSI hat angekündigt, Souveränitätskriterien als **separates Dokument** "in Kürze" zu veröffentlichen — nicht als integralen Bestandteil der Zertifizierung [186]. Der Unterschied zu Frankreich bleibt damit strukturell: ANSSI hat Souveränität in den Zertifizierungsstandard selbst eingebaut. Das BSI hält Souveränität und technische Sicherheit getrennt — auch in der neuesten Version.
 
 **Das EUCS-Scheitern — und Deutschlands Rolle**
 
@@ -417,18 +418,26 @@ Gaia-X, 2019 als deutsch-französisches Prestigeprojekt unter Bundeswirtschaftsm
 
 **Ansätze zur Konvergenz — und ihre Grenzen**
 
-Zwei jüngere Entwicklungen deuten auf ein vorsichtiges deutsches Umdenken hin: Am 18. November 2025 veranstalteten Macron und Bundeskanzler Merz den **Gipfel für Europäische Digitale Souveränität** in Berlin (900+ Teilnehmer). Beide lancierten eine gemeinsame Task Force für Souveränitätsindikatoren und eine gemeinsame Definition "europäischer digitaler Dienste" — mit privatwirtschaftlichen Investitionszusagen von über 12 Mrd. EUR [187]. Parallel schlug die EU-Kommission im März 2025 eine Überarbeitung des Cybersecurity Act vor, die erstmals "nicht-technische Anforderungen" in Zertifizierungsschemata ermöglichen würde — ein Türöffner, um Souveränitätskriterien doch noch in EUCS zu verankern [183]. Beide Prozesse sind noch ergebnisoffen. Bis sie Wirkung entfalten, bleibt die Lücke bestehen: Frankreich zertifiziert Souveränität, Deutschland nicht.
+Drei jüngere Entwicklungen deuten auf ein deutsches Umdenken hin — wobei die Lücke bis heute fortbesteht:
+
+**Erstens** veröffentlichten ANSSI und BSI am 17. November 2025 ein **gemeinsames Statement zu Cloud-Souveränitätskriterien**, unterzeichnet von ANSSI-Generaldirektor Vincent Strubel und BSI-Präsidentin Claudia Plattner [189]. Darin verpflichten sich beide Behörden, gemeinsam Souveränitätskriterien auf Basis des EU Cloud Sovereignty Framework zu entwickeln — mit konkreten Anforderungen: strikte Datenlokalisierung, ausschließliche Anwendung europäischen Rechts, **kein Zugang durch nicht-europäische Dritte**, und Geschäftskontinuität ohne außereuropäische Akteure oder Technologien. Entscheidend: Das Statement führt eine **Progressionslogik** ein — nicht binär (souverän/nicht-souverän), sondern drei Stufen: minimale Rechtskonformität, erweiterter operativer Kontrolle und volle strategische Autonomie. Wo das Nicht-Erfüllen disqualifizierend wirkt, soll die Methodik festlegen.
+
+**Zweitens** veranstalteten Macron und Bundeskanzler Merz am 18. November 2025 den **Gipfel für Europäische Digitale Souveränität** in Berlin (900+ Teilnehmer) mit privatwirtschaftlichen Investitionszusagen von über 12 Mrd. EUR und einer gemeinsamen Task Force [187].
+
+**Drittens** schlug die EU-Kommission im März 2025 eine Überarbeitung des Cybersecurity Act vor, die erstmals "nicht-technische Anforderungen" in Zertifizierungsschemata ermöglichen würde — ein Türöffner, um Souveränitätskriterien doch noch in EUCS zu verankern [183].
+
+Das ANSSI-BSI-Statement ist der bislang konkreteste Schritt. Aber: Die angekündigten gemeinsamen Souveränitätskriterien sind bislang nicht veröffentlicht. C5:2026 (7. April 2026) enthält sie nicht. Solange die Kriterien nicht vorliegen, bleibt die Lücke operativ bestehen: Frankreich zertifiziert Souveränität seit 2022. Deutschland plant es — noch.
 
 **Die strukturelle Konsequenz für das Gesundheitswesen**
 
 | Dimension | Frankreich | Deutschland |
 |---|---|---|
-| **Zertifizierungsstandard** | SecNumCloud 3.2 (seit 2022) | BSI C5 Typ 2 (seit 2016) |
-| **Souveränitätsprüfung** | ✅ Eigentümerschaft, Personal, Extraterritorialität | ❌ Nur technische Sicherheit |
+| **Zertifizierungsstandard** | SecNumCloud 3.2 (seit 2022) | BSI C5:2026 (April 2026, nur technische Sicherheit) |
+| **Souveränitätsprüfung** | ✅ Seit 2022 in Zertifizierung integriert | ⏳ ANSSI-BSI-Statement Nov. 2025: Souveränitätskriterien angekündigt, noch nicht veröffentlicht |
 | **Staatliche Nachfragepolitik** | Doctrine "Cloud au centre" (2021, 2023) | § 393 SGB V: C5 als Pflicht, keine Souveränitätspflicht |
 | **Gesundheitsdaten-Konsequenz** | Health Data Hub → Migration weg von Azure | ePA / FDZ: Keine vergleichbare Migrationsentscheidung |
-| **Zertifizierte souveräne Anbieter** | 6+ (Outscale, S3NS, Cloud Temple, OVHcloud, NumSpot…) | 0 (C5 prüft Souveränität nicht) |
-| **EU-Harmonisierung (EUCS)** | Aktiv für Souveränitätsstufe | Ambivalent, kein klares Eintreten |
+| **Zertifizierte souveräne Anbieter** | 6+ (Outscale, S3NS, Cloud Temple, OVHcloud, NumSpot…) | 0 (C5:2026 prüft Souveränität nicht) |
+| **EU-Harmonisierung (EUCS)** | Aktiv für Souveränitätsstufe | Seit Nov. 2025: gemeinsamer Ansatz mit FR (ANSSI-BSI-Statement) |
 
 Die Konsequenz ist konkret: In Frankreich kann ein Krankenhaus einen SecNumCloud-zertifizierten Anbieter auswählen und darauf vertrauen, dass die Zertifizierung die CLOUD-Act-Frage adressiert. In Deutschland muss jede Organisation die Jurisdiktionsprüfung eigenständig durchführen — das C5-Testat sagt darüber nichts aus. Frankreich hat den Markt durch regulatorische Nachfrage geschaffen. Deutschland überlässt die Souveränitätsentscheidung dem Einzelnen.
 
@@ -839,7 +848,7 @@ Keine GKV mit 5 Millionen Versicherten braucht 3,5 Millionen Server. STACKIT ist
 **Die drei größten blinden Flecken** der aktuellen Souveränitätsdebatte im Gesundheitswesen:
 1. **Snowflake** für GKV-Analytics — NYSE: SNOW, US-Hauptsitz, direktes CLOUD-Act-Risiko trotz Frankfurter Region
 2. **Oracle Health / Cerner auf OCI** für Kliniken — NYSE: ORCL, strukturell gleichwertig mit Azure aus CLOUD-Act-Perspektive
-3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5 ist erst für Q1 2026 geplant (noch nicht zertifiziert), schützt ohnehin nicht gegen CLOUD Act
+3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5-Testat noch nicht erteilt (Stand April 2026), schützt ohnehin nicht gegen CLOUD Act
 
 Beide werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben.
 
@@ -1420,7 +1429,7 @@ Alle Regionen der Welt stehen vor demselben Problem: Wer Daten bei einem US-Unte
 |---|---|---|
 | **1** | Anbieter-Kontrollanalyse | (a) US-Börsennotierung? (b) US-Muttergesellschaft? (c) US-Niederlassung — auch Tochter oder Schwester? Wenn eine Frage Ja: CLOUD-Act-Risiko real — unabhängig von Serverstandort, AVV und SCCs. |
 | **2** | Datenklassifizierung | Klasse 1 (ePA, Diagnosedaten, Medikation) → Full-Isolation-Anbieter oder Operator-Modell mit BSI CPR. Klasse 2 (interne Kommunikation, Analytics) → EU-Anbieter akzeptabel. Klasse 3 (öffentliche Daten) → keine Einschränkung. |
-| **3** | C5-Testat neu einordnen | C5 belegt **technische Sicherheit**, nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver/STACKIT haben C5 und unterliegen ihm strukturell nicht. Delos Cloud hat BSI Cloud Platform Requirements — das ist strenger als C5 und schließt US-Zugriff operativ aus. |
+| **3** | C5-Testat neu einordnen | Auch C5:2026 (April 2026, 168 Kriterien) belegt **technische Sicherheit**, nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver/STACKIT haben C5 und unterliegen ihm strukturell nicht. Delos Cloud hat BSI Cloud Platform Requirements — strenger als C5. BSI und ANSSI haben im November 2025 gemeinsame Souveränitätskriterien angekündigt — bis zu deren Veröffentlichung bleibt C5 allein kein Souveränitätsnachweis. |
 | **4** | DPF nicht als Schutzschild | Das Data Privacy Framework basiert auf einem Präsidialerlass. PCLOB-Aufsicht ausgehöhlt seit Jan. 2025. Schrems III läuft. Keine Infrastrukturentscheidungen auf DPF-Dauerhaftigkeit bauen. |
 | **5** | Operator-Modell prüfen | Für Organisationen tief in Microsoft 365 oder Azure integriert: Delos Cloud GmbH (SAP-Tochter) als souveräner Betreiber von Azure-Technologie prüfen. BSI Cloud Platform Requirements erfüllt, VS-NfD-fähig. Preisaufschlag: +15% auf Microsoft-Listenpreise. |
 
@@ -1671,6 +1680,8 @@ Die folgende Tabelle gibt den Überblick über laufende und kommende Entwicklung
 | **SharePoint On-Premise End-of-Life** | Juli 2026 | SharePoint 2013/2016/2019 verliert Support. Erzwingt Entscheidung: SharePoint Online (US-Cloud) oder souveräne Alternative (→ §8.3). |
 | **STACKIT Lübbenau-RZ** | Fertigstellung 2027 | 11 Mrd. EUR, bis zu 100.000 GPUs. Erster EU-Anbieter mit Hyperscaler-Kapazität. (Analyse: → §5.5, §7.2) |
 | **Euro-Office / Office.eu** | Rollout ab März–Q2 2026 | Erste produktionsreife souveräne M365-Alternative. (Analyse: → §8.3) |
+| **BSI C5:2026** | Veröffentlicht 7. April 2026 | 168 Kriterien (Nachfolger C5:2020). Technische Sicherheit modernisiert (Container, PQC, Confidential Computing). Souveränität weiterhin nicht geprüft — separate Kriterien angekündigt. (Analyse: → §5.3) |
+| **ANSSI-BSI Souveränitätskriterien** | Joint Statement 17. Nov. 2025 | ANSSI und BSI entwickeln gemeinsam Souveränitätskriterien auf Basis des EU Cloud Sovereignty Framework. Drei-Stufen-Progressionsmodell. Veröffentlichung "in Kürze". (Analyse: → §5.3) |
 | **EuroHPC AI Factories** | 19 Standorte, laufend seit 2025 | Souveräne GPU-Infrastruktur für KI-Training. Zugang für Gesundheitsorganisationen. |
 
 ### 17.1 Telematikinfrastruktur (TI 2.0) — was sich durch die Migration ändert
@@ -2019,9 +2030,11 @@ Zwölf Kernaussagen:
 - [183] cep (Centrum für Europäische Politik): EU Cloud Certification at an Impasse, cepInput Nr. 8, April 2025. EUCS-Pattsituation durch ungelösten Souveränitätsstreit: https://www.cep.eu/fileadmin/user_upload/cep.eu/cepItalia/cepInput_EU_Cloud_Certification_at_an_Impasse.pdf
 - [184] Tandfonline: European ambitions captured by American clouds — digital sovereignty through Gaia-X?, 2025. Gaia-X-Governance-Scheitern durch Aufnahme von US-Hyperscalern; Souveränitätslabels unverbindlich: https://www.tandfonline.com/doi/full/10.1080/1369118X.2025.2516545
 - [185] About Amazon EU: AWS and BSI sign cooperation agreement to advance cybersecurity and digital sovereignty in Germany and the EU. BSI-Präsidentin Plattner begrüßt AWS European Sovereign Cloud als Souveränitätsbeitrag: https://www.aboutamazon.eu/news/aws/aws-and-bsi-sign-cooperation-agreement-to-advance-cybersecurity-and-digital-sovereignty-in-germany-and-the-eu
-- [186] BSI: C5:2025 Community Draft, Kommentarfrist bis 15. September 2025. Souveränitätskriterien als separates Dokument geplant, nicht in C5 integriert: https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Cloud-Computing/Kriterienkatalog-C5/C5_2025/C5_2025_node.html
+- [186] BSI: C5:2026 — Kriterienkatalog für Cloud Computing (finale Version, veröffentlicht 7. April 2026). Souveränitätskriterien als separates Dokument angekündigt ("in Kürze"), nicht in C5:2026 integriert: https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Cloud-Computing/Kriterienkatalog-C5/C5_2025/C5_2025_node.html
 - [187] Élysée: Summit on European Digital Sovereignty delivers landmark commitments, 18. November 2025. Macron/Merz, Joint Task Force, 12 Mrd. EUR Investitionszusagen, 900+ Teilnehmer: https://www.elysee.fr/en/emmanuel-macron/2025/11/18/summit-on-european-digital-sovereignty-delivers-landmark-commitments-for-a-more-competitive-and-sovereign-europe
+- [188] BSI Pressemitteilung: "Sicheres Cloud-Computing: BSI veröffentlicht C5:2026", 7. April 2026. 168 Kriterien in 17 Themengebieten; Container-Management, Post-Quanten-Kryptographie, Confidential Computing, Supply-Chain-Management; strukturell an EUCS angelehnt; maschinenlesbar: https://www.bsi.bund.de/DE/Service-Navi/Presse/Pressemitteilungen/Presse2026/260407_C5_Cloud_Computing.html
+- [189] BSI/ANSSI: Joint Statement by ANSSI and BSI on Cloud Sovereignty Criteria, 17. November 2025. Gemeinsame Souveränitätskriterien auf Basis EU Cloud Sovereignty Framework; Drei-Stufen-Progressionsmodell; strikte Datenlokalisierung, kein Zugang durch nicht-europäische Dritte, Geschäftskontinuität ohne außereuropäische Technologien: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/ANSSI-BSI-joint-releases/Cloud-Sovereignty-Criteria.html
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 14.0, April 2026. 187 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 15.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*

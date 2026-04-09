@@ -2,6 +2,55 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 14.0 → Version 15.0
+
+### Änderungen
+
+Vollständige Einarbeitung der Neuigkeiten **BSI C5:2026** (veröffentlicht 7. April 2026) und **ANSSI-BSI Joint Statement on Cloud Sovereignty Criteria** (17. November 2025) im gesamten Dokument.
+
+Betroffene Stellen (9 Edits in 7 Abschnitten):
+
+| Stelle | Änderung |
+|---|---|
+| §1.1 Tabelle (BSI C5-Testat) | C5:2026 erwähnt, Souveränitätskriterien als separates Dokument angekündigt |
+| §1.2.3 (C5 als Mindestanforderung) | C5:2026 (168 Kriterien, Apr. 2026) als Referenz; Souveränität weiterhin ausgeklammert |
+| §5.3 Vergleichstabelle | BSI C5:2026 statt C5 Typ 2; BSI Souveränitätskriterien als neue Zeile (⏳); EUCS "(blockiert)" |
+| §5.3 Deutschlands Weg | 121 Kontrollen → 168 Kriterien; C5:2026 als aktuelle Referenz; an EUCS angelehnt |
+| §5.3 BSI-Absatz | C5:2025-Draft → C5:2026 final; Souveränität explizit "auch in C5:2026 ausgeklammert" |
+| §5.3 Konvergenz | ANSSI-BSI Joint Statement (17.11.2025) mit Details: Strubel/Plattner, Drei-Stufen-Progressionsmodell, Anforderungen |
+| §5.3 DE/FR-Tabelle | Alle 6 Zeilen aktualisiert: C5:2026, ANSSI-BSI-Statement, "noch nicht veröffentlicht" |
+| §7.3 Qlik | "C5 geplant Q1 2026" → "C5-Testat noch nicht erteilt (Stand April 2026)" |
+| §16.1 Maßnahme #3 | C5:2026 erwähnt; ANSSI-BSI-Souveränitätskriterien als kommende Referenz |
+| §17 Ausblick-Tabelle | Zwei neue Zeilen: BSI C5:2026 + ANSSI-BSI Souveränitätskriterien |
+
+2 neue Quellen [188]–[189] nachgetragen, [186] aktualisiert (C5:2025 Draft → C5:2026 final).
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis | Auffälligkeiten |
+|---|---|---|
+| 2.1.1 Gliederung | ✅ | 19 ToC-Einträge = 19 H2-Überschriften |
+| 2.1.2 Nummerierung | ✅ | Lückenlos |
+| 2.1.3 Querverweise | ✅ | Alle gültig |
+| 2.1.4 Leere Abschnitte | ✅ | Keine |
+| 2.1.5 Formatierung | ✅ | Keine Artefakte |
+| 2.4 Quellenprüfung | ✅ | 189 Quellen, konsistent |
+| 2.5 Versionskonsistenz | ✅ | Version 15.0 an allen Stellen |
+| 2.6 Automatisierte Prüfung | ✅ | validate.py: 0 Fehler; red_thread.py: 0 Fehler, 9 Warnungen (informativ) |
+
+### Export
+
+- PDF erstellt: ✅
+- Word erstellt: ✅ (144 KB)
+
+### Abschluss
+
+- Alle Prüfungen bestanden: Ja
+- Neue Version: 15.0
+- Quellen: 187 → 189
+
+---
+
 ## Validierung 09.04.2026 — Version 13.0 → Version 14.0
 
 ### Änderungen

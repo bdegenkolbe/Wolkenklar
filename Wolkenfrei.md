@@ -126,30 +126,9 @@ Für die Haftungsbewertung ist das relevant: Eine Gesundheitsinstitution, die si
 
 Big Tech gibt 19-mal mehr für EU-Lobbyarbeit aus als die Automobilindustrie. 890 Digital-Lobbyisten arbeiten Vollzeit in Brüssel — mehr als Sitze im Europäischen Parlament. Das Google-Lobbypapier vom August 2025 zur Einschränkung des DSGVO-Auskunftsrechts wurde wortgleich in den Digital-Omnibus-Entwurf der EU-Kommission übernommen. Datenschutz gilt — aber seine Weiterentwicklung und Durchsetzung wird durch diese Finanzasymmetrie systematisch gebremst. Ausführlich dokumentiert in Kapitel 11.
 
-### 1.3 Die Telematikinfrastruktur — souverän in der Governance, exponiert im Betrieb
+### 1.3 Telematikinfrastruktur — ein unterschätztes Einfallstor
 
-Die Telematikinfrastruktur (TI) ist das digitale Nervensystem des deutschen Gesundheitswesens: Sie verbindet alle Leistungserbringer in einem gemeinsamen Sicherheitsnetz und transportiert ePA (elektronische Patientenakte), E-Rezept, elektronische Arbeitsunfähigkeitsbescheinigung (eAU) und Versichertenstammdaten. Die gematik GmbH, die die TI reguliert und weiterentwickelt, steht zu 51 Prozent im Eigentum des Bundesministeriums für Gesundheit — sie ist keine US-Gesellschaft und unterliegt keiner US-Jurisdiktion. Soweit zur guten Nachricht.
-
-Die schlechte: Im operativen Betrieb der TI sind US-Unternehmen tief verankert.
-
-**IBM betreibt zwei Kerndienste.** IBM (Hauptsitz Armonk, New York — vollständig CLOUD-Act-exponiert) hat 2020 den Ausschreibungsgewinn für den Rezeptserver-Fachdienst erhalten und wurde im Dezember 2023 von der gematik als Identity-Provider-Anbieter zugelassen. IBM hat damit gleichzeitig Zugang zu Authentifizierungsinfrastruktur und zum zentralen eRezept-Transaktionsdienst. Die gematik betonte bei der Vergabe, der Betreiber könne Gesundheitsdaten "nicht auslesen". Das ist für Inhaltsdaten korrekt — aber CLOUD Act erfasst auch Metadaten, Verbindungsprotokolle und Systemzugriffe, nicht nur Klartextinhalte. [Quelle: Apotheke Wirtschaft, Heft 16/2025]
-
-**Arvato Systems (Bertelsmann) trägt die Sicherheitsinfrastruktur.** Arvato Systems betreibt den zentralen Verzeichnisdienst, die KIM-Dienste (Kommunikation im Medizinwesen) und die übergreifende TI-Sicherheitsarchitektur. Arvato ist eine Tochter der deutschen Bertelsmann SE — formal kein US-Unternehmen. Das CLOUD-Act-Risiko ist deutlich geringer als bei IBM, aber nicht null, sofern Bertelsmann US-Tochtergesellschaften mit Datenzugang unterhält.
-
-**TI 2.0 öffnet neue Einfallstore.** Unter TI 2.0 ersetzen cloudbasierte TI-Gateways die bisherigen Hardware-Konnektoren: Praxen und Kliniken mieten TI-Zugang als Managed Service von zertifizierten Anbietern. Wer diese Gateway-Betreiber sein werden und ob darunter US-Konzerne zugelassen werden, ist regulatorisch noch nicht abschließend definiert. Hier entsteht mit der Umstellung ein strukturell neues CLOUD-Act-Einfallstor.
-
-**Risikomatrix TI:**
-
-| TI-Komponente | Betreiber | CLOUD-Act-Risiko |
-|---|---|---|
-| Regulierung / Governance | gematik GmbH (BMG 51 %) | 🟢 Keines |
-| Rezeptserver-Fachdienst | IBM (US) | 🔴 Real |
-| Identity Provider | IBM (US, seit Dez. 2023) | 🔴 Real |
-| Verzeichnisdienst / KIM | Arvato Systems (DE/Bertelsmann) | 🟡 Gering–mittel |
-| Datenverschlüsselung | Ende-zu-Ende | 🟢 Strukturell geschützt |
-| TI-Gateway-Betreiber (TI 2.0) | Noch offen | 🟡 Regulatorisch ungeklärt |
-
-**Fazit:** Die TI ist kein US-Cloud-Problem im klassischen Sinne — ihre Governance und Verschlüsselung sind konzeptionell souverän. Aber IBM als CLOUD-Act-exponierter Betreiber von Rezeptserver und Identity Provider ist eine strukturelle Schwachstelle, die in der öffentlichen Debatte kaum thematisiert wird.
+Auch die Telematikinfrastruktur (TI), das digitale Nervensystem des deutschen Gesundheitswesens, ist CLOUD-Act-exponiert: IBM betreibt den Rezeptserver und den Identity Provider, Arvato Systems (Bertelsmann) die Sicherheitsinfrastruktur. Die gematik als Regulierer ist souverän — der operative Betrieb ist es nicht. Die vollständige Analyse mit Risikomatrix und TI-2.0-Ausblick findet sich in §12.8 (Marktbeispiele) und §17.1 (Regulatorischer Ausblick).
 
 ---
 
@@ -1223,7 +1202,34 @@ Epic ist CLOUD-Act-Kategorie A — direkte US-Exposition unabhängig vom Datenst
 
 ---
 
-### 12.8 Fünf Eintrittspfade — Zusammenfassung
+### 12.8 Eintrittspfad 6: Telematikinfrastruktur — souverän in der Governance, exponiert im Betrieb
+
+Die Telematikinfrastruktur (TI) ist das digitale Nervensystem des deutschen Gesundheitswesens: Sie verbindet alle Leistungserbringer in einem gemeinsamen Sicherheitsnetz und transportiert ePA (elektronische Patientenakte), E-Rezept, elektronische Arbeitsunfähigkeitsbescheinigung (eAU) und Versichertenstammdaten. Die gematik GmbH, die die TI reguliert und weiterentwickelt, steht zu 51 Prozent im Eigentum des Bundesministeriums für Gesundheit — sie ist keine US-Gesellschaft und unterliegt keiner US-Jurisdiktion. Soweit zur guten Nachricht.
+
+Die schlechte: Im operativen Betrieb der TI sind US-Unternehmen tief verankert.
+
+**IBM betreibt zwei Kerndienste.** IBM (Hauptsitz Armonk, New York — vollständig CLOUD-Act-exponiert) hat 2020 den Ausschreibungsgewinn für den Rezeptserver-Fachdienst erhalten und wurde im Dezember 2023 von der gematik als Identity-Provider-Anbieter zugelassen. IBM hat damit gleichzeitig Zugang zu Authentifizierungsinfrastruktur und zum zentralen eRezept-Transaktionsdienst. Die gematik betonte bei der Vergabe, der Betreiber könne Gesundheitsdaten "nicht auslesen". Das ist für Inhaltsdaten korrekt — aber CLOUD Act erfasst auch Metadaten, Verbindungsprotokolle und Systemzugriffe, nicht nur Klartextinhalte. [Quelle: Apotheke Wirtschaft, Heft 16/2025]
+
+**Arvato Systems (Bertelsmann) trägt die Sicherheitsinfrastruktur.** Arvato Systems betreibt den zentralen Verzeichnisdienst, die KIM-Dienste (Kommunikation im Medizinwesen) und die übergreifende TI-Sicherheitsarchitektur. Arvato ist eine Tochter der deutschen Bertelsmann SE — formal kein US-Unternehmen. Das CLOUD-Act-Risiko ist deutlich geringer als bei IBM, aber nicht null, sofern Bertelsmann US-Tochtergesellschaften mit Datenzugang unterhält.
+
+**TI 2.0 öffnet neue Einfallstore.** Unter TI 2.0 ersetzen cloudbasierte TI-Gateways die bisherigen Hardware-Konnektoren: Praxen und Kliniken mieten TI-Zugang als Managed Service von zertifizierten Anbietern. Wer diese Gateway-Betreiber sein werden und ob darunter US-Konzerne zugelassen werden, ist regulatorisch noch nicht abschließend definiert. Hier entsteht mit der Umstellung ein strukturell neues CLOUD-Act-Einfallstor. Die regulatorischen Auswirkungen von TI 2.0 werden in §17.1 vertieft.
+
+**Risikomatrix TI:**
+
+| TI-Komponente | Betreiber | CLOUD-Act-Risiko |
+|---|---|---|
+| Regulierung / Governance | gematik GmbH (BMG 51 %) | 🟢 Keines |
+| Rezeptserver-Fachdienst | IBM (US) | 🔴 Real |
+| Identity Provider | IBM (US, seit Dez. 2023) | 🔴 Real |
+| Verzeichnisdienst / KIM | Arvato Systems (DE/Bertelsmann) | 🟡 Gering–mittel |
+| Datenverschlüsselung | Ende-zu-Ende | 🟢 Strukturell geschützt |
+| TI-Gateway-Betreiber (TI 2.0) | Noch offen | 🟡 Regulatorisch ungeklärt |
+
+**Fazit:** Die TI ist kein US-Cloud-Problem im klassischen Sinne — ihre Governance und Verschlüsselung sind konzeptionell souverän. Aber IBM als CLOUD-Act-exponierter Betreiber von Rezeptserver und Identity Provider ist eine strukturelle Schwachstelle, die in der öffentlichen Debatte kaum thematisiert wird.
+
+---
+
+### 12.9 Sechs Eintrittspfade — Zusammenfassung
 
 | Pfad | Mechanismus | Lösungsansatz |
 |---|---|---|
@@ -1232,6 +1238,7 @@ Epic ist CLOUD-Act-Kategorie A — direkte US-Exposition unabhängig vom Datenst
 | **KIS-Neuausschreibung** | IS-H-Abkündigung → Epic/OCI-Migration | Dedalus/NEXUS als EU-Alternativen stärken |
 | **US-Übernahme** | DAVASO/IQVIA — Übernahme nach Kartellprüfung | Nicht rückgängig zu machen; AVV-Schutzmechanismen |
 | **SaaS-Plattform** | Doctolib auf AWS — C5 schützt nicht vor CLOUD Act | EU-Alternative fördern oder Migration zu EU-Anbietern |
+| **Telematikinfrastruktur** | IBM betreibt TI-Kerndienste (Rezeptserver, IdP) | Nicht auflösbar — TI ist gesetzlich verpflichtend; Restrisiko dokumentieren |
 
 ---
 
@@ -1686,7 +1693,7 @@ Die folgende Tabelle gibt den Überblick über laufende und kommende Entwicklung
 
 ### 17.1 Telematikinfrastruktur (TI 2.0) — was sich durch die Migration ändert
 
-Die CLOUD-Act-Exposition der heutigen TI ist in §1.3 dokumentiert: IBM betreibt zwei Kerndienste (Rezeptserver, Identity Provider), Arvato Systems trägt die Sicherheitsinfrastruktur mit US-Technologieabhängigkeit. An dieser Bestandsaufnahme ändert sich kurzfristig nichts. Was sich ändert, ist die Architektur selbst.
+Die CLOUD-Act-Exposition der heutigen TI ist in §12.8 dokumentiert: IBM betreibt zwei Kerndienste (Rezeptserver, Identity Provider), Arvato Systems trägt die Sicherheitsinfrastruktur mit US-Technologieabhängigkeit. An dieser Bestandsaufnahme ändert sich kurzfristig nichts. Was sich ändert, ist die Architektur selbst.
 
 **Der Übergang von TI 1.0 zu TI 2.0:** Die bisherige TI setzte auf physische Konnektoren in jeder Praxis — teuer und wartungsintensiv, aber vollständig in Deutschland kontrolliert. TI 2.0 ersetzt diese Hardware durch cloud-basierte TI-Gateways: Praxen und Kliniken mieten TI-Zugang als Managed Service von zertifizierten Dienstleistern. Das macht die TI flexibler und günstiger — öffnet sie aber für die CLOUD-Act-Problematik, weil die Gateway-Betreiber US-kontrollierte Anbieter sein könnten.
 

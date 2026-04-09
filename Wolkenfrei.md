@@ -860,9 +860,8 @@ Im Gesundheitswesen entstehen gerade vier KI-Anwendungsmuster, die alle Klartext
 | **DeepSeek** | CN (Hangzhou) | China-basiert | 🔴 Nicht CLOUD Act, aber CN-Datengesetze | Open-Source-Modelle lokal deploybar |
 | **Mistral AI** | FR (Paris, SAS) | Scaleway (FR) | 🟢 EU-souverän | Self-hosted oder API; bevorzugte EU-Option |
 | **Aleph Alpha (Luminous)** | DE (Heidelberg) | IONOS / STACKIT | 🟢 EU-souverän (DE) | BW-Verwaltung; Gesundheitssektor noch begrenzt |
+| **Kimi (Moonshot AI)** | CN (Peking) | China-basiert | 🔴 Nicht CLOUD Act, aber CN-Datengesetze | Kimi 2.5 — leistungsfähig, aber chinesische Jurisdiktion |
 | **OpenEuroLLM** | EU-Konsortium (13 Partner) | EuroHPC (LUMI, Leonardo) | 🟢 EU-souverän | Forschung; produktiver Einsatz ab 2026 |
-
-**KIM 2.5 und gematik-KI-Dienste:** KIM (Kommunikation im Medizinwesen) in Version 2.5 integriert perspektivisch KI-Funktionen für die TI. Entscheidend ist, welche KI-Infrastruktur die KIM-Dienstanbieter einsetzen. Wenn ein KIM-Anbieter für KI-Funktionen auf Azure OpenAI oder AWS Bedrock zurückgreift, fließen Gesundheitsdaten aus dem TI-geschützten Raum in CLOUD-Act-exponierte Infrastruktur. Die gematik hat bislang keine verbindlichen Vorgaben zur KI-Infrastruktur der KIM-Anbieter veröffentlicht — eine Regulierungslücke, die angesichts der rasanten KI-Integration dringend geschlossen werden sollte.
 
 #### Integrationsplattformen — der versteckte Datenfluss
 

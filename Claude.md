@@ -25,6 +25,8 @@ Dieses Projekt pflegt ein umfassendes Analysedokument zur CLOUD-Act-Exposition d
 | `red_thread.py` | Automatisierte Roter-Faden-Prüfung |
 | `build_docx.js` | Word-Export-Skript |
 | `build_pdf.py` | PDF-Export-Skript |
+| `build_wiki.py` | Wiki-Export: splittet Wolkenfrei.md in MkDocs-Seiten |
+| `mkdocs.yml` | MkDocs-Konfiguration (Theme, Navigation, Plugins) |
 
 ---
 

@@ -2,6 +2,41 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 15.0 → Version 16.0
+
+### Änderungen
+
+1. **§1.3 → §12.8 verschoben:** TI-Analyse (IBM, Arvato, Risikomatrix, TI 2.0) von Kapitel 1 (Kernproblem) nach Kapitel 12 (Marktbeispiele) als "Eintrittspfad 6: Telematikinfrastruktur". §1.3 enthält kurzen Verweis. §12.8 (alt) → §12.9 "Sechs Eintrittspfade". §17.1 Querverweis aktualisiert.
+
+2. **§7.5 neu: KI-Anbieter und Integrationsplattformen.** Vier gesundheitsspezifische KI-Anwendungsfälle (Transkription, Arztbriefe, E-Mail-Zusammenfassung, KI-Kodierung). Risikotabelle 10 KI-Anbieter (OpenAI, Gemini, Claude, Copilot, Nuance DAX, DeepSeek, Kimi, Mistral, Aleph Alpha, OpenEuroLLM). Integrationsplattformen-Tabelle (Zapier, Make, Power Automate, n8n, IFTTT). §7.4 von "drei" auf "vier blinde Flecken" aktualisiert.
+
+3. **Fix:** KIM 2.5 (gematik) → Kimi 2.5 (Moonshot AI, CN) korrigiert.
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis | Auffälligkeiten |
+|---|---|---|
+| 2.1.1 Gliederung | ✅ | 19 ToC-Einträge = 19 H2-Überschriften |
+| 2.1.2 Nummerierung | ✅ | Lückenlos |
+| 2.1.3 Querverweise | ✅ | Alle gültig (inkl. §12.8-Verweis aus §1.3 und §17.1) |
+| 2.1.4 Leere Abschnitte | ✅ | Keine |
+| 2.1.5 Formatierung | ✅ | Keine Artefakte |
+| 2.4 Quellenprüfung | ✅ | 189 Quellen, konsistent |
+| 2.5 Versionskonsistenz | ✅ | Version 16.0 an allen Stellen |
+| 2.6 Automatisierte Prüfung | ✅ | validate.py: 0 Fehler; red_thread.py: 0 Fehler, 9 Warnungen (informativ) |
+
+### Export
+
+- PDF erstellt: ✅
+- Word erstellt: ✅ (148 KB)
+
+### Abschluss
+
+- Alle Prüfungen bestanden: Ja
+- Neue Version: 16.0
+
+---
+
 ## Validierung 09.04.2026 — Version 14.0 → Version 15.0
 
 ### Änderungen

@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 18.0 — April 2026 · 189 Quellen · 18 Kapitel  
+**Version:** 19.0 — April 2026 · 189 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -899,10 +899,16 @@ Die Theorie wird greifbar an konkreten Produkten, die heute im deutschen Gesundh
 |---|---|---|---|---|---|
 | **Plaud AI** | CN (Shenzhen) | OpenAI Whisper + GPT (US) | AWS Oregon (US) | 🔴 Dreifach (CN + US-Cloud + US-KI) | ❌ Nicht geeignet |
 | **Tandem Health** | SE (Stockholm) | OpenAI Whisper + GPT-4 | "EU-Rechenzentren" (Details offen) | 🟡 EU-Firma, aber OpenAI-Abhängigkeit | ⚠️ Nur wenn Azure EU + Risikoakzeptanz |
+| **Recare Voice** | DE (Berlin) | Nicht offengelegt | EU (ISO 27001, C5 Typ 2) | 🟡 DE-Firma, EU-Hosting, aber KI-Backend unklar | ⚠️ KI-Modell-Transparenz einfordern |
 | **Doctolib** | FR (Paris) | Eigene Plattform | AWS Frankfurt/Paris (C5 Typ 2) | 🟡 FR-Firma auf US-Infra, verschlüsselt | ⚠️ Verschlüsselung reduziert, eliminiert nicht |
+| **myScribe** | DE (Mannheim) | Eigenes NLP-Modell | On-Premise (KIS-Add-on, keine Cloud) | 🟢 Vollständig souverän | ✅ Daten bleiben im KIS |
 | **Averbis** | DE (Freiburg) | Eigene NLP-Engine | On-Premise oder DE-Cloud (C5) | 🟢 Vollständig souverän | ✅ On-Premise: kein CLOUD-Act-Risiko |
 
-> **Das Muster:** Je weiter rechts im Spektrum (eigene Modelle, eigene Infrastruktur, EU-Eigentümer), desto geringer das CLOUD-Act-Risiko. Plaud demonstriert das Worst-Case-Szenario: Ein nicht-EU-Unternehmen sendet Arzt-Patienten-Gespräche an US-Server und US-KI. Averbis demonstriert das Best-Case: Deutsche NLP, deutsches Hosting, deutscher Eigentümer, On-Premise-Option.
+**Recare Voice — das Transparenzproblem.** Recare Deutschland GmbH (Berlin, €37 Mio. Funding, DNV als größter Anteilseigner) bietet mit Recare Voice KI-gestützte Echtzeit-Dokumentation von Patientengesprächen für über 1.000 Krankenhäuser. Die Plattform ist ISO 27001- und BSI-C5-Typ-2-zertifiziert, verarbeitet Daten in Europa und wirbt mit "Zero Knowledge"-Architektur. Das Problem: **Welches Sprachmodell die Transkription und Zusammenfassung antreibt, ist nicht öffentlich dokumentiert.** Wenn Recare im Backend OpenAI Whisper oder GPT nutzt (direkt oder via Azure), gelten dieselben Vorbehalte wie bei Tandem Health. Wenn ein eigenes oder EU-gehostetes Modell verwendet wird, wäre das Risikoprofil deutlich besser. Für Kliniken, die Recare Voice evaluieren: Die Frage "Welches KI-Modell verarbeitet unsere Patientengespräche, und auf welcher Infrastruktur?" muss vertraglich beantwortet sein — nicht auf der Marketingseite.
+
+**myScribe — der On-Premise-Beweis.** myScribe GmbH (Mannheim, gegründet von der Ärztin Ira Stoll am Universitätsklinikum Heidelberg) zeigt, dass KI-gestützte Arztbrief-Generierung ohne Cloud funktioniert. Die App basiert auf einem **eigenentwickelten NLP-Modell**, das Informationen aus Visite-Notizen, Laborbefunden, Bildgebung, Diagnosen und Medikation zu mehrseitigen Arztbriefen konsolidiert. Entscheidend: myScribe läuft als Add-on auf der bestehenden KIS-Infrastruktur des Krankenhauses über HL7-FHIR-Schnittstellen. Keine Cloud-Funktionen, keine externe Datenübertragung, keine Abhängigkeit von US-KI-Providern. Patientendaten verlassen das Krankenhaus nicht. Zusammen mit Averbis ist myScribe der Beleg, dass souveräne Gesundheits-KI in Deutschland nicht Zukunftsmusik ist — sie existiert.
+
+> **Das Muster:** Je weiter rechts im Spektrum (eigene Modelle, eigene Infrastruktur, EU-Eigentümer), desto geringer das CLOUD-Act-Risiko. Plaud demonstriert das Worst-Case: CN-Firma sendet Arzt-Patienten-Audio an US-Server. myScribe und Averbis demonstrieren das Best-Case: Deutsche NLP, deutsches Hosting, On-Premise — keine US-Beteiligung.
 
 #### Vibecoding-Plattformen — KI-Entwicklung mit doppelter Bindung
 
@@ -2179,4 +2185,4 @@ Zwölf Kernaussagen:
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 18.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 19.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*

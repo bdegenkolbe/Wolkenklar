@@ -2,6 +2,48 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 13.0 → Version 14.0
+
+### Änderungen
+
+Neuer Unterabschnitt in §5.3: **"Warum Frankreich SecNumCloud hat und Deutschland nicht"** — systematische Analyse der strukturellen, politischen und regulatorischen Gründe für die Zertifizierungslücke zwischen BSI C5 (nur technische Sicherheit) und SecNumCloud 3.2 (explizite Souveränitätsprüfung). Themen: Frankreichs Souveränitätstradition (2014–2022), Health-Data-Hub-Krise, Doctrine "Cloud au centre", EUCS-Scheitern inkl. US-Lobbying und deutschem Lavieren, Gaia-X-Governance-Versagen, strukturelle Konsequenzentabelle.
+
+11 neue Quellen [174]–[184] nachgetragen (SecNumCloud, EUCS, Bitkom, Gaia-X).
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis | Auffälligkeiten |
+|---|---|---|
+| 2.1.1 Gliederung | ✅ | 19 ToC-Einträge stimmen mit 19 H2-Überschriften überein |
+| 2.1.2 Nummerierung | ✅ | Lückenlos |
+| 2.1.3 Querverweise | ✅ | Alle §-Querverweise und Kapitelverweise gültig |
+| 2.1.4 Leere Abschnitte | ✅ | Keine leeren Abschnitte |
+| 2.1.5 Formatierung | ✅ | Keine Formatierungsartefakte |
+| 2.4 Quellenprüfung | ✅ | 184 Quellen, Nummerierung konsistent |
+| 2.5 Versionskonsistenz | ✅ | Version 14.0 an allen Stellen identisch |
+| 2.6 Automatisierte Prüfung | ✅ | validate.py: 0 Fehler; red_thread.py: 0 Fehler, 9 Warnungen (informativ) |
+
+### Gefundene Fehler
+
+Keine.
+
+### Warnungen red_thread.py (informativ)
+
+9 Kapitel ohne explizite Rückverweise auf frühere Kapitel (Kap. 2, 3, 4, 6, 9, 10, 13, 14, 15). Thematisch abgegrenzte Kapitel — kein Handlungsbedarf.
+
+### Export
+
+- PDF erstellt: ✅ (CLOUD_Act_Analyse_HIGL_2026.pdf)
+- Word erstellt: ✅ (CLOUD_Act_Analyse_HIGL_2026.docx, 140 KB)
+
+### Abschluss
+
+- Alle Prüfungen bestanden: Ja
+- Neue Version: 14.0
+- Quellen: 173 → 184
+
+---
+
 ## Validierung 09.04.2026 — Version 13.0 (Re-Validierung + Export)
 
 ### Prüfergebnis

@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 13.0 — April 2026 · 173 Quellen · 18 Kapitel  
+**Version:** 14.0 — April 2026 · 184 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -376,6 +376,55 @@ Wenn eine dieser Fragen mit Ja beantwortet wird: CLOUD-Act-Risiko real — unabh
 | **EUCS (in Entwicklung)** | EU | Geplant auf höchster Stufe | Noch nicht final |
 
 > **Kernaussage:** C5 belegt technische Sicherheit — nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver hat C5 und unterliegt ihm strukturell nicht.
+
+#### Warum Frankreich SecNumCloud hat und Deutschland nicht
+
+Die Tabelle oben zeigt eine auffällige Asymmetrie: Frankreich hat mit SecNumCloud 3.2 einen Cloud-Zertifizierungsstandard, der explizit vor extraterritorialen Gesetzen wie dem CLOUD Act schützt. Deutschland hat mit BSI C5 einen Standard, der nur technische Informationssicherheit prüft — die Jurisdiktionsfrage bleibt ausgeklammert. Diese Lücke ist kein Zufall, sondern das Ergebnis unterschiedlicher politischer Traditionen, konkreter Krisen und divergierender Lobbykonstellationen.
+
+**Frankreichs Weg: Von der Souveränitätstradition zum Zertifizierungsstandard**
+
+Frankreich hat eine gewachsene Tradition der *souveraineté numérique*. Der Begriff wurde 2014 von Pierre Bellanger (Gründer des Radiosenders Skyrock) in seinem gleichnamigen Buch geprägt und zwischen 2014 und 2017 auf drei nationalen Gipfeltreffen politisch verankert — aus diesen entstand das Institut de la Souveraineté Numérique als permanente Denkfabrik [174]. Diese Tradition speist sich aus demselben strategischen Denken, das auch Frankreichs nukleare Eigenständigkeit (*force de frappe*) begründet: Souveränität als nicht-delegierbare Kernaufgabe des Staates.
+
+ANSSI (Agence nationale de la sécurité des systèmes d'information) veröffentlichte die erste SecNumCloud-Version 2016. Version 3.1 (2018) strich die Differenzierung in "Essential" und "Advanced" zugunsten eines einheitlichen Labels und harmonisierte mit der DSGVO. Der entscheidende Schritt war **Version 3.2 (März 2022)**: Erstmals enthielt der Standard explizite **Souveränitätsanforderungen** — über 360 Anforderungen in 14 Sicherheitsthemen, darunter die Kernklausel, dass qualifizierte Anbieter mehrheitlich in EU-Hand sein, ihren Hauptsitz in der EU haben und **nicht dem Recht von Nicht-EU-Staaten unterliegen** dürfen [175]. Konkret: maximal 24 % nicht-EU-Kapitalanteile, ausschließlich EU-Personal mit Zugang zu Kundendaten, vollständige Immunität gegen extraterritoriale Gesetze.
+
+**Der Auslöser: Die Health-Data-Hub-Krise**
+
+Der konkrete Katalysator für die Souveränitätswende war die Kontroverse um den französischen Health Data Hub (Plateforme des données de santé). Die Plattform — konzipiert als zentraler Gesundheitsdatenpool für 67 Millionen Franzosen — wurde ursprünglich auf Microsoft Azure betrieben. 2020 intervenierte die CNIL (französische Datenschutzbehörde) und der Conseil d'État ordnete zusätzliche Schutzmaßnahmen an: Das Risiko eines US-Behördenzugriffs über den CLOUD Act sei real und durch technische Maßnahmen allein nicht eliminierbar. Die französische Regierung beschloss daraufhin die Migration zu einem SecNumCloud-zertifizierten Anbieter — eine Migration, die bis 2026 abgeschlossen wird [62]. Der Health Data Hub wurde zum politischen Symbol: Frankreich demonstrierte, dass Souveränität für Gesundheitsdaten keine abstrakte Forderung ist, sondern eine konkrete Infrastrukturentscheidung.
+
+**Die Doctrine "Cloud au centre"**
+
+Im Juli 2021 formalisierte Premierminister Jean Castex per Rundschreiben die *Doctrine Cloud au centre*: Cloud-Computing wird Voraussetzung für alle neuen digitalen Projekte des Staates. Für Daten "besonderer Sensibilität" — auch wenn sie keine personenbezogenen Daten im DSGVO-Sinne sind — ist die Nutzung eines **SecNumCloud-qualifizierten Anbieters verpflichtend** [176]. Die Doctrine wurde im Mai 2023 unter Premierministerin Borne aktualisiert und der Sensibilitätsbegriff erweitert. Im Januar 2026 bekräftigte Digitalministerin Anne Le Hénanff auf den *Rencontres de la souveraineté numérique* die Forderung nach einer "préférence européenne". Das Ergebnis: Ein wachsendes SecNumCloud-Ökosystem mit mittlerweile über einem halben Dutzend qualifizierten Anbietern (3DS Outscale, S3NS, Cloud Temple, OVHcloud, NumSpot, Scaleway in Prüfung) — ein Markt, den es ohne die staatliche Nachfragepolitik so nicht gäbe.
+
+**Deutschlands Weg: C5 als pragmatischer Kompromiss**
+
+Deutschland hat eine andere Tradition. Das BSI hat sich historisch als Behörde für **technische** Informationssicherheit definiert — nicht für geopolitische Souveränitätsfragen. Der BSI C5-Katalog (Cloud Computing Compliance Criteria Catalogue) wurde 2016 veröffentlicht, zeitgleich mit SecNumCloud 1.0, aber mit einem fundamental anderen Ansatz: C5 prüft 121 Kontrollen in 17 Domänen — Verschlüsselung, Zugriffskontrolle, Netzwerksicherheit, Verfügbarkeit — und beantwortet die Frage "Ist der Cloud-Dienst technisch sicher?". Die Frage "Kann eine ausländische Regierung den Anbieter zur Herausgabe zwingen?" wird von C5 **bewusst nicht gestellt** [177].
+
+Für den Bereich der Verschlusssachen (VS-NfD und höher) existiert mit den **BSI Cloud Platform Requirements** ein strengerer Maßstab, der de facto Souveränitätsanforderungen stellt: deutsches Personal, keine US-Zugriffsmöglichkeit, BSI-Prüfung aller Updates. Aber dieses Instrument ist nicht als öffentlicher Marktstandard konzipiert — es gilt nur für die Bundesverwaltung und Delos Cloud ist der erste (und bisher einzige) Nutzer im US-Technologie-Kontext. Für den regulären Gesundheitsmarkt bleibt C5 der Referenzstandard — und § 393 SGB V hat C5 als Pflichttestat verankert, ohne eine Souveränitätsprüfung danebenzustellen.
+
+**Das EUCS-Scheitern — und Deutschlands Rolle**
+
+Die Chance auf eine europäische Harmonisierung bestand im EUCS (European Cybersecurity Certification Scheme for Cloud Services), das unter dem Cybersecurity Act von ENISA entwickelt wurde. Der ursprüngliche Entwurf sah eine höchste Stufe ("High+") mit Souveränitätsanforderungen nach SecNumCloud-Vorbild vor: EU-Eigentum, EU-Hauptsitz, Immunität gegen extraterritoriale Gesetze. Frankreich, Italien und Spanien unterstützten diese Stufe.
+
+Die Opposition kam aus zwei Richtungen: Erstens lobbyierten US-Industrieverbände massiv gegen die Souveränitätsstufe — der US Council for International Business (USCIB), die US Chamber of Commerce und der Information Technology Industry Council (ITI) forderten öffentlich die Streichung der Souveränitätsanforderungen [178]. The Register dokumentierte, dass US-Lobbyisten Studien finanzierten, die die EU-Regulierung als handelsfeindlich darstellten [179]. Zweitens reichten sieben EU-Mitgliedstaaten — darunter die Niederlande, Dänemark, Schweden und Estland — ein Non-Paper ein, das die Souveränitätsstufe als "diskriminierend gegenüber Nicht-EU-Anbietern" ablehnte [180].
+
+Deutschlands Position war ambivalent: Während Frankreich klar für die Souveränitätsstufe eintrat, lavierte Deutschland zwischen den Positionen. Die European Business Review beschrieb die Situation 2024 als zunehmendes "Auseinanderdriften" von Frankreich und Deutschland in der Cloud-Souveränitätsfrage [181]. Bitkom — Deutschlands größter Digitalverband, dessen Mitglieder sowohl deutsche als auch US-Anbieter umfassen — unterstützte zwar grundsätzlich digitale Souveränität (78 % der befragten Unternehmen im Bitkom Cloud Report 2025 halten Deutschland für zu abhängig von US-Cloud-Anbietern), vermied aber die Forderung nach harten Eigentümerschaftskriterien [182]. Das Ergebnis: Die Souveränitätsstufe wurde aus dem EUCS-Entwurf gestrichen. Stand April 2026 befindet sich das EUCS in einer Pattsituation — das cep (Centrum für Europäische Politik) bezeichnete die Situation im April 2025 als "Impasse" [183]. Frankreich behält SecNumCloud als nationalen Standard bei. Deutschland hat nichts Vergleichbares.
+
+**Gaia-X — der gescheiterte gemeinsame Ansatz**
+
+Gaia-X, 2019 als deutsch-französisches Prestigeprojekt unter Bundeswirtschaftsminister Altmaier und seinem französischen Amtskollegen Le Maire gestartet, sollte ein europäisches Cloud-Ökosystem mit gemeinsamen Souveränitätsstandards schaffen. Das Projekt scheiterte an der Governance: US-Hyperscaler (AWS, Microsoft, Google) wurden als Mitglieder aufgenommen, Souveränitätsanforderungen blieben als "Labels" unverbindlich [184]. Frankreich zog daraus den Schluss, den eigenen Weg mit SecNumCloud zu vertiefen. Deutschland verblieb ohne gleichwertigen Standard.
+
+**Die strukturelle Konsequenz für das Gesundheitswesen**
+
+| Dimension | Frankreich | Deutschland |
+|---|---|---|
+| **Zertifizierungsstandard** | SecNumCloud 3.2 (seit 2022) | BSI C5 Typ 2 (seit 2016) |
+| **Souveränitätsprüfung** | ✅ Eigentümerschaft, Personal, Extraterritorialität | ❌ Nur technische Sicherheit |
+| **Staatliche Nachfragepolitik** | Doctrine "Cloud au centre" (2021, 2023) | § 393 SGB V: C5 als Pflicht, keine Souveränitätspflicht |
+| **Gesundheitsdaten-Konsequenz** | Health Data Hub → Migration weg von Azure | ePA / FDZ: Keine vergleichbare Migrationsentscheidung |
+| **Zertifizierte souveräne Anbieter** | 6+ (Outscale, S3NS, Cloud Temple, OVHcloud, NumSpot…) | 0 (C5 prüft Souveränität nicht) |
+| **EU-Harmonisierung (EUCS)** | Aktiv für Souveränitätsstufe | Ambivalent, kein klares Eintreten |
+
+Die Konsequenz ist konkret: In Frankreich kann ein Krankenhaus einen SecNumCloud-zertifizierten Anbieter auswählen und darauf vertrauen, dass die Zertifizierung die CLOUD-Act-Frage adressiert. In Deutschland muss jede Organisation die Jurisdiktionsprüfung eigenständig durchführen — das C5-Testat sagt darüber nichts aus. Frankreich hat den Markt durch regulatorische Nachfrage geschaffen. Deutschland überlässt die Souveränitätsentscheidung dem Einzelnen.
 
 ### 5.4 DACH-Kernmarkt: Risikoübersicht
 
@@ -1950,6 +1999,20 @@ Zwölf Kernaussagen:
 - [172] Charité — Universitätsmedizin Berlin: Pressemitteilung, Dezember 2025. Vergabe KIS-Neubeschaffung an Epic Systems (Verona, WI); 200 Mio. EUR / 10 Jahre; Implementierung bis Ende 2029.
 - [173] Energieforen Leipzig / EWERK: Zertifizierungsseite, abgerufen April 2026. EWERK ISO 27001, ISO 20000, ISAE 3402 Typ II; BSI C5 Typ 2 in Vorbereitung. Ergänzend: Trusted Cloud, EWERK Digital Profil.
 
+### SecNumCloud, EUCS und Cloud-Souveränität
+
+- [174] Ifri: Digital Sovereignty — Review of Macron's Term and Debates in the 2022 Presidential Campaign, 2022. Pierre Bellanger, *Souveraineté Numérique* (2014); Institut de la Souveraineté Numérique gegründet nach drei nationalen Gipfeltreffen 2014–2017: https://www.ifri.org/en/memos/digital-sovereignty-review-macrons-term-and-debates-2022-presidential-campaign
+- [175] Cloud Temple: SecNumCloud 3.2 — The new sovereign cloud standard. Über 360 Anforderungen, 14 Sicherheitsthemen, Souveränitätsklausel: EU-Eigentum, EU-Hauptsitz, Immunität gegen extraterritoriale Gesetze: https://www.cloud-temple.com/en/secnumcloud-3-2-strengthening-security-and-legal-sovereignty-in-the-cloud/
+- [176] numerique.gouv.fr: Doctrine "Cloud au centre" — Rundschreiben des Premierministers vom 5. Juli 2021, aktualisiert 31. Mai 2023. SecNumCloud-Qualifizierung verpflichtend für sensible Daten des Staates: https://www.numerique.gouv.fr/services/cloud/doctrine/
+- [177] Kiteworks: BSI C5 Explained — Germany's Cloud Security Standard for CSPs in 2026. 121 Kontrollen in 17 Domänen; prüft Informationssicherheit, nicht Jurisdiktion: https://www.kiteworks.com/regulatory-compliance/bsi-c5-germanys-cloud-security-framework-requirements/
+- [178] ITI (Information Technology Industry Council): ITI Urges EU Lawmakers to Drop Sovereignty Requirements in Final EUCS, 2024. US-Industrieverband fordert Streichung der Souveränitätsanforderungen: https://www.itic.org/news-events/news-releases/iti-urges-eu-lawmakers-to-drop-sovereignty-requirements-in-final-eucs
+- [179] The Register: US lobbyists pay for report critical of EU cloud regulation, März 2023. ITIF-Studie gegen EU-Souveränitätsanforderungen von US-Lobbyisten finanziert: https://www.theregister.com/2023/03/06/proposed_eu_cloud_regulation/
+- [180] EU ISS (Institute for Security Studies): Technical is political — When a cloud certification scheme divides Europe. 7 EU-Mitgliedstaaten (NL, DK, SE, EE u.a.) reichen Non-Paper gegen Souveränitätsstufe ein: https://www.iss.europa.eu/publications/briefs/technical-political-when-cloud-certification-scheme-divides-europe
+- [181] European Business Review: France and Germany increasingly drift apart on digital sovereignty of cloud sector. Divergierende Positionen bei EUCS und Cloud-Souveränität: https://www.europeanbusinessreview.eu/page.asp?pid=6989
+- [182] Bitkom Cloud Report 2025: 78 % der befragten Unternehmen halten Deutschland für zu abhängig von US-Cloud-Anbietern. Position Paper Cloud & AI Development Act, Juli 2025: https://www.bitkom.org/EN/List-and-detailpages/Publications/Cloud-AI-Development-Act
+- [183] cep (Centrum für Europäische Politik): EU Cloud Certification at an Impasse, cepInput Nr. 8, April 2025. EUCS-Pattsituation durch ungelösten Souveränitätsstreit: https://www.cep.eu/fileadmin/user_upload/cep.eu/cepItalia/cepInput_EU_Cloud_Certification_at_an_Impasse.pdf
+- [184] Tandfonline: European ambitions captured by American clouds — digital sovereignty through Gaia-X?, 2025. Gaia-X-Governance-Scheitern durch Aufnahme von US-Hyperscalern; Souveränitätslabels unverbindlich: https://www.tandfonline.com/doi/full/10.1080/1369118X.2025.2516545
+
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 13.0, April 2026. 173 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 14.0, April 2026. 184 Quellen. Es stellt keine Rechtsberatung dar.*

@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 15.0 — April 2026 · 189 Quellen · 18 Kapitel  
+**Version:** 16.0 — April 2026 · 189 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -824,12 +824,65 @@ Die folgende Tabelle bewertet ausschließlich Services, die für GKVen, KVen und
 
 Keine GKV mit 5 Millionen Versicherten braucht 3,5 Millionen Server. STACKIT ist heute bereits ausreichend skaliert für GKV- und Klinik-Kernworkloads. Lücken bestehen bei Data Warehouse (Snowflake-Ebene), MLOps-Plattformen und Endpoint-Management — nicht bei Kapazität.
 
-**Die drei größten blinden Flecken** der aktuellen Souveränitätsdebatte im Gesundheitswesen:
+**Die vier größten blinden Flecken** der aktuellen Souveränitätsdebatte im Gesundheitswesen:
 1. **Snowflake** für GKV-Analytics — NYSE: SNOW, US-Hauptsitz, direktes CLOUD-Act-Risiko trotz Frankfurter Region
 2. **Oracle Health / Cerner auf OCI** für Kliniken — NYSE: ORCL, strukturell gleichwertig mit Azure aus CLOUD-Act-Perspektive
 3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5-Testat noch nicht erteilt (Stand April 2026), schützt ohnehin nicht gegen CLOUD Act
+4. **KI-Dienste** (Azure OpenAI, Google Gemini, AWS Bedrock) — verarbeiten Patientendaten zwangsläufig im Klartext; clientseitige Verschlüsselung unmöglich; cloudbasierte Integrationsplattformen (Zapier, Power Automate) als versteckte Datenflüsse. Ausführlich analysiert in §7.5.
 
-Beide werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben.
+Die ersten drei werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben. Der vierte wächst am schnellsten.
+
+### 7.5 KI-Anbieter und Integrationsplattformen — der blinde Fleck bei Klartextverarbeitung
+
+Die Tabelle in §7.3 C zeigt die Anbieter-Landschaft für KI-Services. Dieser Abschnitt behandelt ein spezifischeres Problem: **KI-Dienste verarbeiten Eingabedaten zwangsläufig im Klartext.** Verschlüsselung hilft nicht (vgl. §13.4) — ein LLM muss den Prompt lesen, ein Sprachmodell muss das Audio hören, ein Zusammenfassungsmodell muss den Text verstehen. Das unterscheidet KI-Services fundamental von Speicher- oder Compute-Diensten, bei denen clientseitige Verschlüsselung die Exposition begrenzen kann.
+
+#### Gesundheitsspezifische KI-Anwendungsfälle und ihre CLOUD-Act-Exposition
+
+Im Gesundheitswesen entstehen gerade vier KI-Anwendungsmuster, die alle Klartextverarbeitung **sensibler Patientendaten** erfordern:
+
+**1. Transkription und Zusammenfassung von Arzt-Patienten-Gesprächen.** Ambient-Listening-Systeme wie Nuance DAX (Microsoft/MSFT), Nabla (FR), oder Google-Gemini-basierte Lösungen zeichnen das Gespräch auf und erzeugen automatisch eine strukturierte Dokumentation. Die Audiodaten — Stimme des Patienten, Symptombeschreibungen, Diagnosen — werden an den KI-Dienst übertragen und dort im Klartext verarbeitet. Bei US-Anbietern sind diese Rohdaten CLOUD-Act-exponiert.
+
+**2. Automatisierte Arztbriefe.** LLMs generieren Entlassungsbriefe, Befundberichte oder Überweisungsschreiben auf Basis der Patientenakte. Die Eingabe umfasst Diagnosen, Medikation, Verlaufsdaten — die sensibelsten Daten im Gesundheitswesen. Wenn der LLM-Service bei einem US-Anbieter läuft, liegen diese Daten während der Verarbeitung im Klartext auf US-kontrollierter Infrastruktur.
+
+**3. E-Mail- und Dokumentenzusammenfassung.** Microsoft Copilot, Google Gemini oder vergleichbare Assistenten fassen E-Mails, Aktenvermerke und Dokumente zusammen. Im GKV-Kontext können diese E-Mails Versichertendaten, Leistungsanträge oder MDK-Gutachten enthalten. Die KI liest den vollständigen Inhalt — HYOK ist nicht möglich (vgl. §13.4).
+
+**4. KI-gestützte Kodierung und Abrechnung.** ICD-10-Kodierung, DRG-Gruppierung oder Morbi-RSA-Prüfungen auf Basis von KI erfordern die Übermittlung klinischer Informationen an den KI-Dienst. Systeme wie 3M/Solventum (US), ID Berlin (DE) oder DeepL-basierte Übersetzungsdienste für mehrsprachige Patientenakten verarbeiten jeweils Patientendaten im Klartext.
+
+#### CLOUD-Act-Risikobewertung der großen KI-Anbieter
+
+| Anbieter | Eigentümer | Infrastruktur | CLOUD-Act-Risiko | Gesundheitseinsatz |
+|---|---|---|---|---|
+| **OpenAI (GPT-4o, o3)** | US (Microsoft-Partnerschaft) | Azure (MSFT) | 🔴 Direkt — US-Unternehmen auf US-Infrastruktur | Azure OpenAI Service in KVNO-KI-Plattform (TED 98706-2026) |
+| **Google Gemini** | NYSE: GOOGL | Google Cloud (US) | 🔴 Direkt | Ambient Clinical Intelligence in Pilotprojekten |
+| **Anthropic (Claude)** | US (Amazon-Beteiligung) | AWS / GCP | 🔴 Direkt — US-Unternehmen | Enterprise-API für Dokumentenanalyse |
+| **Microsoft Copilot** | NYSE: MSFT | Azure (US) | 🔴 Direkt | M365-Integration in Kliniken/GKVen |
+| **Nuance DAX (Microsoft)** | NYSE: MSFT (Übernahme 2022, 18,8 Mrd. USD) | Azure (US) | 🔴 Direkt | Marktführer klinische Sprachdokumentation |
+| **DeepSeek** | CN (Hangzhou) | China-basiert | 🔴 Nicht CLOUD Act, aber CN-Datengesetze | Open-Source-Modelle lokal deploybar |
+| **Mistral AI** | FR (Paris, SAS) | Scaleway (FR) | 🟢 EU-souverän | Self-hosted oder API; bevorzugte EU-Option |
+| **Aleph Alpha (Luminous)** | DE (Heidelberg) | IONOS / STACKIT | 🟢 EU-souverän (DE) | BW-Verwaltung; Gesundheitssektor noch begrenzt |
+| **OpenEuroLLM** | EU-Konsortium (13 Partner) | EuroHPC (LUMI, Leonardo) | 🟢 EU-souverän | Forschung; produktiver Einsatz ab 2026 |
+
+**KIM 2.5 und gematik-KI-Dienste:** KIM (Kommunikation im Medizinwesen) in Version 2.5 integriert perspektivisch KI-Funktionen für die TI. Entscheidend ist, welche KI-Infrastruktur die KIM-Dienstanbieter einsetzen. Wenn ein KIM-Anbieter für KI-Funktionen auf Azure OpenAI oder AWS Bedrock zurückgreift, fließen Gesundheitsdaten aus dem TI-geschützten Raum in CLOUD-Act-exponierte Infrastruktur. Die gematik hat bislang keine verbindlichen Vorgaben zur KI-Infrastruktur der KIM-Anbieter veröffentlicht — eine Regulierungslücke, die angesichts der rasanten KI-Integration dringend geschlossen werden sollte.
+
+#### Integrationsplattformen — der versteckte Datenfluss
+
+Neben den KI-Anbietern selbst entsteht ein zweites, oft übersehenes Risiko durch **cloudbasierte Integrationsplattformen**:
+
+| Plattform | Eigentümer | CLOUD-Act-Risiko | Typischer Einsatz im Gesundheitswesen |
+|---|---|---|---|
+| **Zapier** | US (San Francisco) | 🔴 Direkt | Automatisierung: "Wenn neue E-Mail mit Befund, dann an KI-Zusammenfassung" |
+| **Make (Integromat)** | CZ (Prag) | 🟢 EU-souverän | Workflow-Automatisierung, EU-Alternative zu Zapier |
+| **Microsoft Power Automate** | NYSE: MSFT | 🔴 Direkt | M365-Workflows: Dokumentenfreigabe, Benachrichtigungen mit Patientendaten |
+| **n8n** | DE (Berlin) | 🟢 EU-souverän (self-hosted möglich) | Open-Source-Automatisierung; self-hosted auf EU-Infrastruktur bevorzugt |
+| **IFTTT** | US (San Francisco) | 🔴 Direkt | Consumer-Automatisierung, vereinzelt in Praxis-IT |
+
+Das Problem: Integrationsplattformen sind **Datendrehscheiben**. Sie lesen, transformieren und weiterleiten Daten zwischen Systemen — häufig einschließlich Patientendaten, Termindetails, Befunde, Abrechnungsinformationen. Eine Zapier-Automatisierung, die E-Mails mit Befunden an eine GPT-Zusammenfassung weiterleitet, erzeugt eine **doppelte CLOUD-Act-Exposition**: einmal bei Zapier (US), einmal bei OpenAI (US). n8n (self-hosted auf EU-Infrastruktur) + Mistral (self-hosted oder Scaleway) ist die souveräne Alternative für denselben Workflow.
+
+#### Kernaussage — warum KI der vierte blinde Fleck ist
+
+Die ersten drei blinden Flecken (Snowflake, Oracle Health, Qlik Cloud — §7.4) betreffen klassische Datenhaltung und Analytics. Der vierte blinde Fleck ist gravierender: **KI-Dienste verarbeiten die sensibelsten Daten im Gesundheitswesen — Arzt-Patienten-Gespräche, Diagnosen, Behandlungsverläufe — zwangsläufig im Klartext.** Clientseitige Verschlüsselung, die bei Datenspeichern funktioniert, versagt hier strukturell. Wer eine Transkriptions-KI oder einen Arztbrief-Generator auf Azure OpenAI, Google Gemini oder AWS Bedrock betreibt, übergibt die unverschlüsselten Rohdaten an eine CLOUD-Act-exponierte Infrastruktur.
+
+**Die souveräne Alternative existiert:** Mistral-Modelle (oder vergleichbare Open-Source-LLMs) lassen sich über vLLM auf STACKIT, plusserver oder eigenem GPU-Cluster betreiben — vollständig innerhalb EU-Jurisdiktion, ohne API-Calls an US-Anbieter. Für Sprachtranskription: Whisper (OpenAI, aber Open-Source-Modell, lokal deploybar) auf eigener GPU. Für Integrationsplattformen: n8n (self-hosted, Berlin) statt Zapier. Der Funktionsumfang ist für 80 % der Gesundheits-KI-Anwendungsfälle ausreichend — und wächst mit jeder Mistral/Llama-Generation.
 
 ---
 
@@ -2044,4 +2097,4 @@ Zwölf Kernaussagen:
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 15.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 16.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*

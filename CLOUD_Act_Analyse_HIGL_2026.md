@@ -382,26 +382,28 @@ Wenn eine dieser Fragen mit Ja beantwortet wird: CLOUD-Act-Risiko real — unabh
 
 Die Tabelle unterscheidet drei Risikotypen, die unterschiedliche CLOUD-Act-Konsequenzen haben:
 
-- **Typ A — Direkte US-Institution:** Eigene US-Niederlassung, US-Tochtergesellschaft oder US-Muttergesellschaft. Herausgabepflicht direkt erzwingbar.
-- **Typ B — US-Technologieabhängigkeit:** Europäischer Anbieter, aber US-Software, US-Lizenz oder US-Infrastrukturpartner. Kein direkter CLOUD-Act-Zugriff, aber Restrisiko über Lieferant.
-- **Typ C — Konzernstruktur mit US-Schwester:** Gesellschaftsrechtlich getrennt, aber indirekter Druck über US-Schwester-/Konzerngesellschaft möglich.
+- **Typ A — Direkte US-Institution:** Eigene US-Niederlassung, US-Tochtergesellschaft oder US-Muttergesellschaft, die denselben Cloud-Dienst betreibt oder direkten Datenzugriff hat. Herausgabepflicht direkt erzwingbar.
+  - *Direkt:* US-Hauptsitz / US-Mutter (Oracle, Microsoft, AWS, Qlik)
+  - *Indirekt:* EU-Mutter mit US-Cloud-Tochter im gleichen Geschäftsfeld (Hetzner US LLC, IONOS Cloud Inc., OVH US Corp.)
+- **Typ B — US-Technologieabhängigkeit:** Europäischer Anbieter, aber US-Software, US-Lizenz oder US-Infrastrukturpartner. Kein direkter CLOUD-Act-Zugriff auf EU-Kundendaten, aber Restrisiko über den Lieferanten.
+- **Typ C — Konzernhebel:** EU-Unternehmen mit US-Tochter oder US-Schwester in einem *anderen* Geschäftsfeld, die keinen operativen Zugriff auf Cloud-Kundendaten hat. CLOUD-Act-Zugriff nur über indirekten Unternehmensdruck möglich — nicht über direkte Datenhoheit. Gilt sowohl für formale Tochterbeziehungen (Deutsche Telekom → T-Mobile US/Telekommunikation) als auch für eigentümerschaftlich verbundene Schwestergesellschaften (Schwarz-Gruppe → Lidl US/Handel).
 
-| Anbieter | C5 | Börse / Eigentümer | US-Verbindung | Risikotyp | CLOUD-Act-Risiko | Empfehlung |
-|---|---|---|---|---|---|---|
-| **Oracle Cerner / OCI** | Nein | NYSE: ORCL | US-Hauptsitz Austin/TX | **A — direkt** | 🔴 Hoch | KIS-Migration (KIS = Krankenhausinformationssystem) auf OCI: CLOUD-Act-Exposition ungelöst |
-| **Microsoft Azure** | ✅ | NYSE: MSFT | US-Muttergesellschaft | **A — direkt** | 🔴 Hoch | Nicht für Gesundheitsdaten |
-| **AWS Germany** | ✅ | NASDAQ: AMZN | AWS Germany = US-Tochter | **A — direkt** | 🔴 Hoch | Nicht für Gesundheitsdaten |
-| **Qlik Cloud** | Nein (C5 angestrebt/erworben) | US-Unternehmen (PA) | US-Hauptsitz | **A — direkt** | 🔴 Hoch | Nicht für Gesundheitsdaten — C5 schützt nicht gegen CLOUD Act |
-| **OVHcloud** | ✅ 2025 | Euronext Paris | OVH US Corp. (eigene US-Tochter) | **A — direkt** | 🔴 Bestätigt | SNC-Tier für regulierte Workloads |
-| **Hetzner (EU-RZ)** | ✅ Feb. 2026 | Privat (DE) | Hetzner US LLC (eigene US-Tochter) | **A — indirekt** | 🟠 Bedingt | Dev/SMB; nicht für § 393-Daten |
-| **Arvato Systems** | ✅ | Bertelsmann (privat, DE) | AWS + Azure als Infrastrukturpartner | **B — Technologie** | 🔴 Indirekt | Eigene RZ, aber US-Software-Risiko |
-| **Delos Cloud (SAP × Azure)** | BSI CPR | SAP SE (DAX) | Microsoft = Technologielieferant (lizenziert) | **B — Technologie** | 🟡 Operator-Modell | Für M365/Azure-abhängige Verwaltung |
-| **SAP BTP / RISE** | Teilweise | DAX: SAP SE | Eigene US-Niederlassungen (SAP America) | **A + B** | 🟡 Infrastrukturell | Je nach Hosting-Variante prüfen |
-| **Deutsche Telekom / OTC** | ✅ | NYSE: DTEGY | T-Mobile US = US-Tochter (Börsennotierung) | **A — indirekt** | 🟡 Erhöht | Mit Vorbehalt |
-| **IONOS** | ✅ 2023 | MDAX: UTDI | IONOS Cloud Inc. (eigene US-Tochter) | **A — indirekt** | 🟡 BMI-bestätigt | Prüfung erforderlich |
-| **STACKIT** | In Vorbereitung | Privat (Schwarz Gruppe, DE) | Lidl US = Schwestergesellschaft (kein Konzern) | **C — Schwester** | 🟡 Juristisch unklar | Valide mit Vorbehalt |
-| **plusserver** | ✅ C5 | Privat (DE) | Keine | **Keiner** | 🟢 Gering | Sauberste DE-Option |
-| **EWERK Leipzig** | ISO 27001, ISAE 3402 Typ II (C5 in Vorbereitung) | NORD Holding (DE, privat) + Gründer | Keine | **Keiner** | 🟢 Gering | KRITIS-Spezialist (Kritische Infrastrukturen — gesetzliche Einstufung systemrelevanter Sektoren); C5-Testat angestrebt |
+| Anbieter | C5 | Börse / Eigentümer | US-Verbindung | Risikotyp | CLOUD-Act-Risiko | Regionale Datenhaltung | Empfehlung |
+|---|---|---|---|---|---|---|---|
+| **Oracle Cerner / OCI** | Nein | NYSE: ORCL | US-Hauptsitz Austin/TX | **A — direkt** | 🔴 Hoch | Frankfurt (EU Sovereign), Madrid | KIS-Migration (KIS = Krankenhausinformationssystem) auf OCI: CLOUD-Act-Exposition ungelöst |
+| **Microsoft Azure** | ✅ | NYSE: MSFT | US-Muttergesellschaft | **A — direkt** | 🔴 Hoch | Frankfurt (GWC), Amsterdam | Nicht für Gesundheitsdaten |
+| **AWS Germany** | ✅ | NASDAQ: AMZN | AWS Germany = US-Tochter | **A — direkt** | 🔴 Hoch | Frankfurt (eu-central-1) | Nicht für Gesundheitsdaten |
+| **Qlik Cloud** | Nein (C5 geplant Q1 2026) | US-Unternehmen (PA, Thoma Bravo) | US-Hauptsitz | **A — direkt** | 🔴 Hoch | Frankfurt, Irland, Paris, London, Mailand (alle auf AWS) | Nicht für Gesundheitsdaten — Frankfurt-Region ändert US-Jurisdiktion nicht |
+| **OVHcloud** | ✅ 2025 | Euronext Paris | OVH US Corp. (eigene US-Tochter) | **A — indirekt** | 🔴 Bestätigt | Strasbourg, Roubaix, Paris, Frankfurt | SNC-Tier für regulierte Workloads |
+| **Hetzner (EU-RZ)** | ✅ Feb. 2026 | Privat (DE) | Hetzner US LLC (eigene US-Cloud-Tochter) | **A — indirekt** | 🟠 Bedingt | Nürnberg, Falkenstein (DE); Helsinki (FI) | Dev/SMB; nicht für § 393-Daten |
+| **Arvato Systems** | ✅ | Bertelsmann (privat, DE) | AWS + Azure als Infrastrukturpartner | **B — Technologie** | 🔴 Indirekt | Gütersloh (3 eigene RZ, DE) | Eigene RZ, aber US-Software-Risiko |
+| **Delos Cloud (SAP × Azure)** | BSI CPR | SAP SE (DAX) | Microsoft = Technologielieferant (lizenziert) | **B — Technologie** | 🟡 Operator-Modell | Frankfurt (Azure Germany West Central) | Für M365/Azure-abhängige Verwaltung |
+| **SAP BTP / RISE** | Teilweise | DAX: SAP SE | Eigene US-Niederlassungen (SAP America) | **A + B** | 🟡 Infrastrukturell | Frankfurt (Azure GWC + AWS eu-central-1) | Je nach Hosting-Variante prüfen |
+| **IONOS** | ✅ 2023 | MDAX: UTDI | IONOS Cloud Inc. (eigene US-Cloud-Tochter) | **A — indirekt** | 🟠 BMI-bestätigt | Karlsruhe, Berlin, Frankfurt, Nürnberg (DE) | Prüfung erforderlich |
+| **Deutsche Telekom / OTC** | ✅ | DAX: DTE (ADR: NYSE DTEGY) | T-Mobile US = Telekom-Tochter, kein Cloud-Betrieb | **C — Konzernhebel** | 🟡 Strukturell | Biere/Sachsen-Anhalt, Magdeburg (DE); NL | Mit Vorbehalt — T-Mobile US hat keinen Zugriff auf OTC-Daten |
+| **STACKIT** | ✅ C5 Typ 2 (Aug. 2024) | Privat (Schwarz Gruppe, DE) | Lidl US = Handelsschwester (kein Datenzugriff) | **C — Konzernhebel** | 🟡 Juristisch unklar | Neckarsulm, Düsseldorf (DE); Wien (AT) | Valide mit Vorbehalt |
+| **plusserver** | ✅ C5 | Privat (DE) | Keine | **Keiner** | 🟢 Gering | Köln, Hamburg, Frankfurt (DE) | Sauberste DE-Option |
+| **EWERK Leipzig** | ISO 27001, ISAE 3402 Typ II (C5 in Vorbereitung) | NORD Holding (DE, privat) + Gründer | Keine | **Keiner** | 🟢 Gering | Leipzig (DE) | KRITIS-Spezialist (Kritische Infrastrukturen — gesetzliche Einstufung systemrelevanter Sektoren); C5-Testat angestrebt |
 
 ### 5.5 Juristische Detailanalysen
 
@@ -427,13 +429,25 @@ Die entscheidende gesellschaftsrechtliche Besonderheit: Die Schwarz Gruppe ist *
 
 **Warum das relevant ist:** Der CLOUD Act knüpft an "possession, custody, or control" an — nicht an bloße Eigentümeridentität. US-Gerichte müssten nachweisen, dass Lidl US tatsächlich Kontrolle über STACKIT-Daten hat, was bei gesellschaftsrechtlicher Trennung und ohne operative Verbindung schwer zu begründen ist. STACKIT-CEO Bernd Wagner: *"Wir investieren nicht in den USA. Es ergibt keinen Sinn, denn somit würden wir sofort den Regularien des US Cloud Act unterliegen."*
 
-**Bewertung:** STACKIT ist strukturell besser aufgestellt als Hetzner (keine direkte US-Tochter) und besser als OTC oder IONOS (keine US-Börsennotierung, keine eigene US-Niederlassung). Die Unsicherheit liegt in der bislang ungeklärten Frage, ob US-Gerichte die Eigentümeridentität als "control" werten würden — juristisch nicht abschließend beantwortet, praktisch unwahrscheinlich solange STACKIT auf US-Investitionen verzichtet.
+**Bewertung:** STACKIT ist strukturell besser aufgestellt als Hetzner und IONOS (keine eigene US-Cloud-Tochter, keine US-Primärnotierung). Gegenüber der Open Telekom Cloud (OTC) / Deutsche Telekom ist STACKIT auf vergleichbarer Risikostufe: Beide sind Typ-C-Konstellationen, bei denen die US-Präsenz in einem anderen Geschäftsfeld liegt und keinen direkten Zugriff auf Cloud-Kundendaten hat — der Unterschied ist, dass die Schwarz-Gruppe-Verbindung informell (Eigentümerschaft) ist, während Deutsche Telekom AG formal die Muttergesellschaft von T-Mobile US ist. Die Unsicherheit liegt in der bislang ungeklärten Frage, ob US-Gerichte die Eigentümeridentität als "control" werten würden — juristisch nicht abschließend beantwortet, praktisch unwahrscheinlich solange STACKIT auf US-Investitionen verzichtet.
 
 #### Arvato Systems — US-Softwareabhängigkeit ohne eigene US-Institution (Typ B)
 
 Arvato ist der Sonderfall Typ B: keine eigene US-Tochter, keine US-Börsennotierung, kein US-Eigentümer — aber operative Abhängigkeit von US-Software. Arvato ist AWS Premier Partner und betreibt als Technologiepartner die Delos Cloud auf Azure-Basis. Das bedeutet: Die US-Unternehmen AWS und Microsoft haben über ihre Software-/Lizenzbeziehung mit Arvato einen potenziellen Ansatzpunkt.
 
 Der CLOUD Act gilt für den US-Provider (AWS, Microsoft) — nicht für Arvato selbst. Arvato ist nicht zur Herausgabe verpflichtet. Aber: AWS oder Microsoft könnten ihrerseits verpflichtet werden, Zugang zu Daten zu verschaffen, die auf Arvato-Hardware mit AWS- oder Azure-Software laufen. Das Risiko liegt also auf der Software-Ebene, nicht auf der Arvato-Unternehmensebene.
+
+#### Deutsche Telekom / Open Telekom Cloud — Telekomtochter als Konzernhebel (Konstellation C)
+
+Deutsche Telekom AG (Bonn, DAX: DTE) ist ein deutsches Unternehmen — die NYSE-Notierung DTEGY ist ein American Depositary Receipt (ADR), kein primäres US-Listing. Die entscheidende US-Verbindung ist T-Mobile US Inc., eine börsennotierte US-Mobilfunktochtergesellschaft, an der Deutsche Telekom rund 48 % hält.
+
+**Warum das weniger riskant ist als zunächst sichtbar:** T-Mobile US ist ein Telekommunikationsunternehmen. Es betreibt keine Cloud-Infrastruktur, hat keinen Zugriff auf Daten der Open Telekom Cloud und teilt keine IT-Systeme mit T-Systems (dem OTC-Betreiber). T-Mobile US und T-Systems sind Schwestergesellschaften unter demselben Konzernmutter — operativ vollständig getrennt.
+
+**Die CLOUD-Act-Mechanik in dieser Konstellation:** US-Behörden könnten T-Mobile US nutzen, um Druck auf Deutsche Telekom AG auszuüben — und Deutsche Telekom AG könnte theoretisch zur Herausgabe von T-Systems/OTC-Daten angehalten werden, weil sie als Konzernmutter Kontrolle über T-Systems ausübt. Aber dieser Weg ist lang: (1) CLOUD-Act-Beschluss gegen T-Mobile US, (2) Übertragung auf Deutsche Telekom AG als Mutter, (3) Verpflichtung Deutsche Telekoms zur Weitergabe von T-Systems-Daten — gegen ausdrückliches DSGVO-Widerspruchsrecht. Kein direkter Datenzugriff, keine geteilte Infrastruktur.
+
+**Abgrenzung zu Hetzner / IONOS:** Hetzner US LLC und IONOS Cloud Inc. sind US-Cloud-Betreiber im selben Sektor. Sie haben strukturell administrativen Zugriff auf Systeme, die zum selben Unternehmensverbund gehören. T-Mobile US hat das nicht. Deshalb ist Deutsche Telekom / OTC als **C — Konzernhebel** einzustufen, nicht als A — indirekt.
+
+**OTC-Rechenzentren:** Sachsen-Anhalt (Biere, 100.000 Server, 18 MW) + Magdeburg-Region; sowie eine Niederlande-Region. T-Systems betreibt 33 RZ weltweit, 7 im Eigenbetrieb — ausschließlich europäischer Standortbetrieb für OTC.
 
 #### IONOS — US-Tochter trotz europäischer Börsennotierung (Konstellation B)
 
@@ -521,9 +535,9 @@ Das übergeordnete Muster: 25 CEOs europäischer Cloud-Anbieter warnten in einem
 | AWS Germany | ✅ | — | ✅ | — | 🔴 Direkt | ❌ Nicht geeignet |
 | STACKIT | ✅ C5 Typ 2 | — | ✅ | — | 🟡 Unklar | Gut (Vorbehalt) |
 | plusserver | ✅ | — | ✅ | — | 🟢 Sauber | **Beste DE-Option** |
-| Open Telekom Cloud | ✅ | — | ✅ | — | 🟡 NYSE | Prüfung |
-| Hetzner (EU-RZ) | ✅ | — | ✅ | — | 🟠 US LLC | Dev/SMB |
-| IONOS | ✅ | — | ✅ | — | 🟡 BMI | Vorbehalt |
+| Open Telekom Cloud | ✅ | — | ✅ | — | 🟡 Konzernhebel (C) | Mit Vorbehalt |
+| Hetzner (EU-RZ) | ✅ | — | ✅ | — | 🟠 US Cloud-LLC | Dev/SMB |
+| IONOS | ✅ | — | ✅ | — | 🟠 BMI-bestätigt (A-ind.) | Prüfung erforderlich |
 | EWERK Leipzig | — | — | ✅ | — | 🟢 Sauber | Lokal KRITIS |
 | Delos Cloud | BSI CPR | — | ✅ | — | 🟡 Operator | M365-Org. |
 | Arvato Systems | ✅ | — | ✅ | — | 🔴 Indirekt | US-Software-Risiko |
@@ -544,9 +558,9 @@ Das übergeordnete Muster: 25 CEOs europäischer Cloud-Anbieter warnten in einem
 
 **Tier 1 — ePA / KRITIS / §393 Klasse 1:** plusserver · EWERK Leipzig · 3DS Outscale · Cloud Temple
 
-**Tier 2 — Regulierte Enterprise-Workloads / Microsoft-Migration:** STACKIT · Delos Cloud (+15%) · OVHcloud SNC-Tier · Scaleway (GPU/KI)
+**Tier 2 — Regulierte Enterprise-Workloads / Microsoft-Migration:** STACKIT · Open Telekom Cloud (C — Konzernhebel) · Delos Cloud (+15%) · OVHcloud SNC-Tier · Scaleway (GPU/KI)
 
-**Tier 3 — Dev/Test, unkritische Workloads:** Hetzner (EU-RZ) · IONOS · Open Telekom Cloud · Infomaniak
+**Tier 3 — Dev/Test, unkritische Workloads:** Hetzner (EU-RZ) · IONOS · Infomaniak
 
 ---
 
@@ -769,7 +783,7 @@ Keine GKV mit 5 Millionen Versicherten braucht 3,5 Millionen Server. STACKIT ist
 **Die drei größten blinden Flecken** der aktuellen Souveränitätsdebatte im Gesundheitswesen:
 1. **Snowflake** für GKV-Analytics — NYSE: SNOW, US-Hauptsitz, direktes CLOUD-Act-Risiko trotz Frankfurter Region
 2. **Oracle Health / Cerner auf OCI** für Kliniken — NYSE: ORCL, strukturell gleichwertig mit Azure aus CLOUD-Act-Perspektive
-3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA), Kategorie A; ein C5-Testat ändert die US-Jurisdiktion nicht — es ist Informationssicherheitsnachweis, kein CLOUD-Act-Schutz
+3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5 ist erst für Q1 2026 geplant (noch nicht zertifiziert), schützt ohnehin nicht gegen CLOUD Act
 
 Beide werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben.
 
@@ -1141,7 +1155,7 @@ Epic ist CLOUD-Act-Kategorie A — direkte US-Exposition unabhängig vom Datenst
 | **NEXUS AG** | DE (börsennotiert) | 🟢 EU-souverän | 326 | Akut/Psychiatrie |
 | **CGM Clinical** | DE (CVC-PE 28 %) | 🟡 PE-Vorbehalt | ~350 Akut | Akut + Reha ~900 ges. |
 | **Meierhofer M-KIS** | DE/AT privat | 🟢 EU-souverän | ~260 (DACH) | Akut + Reha |
-| **iMedOne (Telekom)** | NYSE: DTEGY | 🟡 Erhöht | ~240 | Akut |
+| **iMedOne (Telekom)** | DAX: DTE / T-Systems (C — Konzernhebel) | 🟡 Strukturell | ~240 | Akut |
 | **Epic** | US (privat) | 🔴 Kat. A | 1 (Charité ab 2027) | Akut — im Aufbau |
 | **Mesalvo** | DE privat | 🟢 EU-souverän | ~100–150 | Akut, wachsend |
 

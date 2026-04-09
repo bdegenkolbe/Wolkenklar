@@ -1,0 +1,57 @@
+/* Wolkenfrei Wiki — Custom Theme nach Formatvorlage.md */
+
+/* Primary Colors */
+:root {
+  --md-primary-fg-color: #1B3A5C;     /* Navy */
+  --md-primary-fg-color--light: #2E75B6; /* Accent Blue */
+  --md-primary-fg-color--dark: #122840;
+  --md-accent-fg-color: #2E75B6;      /* Accent Blue */
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2E75B6;
+  --md-accent-fg-color: #5B9BD5;
+}
+
+/* Blockquote Styling — analog Formatvorlage */
+blockquote {
+  border-left: 4px solid #2E75B6;
+  background: #F0F5FA;
+  padding: 0.8em 1.2em;
+  margin: 1em 0;
+  border-radius: 0 4px 4px 0;
+}
+
+[data-md-color-scheme="slate"] blockquote {
+  background: rgba(46, 117, 182, 0.1);
+}
+
+/* Table Header Styling */
+.md-typeset table:not([class]) th {
+  background-color: #1B3A5C;
+  color: white;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #2E75B6;
+}
+
+/* Alternating Table Rows */
+.md-typeset table:not([class]) tr:nth-child(even) td {
+  background-color: #F2F7FB;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:nth-child(even) td {
+  background-color: rgba(46, 117, 182, 0.05);
+}
+
+/* Navigation Tab Styling */
+.md-tabs {
+  background-color: #1B3A5C;
+}
+
+/* Footer Link Color */
+.md-footer-meta {
+  background-color: #122840;
+}

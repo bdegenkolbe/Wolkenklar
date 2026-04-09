@@ -1,0 +1,2317 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="US CLOUD Act & Deutsche Datensouveranitat — Rechtliche Analyse, Anbieterbewertung, DSGVO-Handlungsempfehlungen">
+      
+      
+        <meta name="author" content="Bjorn Degenkolbe, 4K Analytics GmbH / HIGL">
+      
+      
+      
+        <link rel="prev" href="../06-das-operator-modell/">
+      
+      
+        <link rel="next" href="../08-der-vollstaendige-eu-plattformstack/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>7. Hyperscaling - Wolkenfrei</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-das-hyperscaling-problem-wer-kann-tatsachlich-skalieren" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href=".." title="Wolkenfrei" class="md-header__button md-logo" aria-label="Wolkenfrei" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Wolkenfrei
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Hyperscaling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dunkles Design"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkles Design" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Helles Design"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Helles Design" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bdegenkolbe/Wolkenklar" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bdegenkolbe/Wolkenklar
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01-das-kernproblem/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1. Kernproblem
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../02-rechtliche-grundlagen/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2. Rechtliche Grundlagen
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../03-die-vier-us-zugriffsebenen-im-detail/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3. US-Zugriffsebenen
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../04-europaeischer-behoerdenzugriff/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  4. EU-Behordenzugriff
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../05-anbieterbewertung/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  5. Anbieterbewertung
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../06-das-operator-modell/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  6. Operator-Modell
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  7. Hyperscaling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../08-der-vollstaendige-eu-plattformstack/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  8. EU-Plattformstack
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../09-rechtliche-abkommen-zwischen-eu-und-usa/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  9. EU-US-Abkommen
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-big-tech-lobbyarbeit-in-europa-und-deutschland/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  10. Lobbyarbeit
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-die-berater-falle/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  11. Berater-Falle
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-marktbeispiele/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  12. Marktbeispiele
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-clientseitige-verschluesselung/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  13. Verschluesselung
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-bewertungsschema-und-laenderranking/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  14. Bewertungsschema
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-globaler-vergleich/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  15. Globaler Vergleich
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-dsgvo-handlungsempfehlungen/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  16. Handlungsempfehlungen
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-regulatorischer-ausblick-2025/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  17. Ausblick
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fazit/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Fazit
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-quellenverzeichnis/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  18. Quellen
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Wolkenfrei" class="md-nav__button md-logo" aria-label="Wolkenfrei" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Wolkenfrei
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bdegenkolbe/Wolkenklar" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bdegenkolbe/Wolkenklar
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-das-kernproblem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Kernproblem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-rechtliche-grundlagen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Rechtliche Grundlagen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-die-vier-us-zugriffsebenen-im-detail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. US-Zugriffsebenen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-europaeischer-behoerdenzugriff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. EU-Behordenzugriff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-anbieterbewertung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Anbieterbewertung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-das-operator-modell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Operator-Modell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Hyperscaling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Hyperscaling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71-was-hyperscaling-wirklich-bedeutet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Was Hyperscaling wirklich bedeutet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72-die-kapazitatslucke-ehrliche-zahlen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Die Kapazitätslücke — ehrliche Zahlen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73-service-tiefe-im-vergleich-gesundheitssektorrelevant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Service-Tiefe im Vergleich — gesundheitssektorrelevant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 Service-Tiefe im Vergleich — gesundheitssektorrelevant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-collaboration-productivity-tiefstes-lock-in-hochstes-cloud-act-risiko" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A — Collaboration &amp; Productivity (tiefstes Lock-in, höchstes CLOUD-Act-Risiko)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-datenbanken-data-warehouse-analytics-fundament-fur-gkv-scoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B — Datenbanken &amp; Data Warehouse (Analytics-Fundament für GKV-Scoring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-ki-analytik-zunehmend-kritisch-fur-gkv-versorgungsmanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C — KI &amp; Analytik (zunehmend kritisch für GKV-Versorgungsmanagement)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-infrastruktur-devops-basis-schicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D — Infrastruktur &amp; DevOps (Basis-Schicht)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-compliance-gesundheitsspezifisch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E — Compliance &amp; Gesundheitsspezifisch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-was-das-fur-den-gesundheitssektor-bedeutet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Was das für den Gesundheitssektor bedeutet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75-ki-anbieter-und-integrationsplattformen-der-blinde-fleck-bei-klartextverarbeitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 KI-Anbieter und Integrationsplattformen — der blinde Fleck bei Klartextverarbeitung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.5 KI-Anbieter und Integrationsplattformen — der blinde Fleck bei Klartextverarbeitung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gesundheitsspezifische-ki-anwendungsfalle-und-ihre-cloud-act-exposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gesundheitsspezifische KI-Anwendungsfälle und ihre CLOUD-Act-Exposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-act-risikobewertung-der-groen-ki-anbieter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLOUD-Act-Risikobewertung der großen KI-Anbieter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrationsplattformen-der-versteckte-datenfluss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrationsplattformen — der versteckte Datenfluss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernaussage-warum-ki-der-vierte-blinde-fleck-ist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernaussage — warum KI der vierte blinde Fleck ist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vier-fallbeispiele-das-spektrum-von-bis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vier Fallbeispiele — das Spektrum von 🔴 bis 🟢
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vibecoding-plattformen-ki-entwicklung-mit-doppelter-bindung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vibecoding-Plattformen — KI-Entwicklung mit doppelter Bindung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ki-broker-das-dsgvo-versprechen-und-seine-grenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KI-Broker — das DSGVO-Versprechen und seine Grenzen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-der-vollstaendige-eu-plattformstack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. EU-Plattformstack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-rechtliche-abkommen-zwischen-eu-und-usa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. EU-US-Abkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-big-tech-lobbyarbeit-in-europa-und-deutschland/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Lobbyarbeit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-die-berater-falle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Berater-Falle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-marktbeispiele/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Marktbeispiele
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-clientseitige-verschluesselung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Verschluesselung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-bewertungsschema-und-laenderranking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Bewertungsschema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-globaler-vergleich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Globaler Vergleich
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-dsgvo-handlungsempfehlungen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Handlungsempfehlungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-regulatorischer-ausblick-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Ausblick
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fazit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fazit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-quellenverzeichnis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Quellen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="7-das-hyperscaling-problem-wer-kann-tatsachlich-skalieren">7. Das Hyperscaling-Problem: Wer kann tatsächlich skalieren?<a class="headerlink" href="#7-das-hyperscaling-problem-wer-kann-tatsachlich-skalieren" title="Permanent link">&para;</a></h1>
+<h2 id="71-was-hyperscaling-wirklich-bedeutet">7.1 Was Hyperscaling wirklich bedeutet<a class="headerlink" href="#71-was-hyperscaling-wirklich-bedeutet" title="Permanent link">&para;</a></h2>
+<p>Echtes Hyperscaling hat drei Dimensionen:</p>
+<ul>
+<li><strong>Rohkapazität:</strong> Millionen von Servern, globale Verfügbarkeit innerhalb von Sekunden auf Abruf</li>
+<li><strong>Service-Breite:</strong> Nicht nur Compute/Storage, sondern hunderte spezialisierte Managed Services von KI bis IoT</li>
+<li><strong>Economies of Scale:</strong> Hardwareeinkauf in Milliardenvolumen drückt Preise auf ein Niveau, das kein kleinerer Anbieter erreicht</li>
+</ul>
+<h2 id="72-die-kapazitatslucke-ehrliche-zahlen">7.2 Die Kapazitätslücke — ehrliche Zahlen<a class="headerlink" href="#72-die-kapazitatslucke-ehrliche-zahlen" title="Permanent link">&para;</a></h2>
+<p><strong>Hinweis zur Methodik:</strong> Physische Serverzahlen werden von Hyperscalern nicht veröffentlicht — alle Zahlen in der Spalte "GPU (H100-Äquivalente)" sind Schätzungen auf Basis von Nvidia-Umsatzdaten, Unternehmensangaben und unabhängigen Analysen (Epoch AI, LessWrong Research, Nov. 2024). Die GPU-Spalte ist für die KI-Bewertung relevanter als Serverzahlen, da GPUs die KI-Trainingsfähigkeit bestimmen.</p>
+<table>
+<thead>
+<tr>
+<th>Anbieter</th>
+<th>RZ-Regionen / Standorte</th>
+<th>Server (phys., geschätzt)</th>
+<th>GPU (H100-Äquivalente, EOY 2024)</th>
+<th>Investitionsvolumen</th>
+<th>Services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS</strong></td>
+<td>38 Regionen, 121 AZs</td>
+<td>~3,5 Mio.</td>
+<td><strong>~400.000–600.000</strong> (H100-Äq.)</td>
+<td>7,8 Mrd. USD allein DE</td>
+<td>~250 Services</td>
+</tr>
+<tr>
+<td><strong>Microsoft Azure</strong></td>
+<td>60+ Regionen</td>
+<td>~3 Mio.</td>
+<td><strong>~500.000</strong> (H100-Äq., größte NVIDIA-Flotte)</td>
+<td>~100 Mrd. USD/Jahr</td>
+<td>~200 Services</td>
+</tr>
+<tr>
+<td><strong>Google Cloud</strong></td>
+<td>42 Regionen</td>
+<td>~1,5 Mio.</td>
+<td><strong>&gt;1 Mio.</strong> (H100-Äq. inkl. TPUs; davon ~300.000 NVIDIA H100)</td>
+<td>—</td>
+<td>~150 Services</td>
+</tr>
+<tr>
+<td><strong>Meta</strong> <em>(kein Cloud-Anbieter)</em></td>
+<td>Eigene RZ (USA)</td>
+<td>k.A.</td>
+<td><strong>~600.000</strong> H100-Äq. (EOY 2024, Zuckerberg bestätigt)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>xAI / Colossus</strong> <em>(kein Cloud)</em></td>
+<td>Memphis, Tennessee</td>
+<td>—</td>
+<td><strong>100.000 H100</strong> (Cluster 1); Ziel 200.000 H200</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Alibaba Cloud</strong></td>
+<td>36 Regionen</td>
+<td>~1 Mio.</td>
+<td>~100.000–200.000 (H100-Äq., Schätzung)</td>
+<td>—</td>
+<td>~100 Services</td>
+</tr>
+<tr>
+<td><strong>OVHcloud</strong></td>
+<td>4 EU-Regionen, 43 RZ</td>
+<td>~350.000</td>
+<td>k.A. (limitiert, keine GPU-Fokus-Strategie)</td>
+<td>—</td>
+<td>~50 Services</td>
+</tr>
+<tr>
+<td><strong>Open Telekom Cloud (T-Systems)</strong></td>
+<td>2 Regionen (DE+NL), 4 RZ</td>
+<td><strong>~100.000</strong> (Biere allein); 640.000 VMs</td>
+<td>k.A. öffentlich (kein GPU-First-Anbieter)</td>
+<td>—</td>
+<td>~80 Services</td>
+</tr>
+<tr>
+<td><strong>STACKIT</strong></td>
+<td>4 operative RZ (DE+AT), Lübbenau ab 2027</td>
+<td>Heute: ~15.000–25.000 (Schätzung) · Lübbenau ab 2027: <strong>bis zu 100.000 GPUs</strong>, 200 MW — Ausbau der Schwarz-Gruppe-Rechenleistung auf das <strong>7-fache</strong></td>
+<td>Heute: k.A. · <strong>Ab 2027: bis zu 100.000 GPUs</strong></td>
+<td><strong>11 Mrd. EUR</strong> bis 2027</td>
+<td>~40–60 Services</td>
+</tr>
+<tr>
+<td><strong>Hetzner</strong></td>
+<td>5 Standorte (DE/FI/US)</td>
+<td>~100.000</td>
+<td>k.A. (RTX-Pro-6000-Angebot, kein H100-Training)</td>
+<td>—</td>
+<td>~20 Services</td>
+</tr>
+<tr>
+<td><strong>plusserver</strong></td>
+<td>4 DE-Standorte</td>
+<td>~20.000</td>
+<td>k.A. (kein GPU-Cloud-Angebot)</td>
+<td>—</td>
+<td>~15 Services</td>
+</tr>
+<tr>
+<td><strong>Arvato Systems</strong></td>
+<td>3 eigene RZ Gütersloh + Colocation</td>
+<td>k.A.</td>
+<td>Nicht-Cloud-Betreiber — MSP (Managed Service Provider) auf Azure/AWS/GCP</td>
+<td>—</td>
+<td>MSP-Modell</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Warum Meta und xAI in der Tabelle stehen — obwohl sie keine Cloud-Anbieter sind:</strong>
+Meta und xAI kaufen GPU-Kapazitäten in einer Größenordnung, die den gesamten europäischen Cloud-Markt in den Schatten stellt — und sie tun das ausschließlich für eigene KI-Modelle. Ende 2024 hatte Meta ein Portfolio mit einer Rechenleistung entsprechend fast 600.000 H100-Äquivalenten. xAI brachte den Colossus-Cluster mit 100.000 H100-GPUs in Memphis in 122 Tagen online. Diese Zahlen zeigen: STACKIT mit seinen geplanten 100.000 GPUs in Lübbenau ist für Europa ein Meilenstein — im globalen KI-Wettrüsten aber lediglich Aufholen.</p>
+<p><strong>Die GPU-Hierarchie in Zahlen (Epoch AI, Stand EOY 2024):</strong>
+Google: &gt;1 Mio. H100-Äquivalente (inkl. TPUs) · Microsoft: ~500.000 H100-Äq. · Meta: ~600.000 H100-Äq. · AWS: ~400.000–600.000 H100-Äq. · STACKIT Lübbenau (ab 2027): 100.000 GPUs. Der Abstand ist erheblich — aber für die meisten GKV- und Klinik-Workloads irrelevant. Keine GKV mit 5 Millionen Versicherten braucht 600.000 GPUs.</p>
+<p><strong>Open Telekom Cloud — Kapazitätszahlen konkret:</strong>
+Die OTC verwaltet über 1 Exabyte Speicher, ermöglicht 640.000 virtuelle Maschinen mit über 4,5 Millionen GB RAM und mehr als 910.000 vCPUs. Das RZ in Biere: 20 IT-Räume, Platz für 100.000 Server, 18 Megawatt IT-Leistung. T-Systems betreibt 33 RZ weltweit — 7 im Eigenbetrieb, 26 im Colocation-Modus.</p>
+<p><strong>STACKIT — aktuelle Kapazität und GPU-Roadmap:</strong>
+Keine offiziellen Server-Zahlen. Rückrechnung aus dem Lübbenau-Faktor (7-fache Erhöhung) → schätzungsweise <strong>15.000–25.000 physische Server</strong> heute. Lübbenau ab 2027: 200 MW Anschlussleistung (vs. 18 MW in Biere), bis zu <strong>100.000 GPUs</strong> (Dell PowerEdge XE9680, NVIDIA Blackwell, 8 GPUs/Server), Direct Liquid Cooling. STACKIT wird kein Hyperscaler durch CPU-Server-Masse — sondern durch GPU-Dichte für KI-Workloads.</p>
+<p><strong>Arvato Systems — kein Cloud-Betreiber, sondern MSP:</strong>
+3 eigene RZ in Gütersloh für Managed Services und SAP-Hosting. Kein eigenständiger Cloud-Anbieter — relevante Rolle ist der Betrieb der <strong>Delos Cloud</strong> als Betriebsdienstleister.</p>
+<h2 id="73-service-tiefe-im-vergleich-gesundheitssektorrelevant">7.3 Service-Tiefe im Vergleich — gesundheitssektorrelevant<a class="headerlink" href="#73-service-tiefe-im-vergleich-gesundheitssektorrelevant" title="Permanent link">&para;</a></h2>
+<p>Die folgende Tabelle bewertet ausschließlich Services, die für GKVen, KVen und Kliniken tatsächlich relevant sind. Globale CDN für Streaming-Plattformen oder IoT-Hubs für Fahrzeugtelemetrie sind für den deutschen Gesundheitssektor strukturell irrelevant. Entscheidend sind: Collaboration, Identity, Datenbanken, Analytics, KI-Inferenz, Compliance-Tooling und Kerninfrastruktur.</p>
+<p><strong>Legende:</strong> ✅ Vorhanden und produktionsreif · ⚠️ Vorhanden, aber eingeschränkt oder mit Mehraufwand · ❌ Nicht vorhanden / kein souveräner Ersatz</p>
+<h3 id="a-collaboration-productivity-tiefstes-lock-in-hochstes-cloud-act-risiko">A — Collaboration &amp; Productivity (tiefstes Lock-in, höchstes CLOUD-Act-Risiko)<a class="headerlink" href="#a-collaboration-productivity-tiefstes-lock-in-hochstes-cloud-act-risiko" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>US-Anbieter (direkt)</th>
+<th>Operator-Modell</th>
+<th>Souveräner EU-Ersatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Office-Suite (Word, Excel, PowerPoint)</strong></td>
+<td>Microsoft 365 (MSFT)</td>
+<td>Delos Cloud (+15%)</td>
+<td>✅ Euro-Office / Office.eu / LibreOffice</td>
+</tr>
+<tr>
+<td><strong>E-Mail &amp; Kalender</strong></td>
+<td>Exchange Online (MSFT)</td>
+<td>Delos Cloud</td>
+<td>✅ Open-Xchange + Thunderbird</td>
+</tr>
+<tr>
+<td><strong>Dokumentenmanagement / Intranet</strong></td>
+<td>SharePoint Online (MSFT)</td>
+<td>Delos Cloud</td>
+<td>✅ Nextcloud Hub, OpenCloud 1.0, GoFAST</td>
+</tr>
+<tr>
+<td><strong>Videokonferenz &amp; Chat</strong></td>
+<td>Microsoft Teams (MSFT)</td>
+<td>Delos Cloud</td>
+<td>✅ OpenTalk, Jitsi, Matrix/Element</td>
+</tr>
+<tr>
+<td><strong>Identity / SSO / RBAC</strong></td>
+<td>Azure Entra ID (MSFT)</td>
+<td>Delos Cloud</td>
+<td>✅ Keycloak, Univention Corporate Server</td>
+</tr>
+<tr>
+<td><strong>Endpoint-Management (MDM)</strong></td>
+<td>Microsoft Intune (MSFT)</td>
+<td>Delos Cloud</td>
+<td>⚠️ Ansible + FreeIPA (Mehraufwand)</td>
+</tr>
+<tr>
+<td><strong>E-Signatur</strong></td>
+<td>DocuSign (US), Adobe Sign (US)</td>
+<td>—</td>
+<td>✅ Skribble (CH), D-Trust (BSI-akkreditiert)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-datenbanken-data-warehouse-analytics-fundament-fur-gkv-scoring">B — Datenbanken &amp; Data Warehouse (Analytics-Fundament für GKV-Scoring)<a class="headerlink" href="#b-datenbanken-data-warehouse-analytics-fundament-fur-gkv-scoring" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>US-Anbieter</th>
+<th>Operator-Modell</th>
+<th>Souveräner EU-Ersatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MS SQL Server / Azure SQL</strong></td>
+<td>Microsoft (MSFT)</td>
+<td>Delos Cloud</td>
+<td>✅ PostgreSQL, MariaDB (alle EU-Clouds)</td>
+</tr>
+<tr>
+<td><strong>Daten-Warehouse (Cloud-native)</strong></td>
+<td>Snowflake (NYSE: SNOW, US)</td>
+<td>—</td>
+<td>⚠️ DuckDB (lokal), Apache Doris, ClickHouse (EU-hosted)</td>
+</tr>
+<tr>
+<td><strong>Streaming / Event-Hub</strong></td>
+<td>AWS Kinesis, Azure Event Hub</td>
+<td>—</td>
+<td>✅ Apache Kafka auf STACKIT / Exoscale</td>
+</tr>
+<tr>
+<td><strong>Managed NoSQL</strong></td>
+<td>DynamoDB, CosmosDB (MSFT)</td>
+<td>—</td>
+<td>✅ MongoDB, Redis, CassandraDB auf STACKIT</td>
+</tr>
+<tr>
+<td><strong>Data Lake / Object Store</strong></td>
+<td>AWS S3, Azure Blob Storage</td>
+<td>Delos Cloud</td>
+<td>✅ MinIO, Ceph, STACKIT/plusserver Object Storage</td>
+</tr>
+<tr>
+<td><strong>ETL / Datenpipelines</strong></td>
+<td>AWS Glue, Azure Data Factory</td>
+<td>—</td>
+<td>✅ Apache Airflow, dbt (selbst-gehostet EU)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Snowflake-Hinweis:</strong> Snowflake Inc. (NYSE: SNOW) ist ein US-Unternehmen mit Hauptsitz in Bozeman/Montana und unterliegt direkt dem CLOUD Act. Daten in Snowflake-EU-Regionen (Frankfurt) sind strukturell nicht geschützt. Für GKV-Scoring-Daten und Morbi-RSA-Analysen: DuckDB on-premise oder ClickHouse auf STACKIT/plusserver sind produktionsreife Alternativen.</p>
+<p><strong>Qlik Cloud — C5 ≠ CLOUD-Act-Schutz:</strong> Qlik (Hauptsitz King of Prussia, Pennsylvania, US) ist ein US-Unternehmen und unterliegt dem CLOUD Act als Kategorie A — unabhängig von Zertifizierungen. Ein C5-Testat, sofern Qlik Cloud eines erworben hat oder anstrebt, bescheinigt lediglich Informationssicherheit nach BSI-Mindestanforderungen — es schützt <strong>nicht</strong> gegen US-Behördenzugriff. Das ist die Kernaussage von Kapitel 5.3: "C5 belegt technische Sicherheit — nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver hat C5 und unterliegt ihm strukturell nicht." Dasselbe gilt für Qlik Cloud. Ein C5-Testat als Eingangsbedingung nach § 393 SGB V für Patientendaten löst den CLOUD-Act-Konflikt nicht — es verschleiert ihn. Für GKV-Analytics und Versorgungssteuerungsdaten mit Patientenbezug: Qlik on-premise (selbst betriebene Instanz ohne US-Cloud-Verbindung) oder EU-souveräne BI-Alternativen (Metabase, Apache Superset, Grafana) auf STACKIT/plusserver.</p>
+</blockquote>
+<h3 id="c-ki-analytik-zunehmend-kritisch-fur-gkv-versorgungsmanagement">C — KI &amp; Analytik (zunehmend kritisch für GKV-Versorgungsmanagement)<a class="headerlink" href="#c-ki-analytik-zunehmend-kritisch-fur-gkv-versorgungsmanagement" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>US-Anbieter</th>
+<th>Operator-Modell</th>
+<th>Souveräner EU-Ersatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLM-Inferenz / generative KI</strong></td>
+<td>Azure OpenAI / AWS Bedrock (GPT-4, Claude)</td>
+<td>S3NS (Google Vertex AI ab H2 2026)</td>
+<td>✅ vLLM + Mistral (lokal / STACKIT / Scaleway)</td>
+</tr>
+<tr>
+<td><strong>Mistral AI direkt</strong></td>
+<td>Mistral API (FR-Unternehmen, aber API-Infrastruktur prüfen)</td>
+<td>—</td>
+<td>✅ Mistral-Modelle self-hosted via vLLM (bevorzugt)</td>
+</tr>
+<tr>
+<td><strong>BI / Dashboarding</strong></td>
+<td>Power BI / Microsoft Fabric (MSFT) · <strong>Qlik Cloud (US, Thoma Bravo — privat)</strong></td>
+<td>Delos Cloud (Power BI)</td>
+<td>✅ Metabase, Apache Superset, Grafana</td>
+</tr>
+<tr>
+<td><strong>ML-Plattform / MLOps</strong></td>
+<td>Azure ML, AWS SageMaker</td>
+<td>—</td>
+<td>⚠️ MLflow + Kubernetes (selbst-gehostet)</td>
+</tr>
+<tr>
+<td><strong>Vektordatenbank (RAG)</strong></td>
+<td>Azure AI Search, Pinecone (US)</td>
+<td>—</td>
+<td>✅ Qdrant (DE), Weaviate (NL), Chroma (self-hosted)</td>
+</tr>
+<tr>
+<td><strong>Embedding-Modelle</strong></td>
+<td>OpenAI text-embedding, AWS Titan</td>
+<td>—</td>
+<td>✅ Sentence-Transformers lokal, Mistral Embed</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Mistral-Hinweis:</strong> Mistral AI ist ein französisches Unternehmen (Paris, SAS) — kein US-CLOUD-Act-Risiko strukturell. Die Mistral-API läuft jedoch auf Scaleway-Infrastruktur. Für höchste Schutzklasse (ePA-Daten): Mistral-Modelle lokal über vLLM deployen, nicht via API. Für unkritische Workloads ist die Mistral-API akzeptabel.</p>
+</blockquote>
+<h3 id="d-infrastruktur-devops-basis-schicht">D — Infrastruktur &amp; DevOps (Basis-Schicht)<a class="headerlink" href="#d-infrastruktur-devops-basis-schicht" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>US-Anbieter</th>
+<th>Souveräner EU-Ersatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compute / VM</strong></td>
+<td>EC2, Azure VM</td>
+<td>✅ STACKIT, plusserver, Hetzner</td>
+</tr>
+<tr>
+<td><strong>Managed Kubernetes</strong></td>
+<td>EKS, AKS</td>
+<td>✅ STACKIT SKE, plusserver managed K8s</td>
+</tr>
+<tr>
+<td><strong>Serverless / Functions</strong></td>
+<td>Lambda, Azure Functions</td>
+<td>⚠️ STACKIT Functions (früh), Knative self-hosted</td>
+</tr>
+<tr>
+<td><strong>CI/CD &amp; Versionskontrolle</strong></td>
+<td>GitHub, Azure DevOps</td>
+<td>✅ GitLab (self-hosted)</td>
+</tr>
+<tr>
+<td><strong>Monitoring &amp; Observability</strong></td>
+<td>Azure Monitor, CloudWatch</td>
+<td>✅ Grafana + Prometheus + Loki + OpenSearch</td>
+</tr>
+<tr>
+<td><strong>SIEM / Security</strong></td>
+<td>Microsoft Sentinel (MSFT)</td>
+<td>✅ Wazuh, OpenSearch Security Analytics</td>
+</tr>
+<tr>
+<td><strong>Backup &amp; DR</strong></td>
+<td>Azure Backup, AWS Backup</td>
+<td>✅ Veeam auf EU-Storage, Restic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-compliance-gesundheitsspezifisch">E — Compliance &amp; Gesundheitsspezifisch<a class="headerlink" href="#e-compliance-gesundheitsspezifisch" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>US-Anbieter</th>
+<th>Souveräner EU-Ersatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ePA-Infrastruktur</strong></td>
+<td>gematik-Pflicht: TI-Anbindung</td>
+<td>✅ nur zertifizierte TI-Anbieter (kein US-Hyperscaler direkt)</td>
+</tr>
+<tr>
+<td><strong>KIS (Krankenhausinformationssystem)</strong></td>
+<td>Oracle Health / Cerner (US!)</td>
+<td>⚠️ CGM, iMedOne, SAP IS-H (DE/EU)</td>
+</tr>
+<tr>
+<td><strong>PVS (Praxisverwaltungssystem)</strong></td>
+<td>US-Abhängigkeit über KIS-Backend</td>
+<td>✅ Medatixx, Turbomed, CompuMed (DE)</td>
+</tr>
+<tr>
+<td><strong>Abrechnungssystem GKV</strong></td>
+<td>SAP IS-H, Eigensysteme</td>
+<td>✅ SAP on-premise oder EU-Cloud</td>
+</tr>
+<tr>
+<td><strong>Dokumentenarchiv / §630f BGB</strong></td>
+<td>SharePoint/Azure (MSFT)</td>
+<td>✅ OpenCloud, d.velop, Fabasoft (AT)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Oracle Health / Cerner-Warnung:</strong> Oracle Corporation (NYSE: ORCL) hat Cerner 2022 für 28 Mrd. USD übernommen. Cerner-Systeme (u.a. in UKL Dresden, UKL Freiburg geplant) laufen mittlerweile auf Oracle Cloud Infrastructure (OCI) — einem US-Cloud-Anbieter mit direktem CLOUD-Act-Risiko. Für Kliniken, die Cerner/Oracle Health evaluieren: OCI ist strukturell gleichwertig mit Azure aus CLOUD-Act-Perspektive.</p>
+</blockquote>
+<h2 id="74-was-das-fur-den-gesundheitssektor-bedeutet">7.4 Was das für den Gesundheitssektor bedeutet<a class="headerlink" href="#74-was-das-fur-den-gesundheitssektor-bedeutet" title="Permanent link">&para;</a></h2>
+<p>Keine GKV mit 5 Millionen Versicherten braucht 3,5 Millionen Server. STACKIT ist heute bereits ausreichend skaliert für GKV- und Klinik-Kernworkloads. Lücken bestehen bei Data Warehouse (Snowflake-Ebene), MLOps-Plattformen und Endpoint-Management — nicht bei Kapazität.</p>
+<p><strong>Die vier größten blinden Flecken</strong> der aktuellen Souveränitätsdebatte im Gesundheitswesen:
+1. <strong>Snowflake</strong> für GKV-Analytics — NYSE: SNOW, US-Hauptsitz, direktes CLOUD-Act-Risiko trotz Frankfurter Region
+2. <strong>Oracle Health / Cerner auf OCI</strong> für Kliniken — NYSE: ORCL, strukturell gleichwertig mit Azure aus CLOUD-Act-Perspektive
+3. <strong>Qlik Cloud</strong> für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5-Testat noch nicht erteilt (Stand April 2026), schützt ohnehin nicht gegen CLOUD Act
+4. <strong>KI-Dienste</strong> (Azure OpenAI, Google Gemini, AWS Bedrock) — verarbeiten Patientendaten zwangsläufig im Klartext; clientseitige Verschlüsselung unmöglich; cloudbasierte Integrationsplattformen (Zapier, Power Automate) als versteckte Datenflüsse. Ausführlich analysiert in <a href="#75-ki-anbieter-und-integrationsplattformen-der-blinde-fleck-bei-klartextverarbeitung">§7.5</a>.</p>
+<p>Die ersten drei werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben. Der vierte wächst am schnellsten.</p>
+<h2 id="75-ki-anbieter-und-integrationsplattformen-der-blinde-fleck-bei-klartextverarbeitung">7.5 KI-Anbieter und Integrationsplattformen — der blinde Fleck bei Klartextverarbeitung<a class="headerlink" href="#75-ki-anbieter-und-integrationsplattformen-der-blinde-fleck-bei-klartextverarbeitung" title="Permanent link">&para;</a></h2>
+<p>Die Tabelle in <a href="#73-service-tiefe-im-vergleich-gesundheitssektorrelevant">§7.3</a> C zeigt die Anbieter-Landschaft für KI-Services. Dieser Abschnitt behandelt ein spezifischeres Problem: <strong>KI-Dienste verarbeiten Eingabedaten zwangsläufig im Klartext.</strong> Verschlüsselung hilft nicht (vgl. <a href="../13-clientseitige-verschluesselung/#134-wo-hyok-nicht-funktioniert-die-entscheidende-grenze">§13.4</a>) — ein LLM muss den Prompt lesen, ein Sprachmodell muss das Audio hören, ein Zusammenfassungsmodell muss den Text verstehen. Das unterscheidet KI-Services fundamental von Speicher- oder Compute-Diensten, bei denen clientseitige Verschlüsselung die Exposition begrenzen kann.</p>
+<h3 id="gesundheitsspezifische-ki-anwendungsfalle-und-ihre-cloud-act-exposition">Gesundheitsspezifische KI-Anwendungsfälle und ihre CLOUD-Act-Exposition<a class="headerlink" href="#gesundheitsspezifische-ki-anwendungsfalle-und-ihre-cloud-act-exposition" title="Permanent link">&para;</a></h3>
+<p>Im Gesundheitswesen entstehen gerade vier KI-Anwendungsmuster, die alle Klartextverarbeitung <strong>sensibler Patientendaten</strong> erfordern:</p>
+<p><strong>1. Transkription und Zusammenfassung von Arzt-Patienten-Gesprächen.</strong> Ambient-Listening-Systeme wie Nuance DAX (Microsoft/MSFT), Nabla (FR), oder Google-Gemini-basierte Lösungen zeichnen das Gespräch auf und erzeugen automatisch eine strukturierte Dokumentation. Die Audiodaten — Stimme des Patienten, Symptombeschreibungen, Diagnosen — werden an den KI-Dienst übertragen und dort im Klartext verarbeitet. Bei US-Anbietern sind diese Rohdaten CLOUD-Act-exponiert.</p>
+<p><strong>2. Automatisierte Arztbriefe.</strong> LLMs generieren Entlassungsbriefe, Befundberichte oder Überweisungsschreiben auf Basis der Patientenakte. Die Eingabe umfasst Diagnosen, Medikation, Verlaufsdaten — die sensibelsten Daten im Gesundheitswesen. Wenn der LLM-Service bei einem US-Anbieter läuft, liegen diese Daten während der Verarbeitung im Klartext auf US-kontrollierter Infrastruktur.</p>
+<p><strong>3. E-Mail- und Dokumentenzusammenfassung.</strong> Microsoft Copilot, Google Gemini oder vergleichbare Assistenten fassen E-Mails, Aktenvermerke und Dokumente zusammen. Im GKV-Kontext können diese E-Mails Versichertendaten, Leistungsanträge oder MDK-Gutachten enthalten. Die KI liest den vollständigen Inhalt — HYOK ist nicht möglich (vgl. <a href="../13-clientseitige-verschluesselung/#134-wo-hyok-nicht-funktioniert-die-entscheidende-grenze">§13.4</a>).</p>
+<p><strong>4. KI-gestützte Kodierung und Abrechnung.</strong> ICD-10-Kodierung, DRG-Gruppierung oder Morbi-RSA-Prüfungen auf Basis von KI erfordern die Übermittlung klinischer Informationen an den KI-Dienst. Systeme wie 3M/Solventum (US), ID Berlin (DE) oder DeepL-basierte Übersetzungsdienste für mehrsprachige Patientenakten verarbeiten jeweils Patientendaten im Klartext.</p>
+<h3 id="cloud-act-risikobewertung-der-groen-ki-anbieter">CLOUD-Act-Risikobewertung der großen KI-Anbieter<a class="headerlink" href="#cloud-act-risikobewertung-der-groen-ki-anbieter" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Anbieter</th>
+<th>Eigentümer</th>
+<th>Infrastruktur</th>
+<th>CLOUD-Act-Risiko</th>
+<th>Gesundheitseinsatz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenAI (GPT-4o, o3)</strong></td>
+<td>US (Microsoft-Partnerschaft)</td>
+<td>Azure (MSFT)</td>
+<td>🔴 Direkt — US-Unternehmen auf US-Infrastruktur</td>
+<td>Azure OpenAI Service in KVNO-KI-Plattform (TED 98706-2026)</td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>NYSE: GOOGL</td>
+<td>Google Cloud (US)</td>
+<td>🔴 Direkt</td>
+<td>Ambient Clinical Intelligence in Pilotprojekten</td>
+</tr>
+<tr>
+<td><strong>Anthropic (Claude)</strong></td>
+<td>US (Amazon-Beteiligung)</td>
+<td>AWS / GCP</td>
+<td>🔴 Direkt — US-Unternehmen</td>
+<td>Enterprise-API für Dokumentenanalyse</td>
+</tr>
+<tr>
+<td><strong>Microsoft Copilot</strong></td>
+<td>NYSE: MSFT</td>
+<td>Azure (US)</td>
+<td>🔴 Direkt</td>
+<td>M365-Integration in Kliniken/GKVen</td>
+</tr>
+<tr>
+<td><strong>Nuance DAX (Microsoft)</strong></td>
+<td>NYSE: MSFT (Übernahme 2022, 18,8 Mrd. USD)</td>
+<td>Azure (US)</td>
+<td>🔴 Direkt</td>
+<td>Marktführer klinische Sprachdokumentation</td>
+</tr>
+<tr>
+<td><strong>DeepSeek</strong></td>
+<td>CN (Hangzhou)</td>
+<td>China-basiert</td>
+<td>🔴 Nicht CLOUD Act, aber CN-Datengesetze</td>
+<td>Open-Source-Modelle lokal deploybar</td>
+</tr>
+<tr>
+<td><strong>Mistral AI</strong></td>
+<td>FR (Paris, SAS)</td>
+<td>Scaleway (FR)</td>
+<td>🟢 EU-souverän</td>
+<td>Self-hosted oder API; bevorzugte EU-Option</td>
+</tr>
+<tr>
+<td><strong>Aleph Alpha (Luminous)</strong></td>
+<td>DE (Heidelberg)</td>
+<td>IONOS / STACKIT</td>
+<td>🟢 EU-souverän (DE)</td>
+<td>BW-Verwaltung; Gesundheitssektor noch begrenzt</td>
+</tr>
+<tr>
+<td><strong>Kimi (Moonshot AI)</strong></td>
+<td>CN (Peking)</td>
+<td>China-basiert</td>
+<td>🔴 Nicht CLOUD Act, aber CN-Datengesetze</td>
+<td>Kimi 2.5 — leistungsfähig, aber chinesische Jurisdiktion</td>
+</tr>
+<tr>
+<td><strong>OpenEuroLLM</strong></td>
+<td>EU-Konsortium (13 Partner)</td>
+<td>EuroHPC (LUMI, Leonardo)</td>
+<td>🟢 EU-souverän</td>
+<td>Forschung; produktiver Einsatz ab 2026</td>
+</tr>
+</tbody>
+</table>
+<h3 id="integrationsplattformen-der-versteckte-datenfluss">Integrationsplattformen — der versteckte Datenfluss<a class="headerlink" href="#integrationsplattformen-der-versteckte-datenfluss" title="Permanent link">&para;</a></h3>
+<p>Neben den KI-Anbietern selbst entsteht ein zweites, oft übersehenes Risiko durch <strong>cloudbasierte Integrationsplattformen</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Plattform</th>
+<th>Eigentümer</th>
+<th>CLOUD-Act-Risiko</th>
+<th>Typischer Einsatz im Gesundheitswesen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Zapier</strong></td>
+<td>US (San Francisco)</td>
+<td>🔴 Direkt</td>
+<td>Automatisierung: "Wenn neue E-Mail mit Befund, dann an KI-Zusammenfassung"</td>
+</tr>
+<tr>
+<td><strong>Make (Integromat)</strong></td>
+<td>CZ (Prag)</td>
+<td>🟢 EU-souverän</td>
+<td>Workflow-Automatisierung, EU-Alternative zu Zapier</td>
+</tr>
+<tr>
+<td><strong>Microsoft Power Automate</strong></td>
+<td>NYSE: MSFT</td>
+<td>🔴 Direkt</td>
+<td>M365-Workflows: Dokumentenfreigabe, Benachrichtigungen mit Patientendaten</td>
+</tr>
+<tr>
+<td><strong>n8n</strong></td>
+<td>DE (Berlin)</td>
+<td>🟢 EU-souverän (self-hosted möglich)</td>
+<td>Open-Source-Automatisierung; self-hosted auf EU-Infrastruktur bevorzugt</td>
+</tr>
+<tr>
+<td><strong>IFTTT</strong></td>
+<td>US (San Francisco)</td>
+<td>🔴 Direkt</td>
+<td>Consumer-Automatisierung, vereinzelt in Praxis-IT</td>
+</tr>
+</tbody>
+</table>
+<p>Das Problem: Integrationsplattformen sind <strong>Datendrehscheiben</strong>. Sie lesen, transformieren und weiterleiten Daten zwischen Systemen — häufig einschließlich Patientendaten, Termindetails, Befunde, Abrechnungsinformationen. Eine Zapier-Automatisierung, die E-Mails mit Befunden an eine GPT-Zusammenfassung weiterleitet, erzeugt eine <strong>doppelte CLOUD-Act-Exposition</strong>: einmal bei Zapier (US), einmal bei OpenAI (US). n8n (self-hosted auf EU-Infrastruktur) + Mistral (self-hosted oder Scaleway) ist die souveräne Alternative für denselben Workflow.</p>
+<h3 id="kernaussage-warum-ki-der-vierte-blinde-fleck-ist">Kernaussage — warum KI der vierte blinde Fleck ist<a class="headerlink" href="#kernaussage-warum-ki-der-vierte-blinde-fleck-ist" title="Permanent link">&para;</a></h3>
+<p>Die ersten drei blinden Flecken (Snowflake, Oracle Health, Qlik Cloud — <a href="#74-was-das-fur-den-gesundheitssektor-bedeutet">§7.4</a>) betreffen klassische Datenhaltung und Analytics. Der vierte blinde Fleck ist gravierender: <strong>KI-Dienste verarbeiten die sensibelsten Daten im Gesundheitswesen — Arzt-Patienten-Gespräche, Diagnosen, Behandlungsverläufe — zwangsläufig im Klartext.</strong> Clientseitige Verschlüsselung, die bei Datenspeichern funktioniert, versagt hier strukturell. Wer eine Transkriptions-KI oder einen Arztbrief-Generator auf Azure OpenAI, Google Gemini oder AWS Bedrock betreibt, übergibt die unverschlüsselten Rohdaten an eine CLOUD-Act-exponierte Infrastruktur.</p>
+<p><strong>Die souveräne Alternative existiert:</strong> Mistral-Modelle (oder vergleichbare Open-Source-LLMs) lassen sich über vLLM auf STACKIT, plusserver oder eigenem GPU-Cluster betreiben — vollständig innerhalb EU-Jurisdiktion, ohne API-Calls an US-Anbieter. Für Sprachtranskription: Whisper (OpenAI, aber Open-Source-Modell, lokal deploybar) auf eigener GPU. Für Integrationsplattformen: n8n (self-hosted, Berlin) statt Zapier. Der Funktionsumfang ist für 80 % der Gesundheits-KI-Anwendungsfälle ausreichend — und wächst mit jeder Mistral/Llama-Generation.</p>
+<h3 id="vier-fallbeispiele-das-spektrum-von-bis">Vier Fallbeispiele — das Spektrum von 🔴 bis 🟢<a class="headerlink" href="#vier-fallbeispiele-das-spektrum-von-bis" title="Permanent link">&para;</a></h3>
+<p>Die Theorie wird greifbar an konkreten Produkten, die heute im deutschen Gesundheitswesen eingesetzt werden oder werden sollen:</p>
+<p><strong>Plaud AI (CN/US) — 🔴 Dreifache Exposition.</strong> Plaud ist ein chinesisches Unternehmen (Shenzhen), das KI-gestützte Aufnahmegeräte für Arzt-Patienten-Gespräche vermarktet. Die Audiodaten werden zur Transkription an AWS US West (Oregon) übertragen und dort über OpenAI Whisper V3 und GPT verarbeitet. Plaud wirbt mit GDPR-Compliance, SOC 2 und HIPAA — verschweigt aber die strukturelle Dreifachexposition: chinesischer Eigentümer (CN-Datengesetze), US-Cloud-Infrastruktur (AWS Oregon, CLOUD Act) und US-KI-Backend (OpenAI). "Zero Data Retention" beim LLM-Provider bedeutet: nicht gespeichert nach Verarbeitung — aber während der Verarbeitung liegt die Stimme des Patienten im Klartext auf US-Servern. Für Gesundheitsdaten nach § 393 SGB V: nicht geeignet.</p>
+<p><strong>Tandem Health (SE) — 🟡 EU-Firma mit US-KI-Backend.</strong> Tandem Health (Stockholm, $50 Mio. Funding) ist ein schwedisches Unternehmen, das KI-gestützte Dokumentation für Kliniken anbietet — aktuell expandierend nach Deutschland (Partnerschaft mit Eterno). Tandem nutzt OpenAI Whisper für Transkription und GPT-4 für Zusammenfassung. Audio wird nach Transkription gelöscht, keine Modeltraining auf Patientendaten (ISO 27001, ISO 13485, GDPR). Alle Daten sollen "ausschließlich in europäischen Rechenzentren" verarbeitet werden. Die offene Frage: Ob die OpenAI-Modelle via Azure OpenAI EU (Microsoft-Jurisdiktion, vgl. <a href="../05-anbieterbewertung/#53-zertifizierungsstandards-im-vergleich">§5.3</a>) oder über die direkte OpenAI-API (US-Server) angebunden sind, ist nicht öffentlich dokumentiert. Im besten Fall (Azure EU): Microsoft-CLOUD-Act-Restrisiko wie bei den KI-Brokern. Im schlechtesten Fall (direkte API): US-Serververarbeitung.</p>
+<p><strong>Doctolib (FR/AWS) — 🟡 Strukturelles Restrisiko trotz Verschlüsselung.</strong> Doctolib (Paris, bereits in <a href="../12-marktbeispiele/#125-eintrittspfad-5-us-konzernubernahmen-und-saas-plattformen">§12.5</a> bewertet) hostet auf AWS Frankfurt und Paris, hat BSI C5 Typ 2 seit 2025 und verschlüsselt Gesundheitsdaten zusätzlich auf Applikationsebene (AES-256, HSM-Schlüsseltrennung über HashiCorp). Ein französisches Gericht wertete dies 2021 als ausreichend. Aber: AWS (NASDAQ: AMZN) unterliegt dem CLOUD Act, HashiCorp (NYSE: HCP) ebenfalls — Serverstandort Frankfurt ändert die Jurisdiktion über den Provider nicht. Die Applikationsverschlüsselung schützt ruhende Daten, aber Doctolibs SaaS-Funktionen (Terminbuchung, Patientenkommunikation, Videosprechstunde) erfordern Klartextverarbeitung im laufenden Betrieb. C5 Typ 2 belegt technische Sicherheit — nicht CLOUD-Act-Immunität.</p>
+<p><strong>Averbis (DE) — 🟡 Souveräne NLP, aber Azure OpenAI für Arztbriefe.</strong> Averbis (Freiburg, Spin-off Universitätsklinikum 2007) bietet zwei Produkte mit fundamental unterschiedlichem Risikoprofil: <strong>Health Discovery</strong> (NLP/Informations-Extraktion) läuft als eigene Engine on-premise im Krankenhaus-Netzwerk — strukturell souverän, keine US-Abhängigkeit. <strong>Medical Summary</strong> (automatische Arztbrief-Generierung) nutzt jedoch <strong>Azure OpenAI in der EU Datazone</strong>, wie das Architekturdiagramm von Averbis selbst zeigt: Patientendaten (PID, Diagnosen, Laborwerte, Medikation) fließen aus dem Krankenhaus-Netzwerk an Azure OpenAI, wo sie "temporär verarbeitet" werden. Das ist exakt das Muster, das <a href="../05-anbieterbewertung/#53-zertifizierungsstandards-im-vergleich">§5.3</a> beschreibt: Azure EU-Region ändert nichts an der Microsoft-Jurisdiktion. CLOUD Act greift über die Unternehmensstruktur, nicht den Serverstandort. Für die reine NLP-Extraktion (Health Discovery on-premise) bleibt Averbis souverän. Für die generative KI-Funktion (Medical Summary) gilt dasselbe Restrisiko wie bei allen Azure-OpenAI-basierten Diensten.</p>
+<table>
+<thead>
+<tr>
+<th>Anbieter</th>
+<th>Sitz</th>
+<th>KI-Backend</th>
+<th>Infrastruktur</th>
+<th>Risiko</th>
+<th>Eignung § 393 Klasse 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plaud AI</strong></td>
+<td>CN (Shenzhen)</td>
+<td>OpenAI Whisper + GPT (US)</td>
+<td>AWS Oregon (US)</td>
+<td>🔴 Dreifach (CN + US-Cloud + US-KI)</td>
+<td>❌ Nicht geeignet</td>
+</tr>
+<tr>
+<td><strong>Tandem Health</strong></td>
+<td>SE (Stockholm)</td>
+<td>OpenAI Whisper + GPT-4</td>
+<td>"EU-Rechenzentren" (Details offen)</td>
+<td>🟡 EU-Firma, aber OpenAI-Abhängigkeit</td>
+<td>⚠️ Nur wenn Azure EU + Risikoakzeptanz</td>
+</tr>
+<tr>
+<td><strong>Recare Voice</strong></td>
+<td>DE (Berlin)</td>
+<td>Nicht offengelegt</td>
+<td>EU (ISO 27001, C5 Typ 2)</td>
+<td>🟡 DE-Firma, EU-Hosting, aber KI-Backend unklar</td>
+<td>⚠️ KI-Modell-Transparenz einfordern</td>
+</tr>
+<tr>
+<td><strong>Doctolib</strong></td>
+<td>FR (Paris)</td>
+<td>Eigene Plattform</td>
+<td>AWS Frankfurt/Paris (C5 Typ 2)</td>
+<td>🟡 FR-Firma auf US-Infra, verschlüsselt</td>
+<td>⚠️ Verschlüsselung reduziert, eliminiert nicht</td>
+</tr>
+<tr>
+<td><strong>myScribe</strong></td>
+<td>DE (Mannheim)</td>
+<td>"Eigenes NLP" laut Website — KI-Backend nicht verifiziert</td>
+<td>KIS-Add-on (HL7-FHIR)</td>
+<td>🟡 DE-Firma, KIS-Integration, aber KI-Modell unklar</td>
+<td>⚠️ KI-Backend vertraglich klären</td>
+</tr>
+<tr>
+<td><strong>Averbis</strong></td>
+<td>DE (Freiburg)</td>
+<td>Health Discovery: eigene NLP; Medical Summary: <strong>Azure OpenAI</strong> (EU Datazone)</td>
+<td>On-Premise NLP + Azure OpenAI extern</td>
+<td>🟡 NLP souverän, aber Arztbrief-KI auf Azure OpenAI</td>
+<td>⚠️ Medical Summary: Microsoft-CLOUD-Act-Risiko</td>
+</tr>
+<tr>
+<td><strong>hAIppokrates (Greenbay)</strong></td>
+<td>DE (Leipzig)</td>
+<td>GPT + Whisper <strong>lokal on-premise</strong></td>
+<td>UKL-eigenes Rechenzentrum</td>
+<td>🟢 Vollständig souverän — kein externer API-Call</td>
+<td>✅ Alle Patientendaten bleiben im Klinikum</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recare Voice — das Transparenzproblem.</strong> Recare Deutschland GmbH (Berlin, €37 Mio. Funding, DNV als größter Anteilseigner) bietet mit Recare Voice KI-gestützte Echtzeit-Dokumentation von Patientengesprächen für über 1.000 Krankenhäuser. Die Plattform ist ISO 27001- und BSI-C5-Typ-2-zertifiziert, verarbeitet Daten in Europa und wirbt mit "Zero Knowledge"-Architektur. Das Problem: <strong>Welches Sprachmodell die Transkription und Zusammenfassung antreibt, ist nicht öffentlich dokumentiert.</strong> Wenn Recare im Backend OpenAI Whisper oder GPT nutzt (direkt oder via Azure), gelten dieselben Vorbehalte wie bei Tandem Health. Wenn ein eigenes oder EU-gehostetes Modell verwendet wird, wäre das Risikoprofil deutlich besser. Für Kliniken, die Recare Voice evaluieren: Die Frage "Welches KI-Modell verarbeitet unsere Patientengespräche, und auf welcher Infrastruktur?" muss vertraglich beantwortet sein — nicht auf der Marketingseite.</p>
+<p><strong>myScribe — KIS-Integration, aber KI-Backend unklar.</strong> myScribe GmbH (Mannheim, gegründet von der Ärztin Ira Stoll am Universitätsklinikum Heidelberg) generiert mehrseitige Arztbriefe aus Visite-Notizen, Laborbefunden, Bildgebung, Diagnosen und Medikation über HL7-FHIR-Schnittstellen zum KIS. Die Website behauptet ein "eigenentwickeltes NLP-Modell" — aber ein Startup mit ~14 Mitarbeitenden, das mehrseitige Fließtext-Arztbriefe in Sekundenbruchteilen generiert, setzt mit hoher Wahrscheinlichkeit ein großes Sprachmodell (GPT, Claude oder vergleichbar) als Backend ein. <strong>Welches Modell die Textgenerierung antreibt und auf welcher Infrastruktur es läuft, ist nicht öffentlich dokumentiert.</strong> Für Kliniken gilt dieselbe Empfehlung wie bei Recare Voice: Das KI-Backend muss vertraglich offengelegt sein, bevor Patientendaten verarbeitet werden. Wenn myScribe im Hintergrund Azure OpenAI nutzt, gelten dieselben Vorbehalte wie bei Averbis Medical Summary.</p>
+<p><strong>hAIppokrates (Greenbay Healthcare, Leipzig) — 🟢 Der Beweis, dass es geht.</strong> hAIppokrates ist ein KI-System für Arztbrief-Generierung und Transkription von Arzt-Patienten-Gesprächen, das <strong>vollständig on-premise im Rechenzentrum des Universitätsklinikums Leipzig (UKL)</strong> betrieben wird. Die Architektur: GPT als Sprachmodell und OpenAI Whisper als Transkriptionsengine laufen lokal auf klinikeigener Hardware — kein API-Call an OpenAI, kein Azure, kein externer Cloud-Dienst. Alle Patientendaten (Diagnosen, Medikation, Gesprächsaufnahmen, Laborwerte) sind dem lokalen Modell verfügbar, verlassen aber zu keinem Zeitpunkt das Krankenhaus-Netzwerk. Das System wurde von der Greenbay Healthcare GmbH (Leipzig) in Zusammenarbeit mit 4K Analytics GmbH und dem UKL entwickelt. Nach einer erfolgreichen Pilotphase mit über 100 Nutzern befindet sich hAIppokrates im Roll-out.</p>
+<p><strong>Warum das wichtig ist:</strong> hAIppokrates widerlegt die verbreitete Annahme, dass generative KI im Gesundheitswesen zwangsläufig US-Cloud-Infrastruktur erfordert. GPT-Modelle und Whisper sind als Open-Source- oder Open-Weight-Modelle verfügbar und lokal deploybar — die Infrastruktur (GPU-Server im eigenen RZ) ist die Investition, nicht die Modellverfügbarkeit. Was das UKL Leipzig vormacht, können andere Kliniken und GKVen nachbauen: <strong>Souveräne generative KI für Gesundheitsdaten ist kein Zukunftsversprechen — sie läuft produktiv in einem deutschen Universitätsklinikum.</strong></p>
+<blockquote>
+<p><strong>Transparenzhinweis:</strong> Greenbay Healthcare GmbH und 4K Analytics GmbH (Herausgeber dieses Dokuments) gehören zum selben Unternehmensverbund. Die Bewertung folgt denselben Kriterien wie bei allen anderen Anbietern: Eigentümerschaft, Infrastruktur-Standort, KI-Backend, Datenfluss. Die On-Premise-Architektur des UKL Leipzig ist durch die IT-Abteilung des UKL verifizierbar.</p>
+<p><strong>Das Muster:</strong> Plaud demonstriert das Worst-Case: CN-Firma sendet Arzt-Patienten-Audio an US-Server und US-KI. Averbis zeigt die <strong>typische Hybridlösung</strong>: eigene NLP souverän, generative KI auf Azure OpenAI. myScribe und Recare Voice zeigen das <strong>Transparenzproblem</strong>: deutsche Firmen, die ihr KI-Backend nicht offenlegen. hAIppokrates am UKL Leipzig zeigt den <strong>souveränen Weg</strong>: GPT und Whisper lokal on-premise, alle Patientendaten im Klinik-Netzwerk, kein US-Cloud-Kontakt. Der Unterschied ist nicht das Modell — sondern wo es läuft.</p>
+</blockquote>
+<h3 id="vibecoding-plattformen-ki-entwicklung-mit-doppelter-bindung">Vibecoding-Plattformen — KI-Entwicklung mit doppelter Bindung<a class="headerlink" href="#vibecoding-plattformen-ki-entwicklung-mit-doppelter-bindung" title="Permanent link">&para;</a></h3>
+<p>Ein wachsender Trend im Gesundheitswesen: Fachabteilungen und IT-Teams nutzen KI-gestützte Entwicklungsplattformen ("Vibecoding"), um interne Tools, Dashboards oder Patientenportale per natürlichsprachigem Prompt zu erstellen — ohne klassische Softwareentwicklung. Das CLOUD-Act-Problem ist hier <strong>doppelt</strong>:</p>
+<p><strong>Erstens — die KI im Hintergrund.</strong> Vibecoding-Plattformen nutzen große Sprachmodelle (typischerweise GPT-4o, Claude oder Gemini) als Code-Generatoren. Jeder Prompt — "Erstelle eine Anwendung, die Patientendaten aus unserem KIS lädt und eine Übersicht nach ICD-10-Diagnosen erstellt" — wird an den KI-Dienst übertragen und dort im Klartext verarbeitet. Die Prompts enthalten Geschäftslogik, Datenstrukturen, API-Schlüssel, und beschreiben im Detail, wie die Organisation Patientendaten verarbeitet. Bei US-KI-Anbietern sind diese Prompts CLOUD-Act-exponiert.</p>
+<p><strong>Zweitens — die Plattform als Laufzeitumgebung.</strong> Der entscheidende Unterschied zu klassischen KI-Assistenten: Vibecoding-Plattformen sind darauf ausgelegt, dass die erstellten Anwendungen <strong>auf der Plattform gehostet bleiben</strong> — nicht exportiert und selbst betrieben werden. Lovable, Bolt, Replit und v0 bieten integrierten Hosting-Service: Die Anwendung wird auf der Plattform entwickelt, getestet und produktiv betrieben. Wenn diese Anwendung Patientendaten verarbeitet, liegen die Daten dauerhaft auf der Plattform-Infrastruktur — und unterliegen der Jurisdiktion des Plattformbetreibers.</p>
+<table>
+<thead>
+<tr>
+<th>Plattform</th>
+<th>Eigentümer</th>
+<th>KI-Backend</th>
+<th>Hosting</th>
+<th>CLOUD-Act-Risiko</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lovable</strong></td>
+<td>SE (Stockholm)</td>
+<td>GPT-4o / Claude (US)</td>
+<td>Plattform-hosted (AWS/Vercel)</td>
+<td>🟡 EU-Eigentümer, aber US-KI + US-Hosting-Infrastruktur</td>
+</tr>
+<tr>
+<td><strong>Bolt.new (StackBlitz)</strong></td>
+<td>US (San Francisco)</td>
+<td>GPT-4o / Claude (US)</td>
+<td>StackBlitz Cloud (US)</td>
+<td>🔴 Direkt — US-Unternehmen, US-KI, US-Hosting</td>
+</tr>
+<tr>
+<td><strong>Replit</strong></td>
+<td>US (San Francisco)</td>
+<td>Eigene + GPT-4o (US)</td>
+<td>Replit Cloud (GCP, US)</td>
+<td>🔴 Direkt — US-Unternehmen auf Google Cloud</td>
+</tr>
+<tr>
+<td><strong>v0 (Vercel)</strong></td>
+<td>US (San Francisco)</td>
+<td>GPT-4o (US)</td>
+<td>Vercel Edge (AWS, US)</td>
+<td>🔴 Direkt — US-Unternehmen, US-Infrastruktur</td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td>US (San Francisco)</td>
+<td>GPT-4o / Claude (US)</td>
+<td>Lokale IDE, aber Prompts an US-KI</td>
+<td>🟠 Code bleibt lokal, Prompts an US-Cloud</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>US (Microsoft/GitHub)</td>
+<td>GPT-4o (US)</td>
+<td>Cloud-basiert (Azure)</td>
+<td>🔴 Direkt — Microsoft-Tochter</td>
+</tr>
+<tr>
+<td><strong>Windsurf (Codeium)</strong></td>
+<td>US (Mountain View)</td>
+<td>Eigene Modelle (US)</td>
+<td>Cloud-basiert</td>
+<td>🔴 Direkt — US-Unternehmen</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Das Muster:</strong> Bei Lovable (schwedischer Eigentümer) entsteht der Eindruck eines EU-Produkts. Aber die KI-Verarbeitung läuft über US-Modelle (OpenAI/Anthropic), und das Hosting der fertigen Anwendungen erfolgt typischerweise auf AWS oder Vercel — beides US-Infrastruktur. Der EU-Eigentümer ändert nichts an der US-Jurisdiktion über die Datenverarbeitung. Bei Bolt, Replit und v0 ist die Kette durchgängig US: US-Unternehmen → US-KI → US-Hosting.</p>
+<p><strong>Warum das im Gesundheitswesen relevant ist:</strong> Der Vibecoding-Trend senkt die Hürde für Fachanwendungen drastisch. Eine GKV-IT-Abteilung kann in Stunden ein internes Analysetool bauen, das Versichertendaten visualisiert. Eine Klinik-Verwaltung erstellt ein Patientenportal per Prompt. Das Problem: Wenn diese Anwendungen auf der Plattform verbleiben und Patientendaten verarbeiten, entsteht eine dauerhafte CLOUD-Act-Exposition, die weder durch C5 noch durch die DSGVO-Einwilligung des Patienten gedeckt ist.</p>
+<p><strong>Base44 (Wix):</strong> Eine Sonderstellung nimmt Base44 ein — ein Vibecoding-Tool, das 2025 von Wix (NASDAQ: WIX, Israel/US) übernommen wurde. Base44 wählt automatisch zwischen Claude Sonnet und Gemini 2.5 Pro, bietet integriertes Hosting mit Datenbank und Authentifizierung. Die gesamte Anwendung verbleibt auf der Plattform. Da Wix an der NASDAQ gelistet und US-kontrolliert ist, gilt für Base44-gehostete Anwendungen mit Patientendaten dasselbe Risiko wie für andere US-Plattformen — unabhängig davon, wo die Server stehen.</p>
+<p><strong>Die souveräne Alternative:</strong> Für die Entwicklungsphase können Open-Source-KI-Assistenten (Mistral Codestral, StarCoder, lokal via Continue.dev oder Tabby) auf eigener Infrastruktur genutzt werden. Entscheidend ist die Trennung: KI-gestütztes Entwickeln auf EU-Infrastruktur, Hosting der fertigen Anwendung auf EU-Infrastruktur (STACKIT, plusserver, eigenes RZ). Die Plattform-Bequemlichkeit von Lovable oder Replit geht verloren — aber die Datenhoheit bleibt gewahrt. Für unkritische Anwendungen ohne Patientendaten (interne Dashboards, öffentliche Informationsseiten) ist das Risiko geringer, aber auch hier sollte die Plattformwahl dokumentiert werden.</p>
+<h3 id="ki-broker-das-dsgvo-versprechen-und-seine-grenzen">KI-Broker — das DSGVO-Versprechen und seine Grenzen<a class="headerlink" href="#ki-broker-das-dsgvo-versprechen-und-seine-grenzen" title="Permanent link">&para;</a></h3>
+<p>Ein wachsender Markt deutscher und europäischer Anbieter verspricht "DSGVO-konforme KI" für Unternehmen: sogenannte KI-Broker oder KI-Gateways, die als Zwischenschicht zwischen der Organisation und den großen Sprachmodellen (OpenAI, Claude, Gemini) fungieren. Das Versprechen klingt überzeugend: <strong>EU-gehostet, ISO 27001-zertifiziert, DSGVO-konform — und trotzdem GPT-4o, Claude und Gemini nutzen.</strong> Für den Gesundheitssektor ist dieses Versprechen kritisch zu hinterfragen.</p>
+<p><strong>Das Grundproblem:</strong> Ein KI-Broker kann die eigene Plattform DSGVO-konform betreiben — Nutzerauthentifizierung, Audit-Logs, Datenverarbeitung in der EU. Aber wenn der Prompt mit Patientendaten an ein US-Sprachmodell weitergeleitet wird, verlässt er die EU-Jurisdiktion — zumindest für die Dauer der Verarbeitung. Die Optionen der Broker:</p>
+<ol>
+<li><strong>Direkte OpenAI-API (US-Server):</strong> Prompt geht an OpenAI in den USA. "Zero Data Retention" (OpenAI speichert nichts nach Verarbeitung) — aber während der Verarbeitung liegen die Daten im Klartext auf US-Infrastruktur und sind CLOUD-Act-exponiert.</li>
+<li><strong>Azure OpenAI (EU-Region, z.B. Schweden/Frankfurt):</strong> Prompt bleibt physisch in der EU, aber Azure ist ein Microsoft-Dienst (MSFT) — CLOUD Act greift über die Unternehmensstruktur, nicht den Serverstandort (vgl. <a href="../01-das-kernproblem/#11-die-regelungslucke-zwischen-it-sicherheit-und-jurisdiktion">§1.1</a>).</li>
+<li><strong>Self-hosted Modelle (Mistral, Llama):</strong> Kein US-Anbieter involviert — die einzige Option ohne CLOUD-Act-Exposition. Aber nicht alle Broker bieten das an, und die Modellqualität ist für manche Anwendungsfälle noch eingeschränkt.</li>
+</ol>
+<p>Die meisten KI-Broker nutzen Option 1 oder 2 — und kommunizieren das als "DSGVO-konform", weil sie einen Auftragsverarbeitungsvertrag (AVV) mit OpenAI/Microsoft haben und das DPF als Rechtsgrundlage anführen. Für den Gesundheitssektor ist das aus denselben Gründen unzureichend, die <a href="../01-das-kernproblem/#12-warum-es-trotzdem-passiert-sieben-realitatsgrunde">§1.2</a> und <a href="../09-rechtliche-abkommen-zwischen-eu-und-usa/">§9</a> dokumentieren: Das DPF ist anfechtbar (Schrems III), der AVV schützt nicht vor CLOUD-Act-Herausgabepflichten, und "Zero Data Retention" bedeutet "nicht gespeichert" — nicht "nicht verarbeitet".</p>
+<table>
+<thead>
+<tr>
+<th>KI-Broker / Gateway</th>
+<th>Sitz</th>
+<th>KI-Backend</th>
+<th>Hosting</th>
+<th>CLOUD-Act-Risiko des KI-Backends</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Langdock</strong></td>
+<td>DE (Berlin)</td>
+<td>OpenAI, Claude, Mistral, Aleph Alpha</td>
+<td>EU (ISO 27001, SOC 2)</td>
+<td>🟡 EU-Plattform, aber Prompts an US-Modelle (je nach Konfiguration)</td>
+</tr>
+<tr>
+<td><strong>DeutschlandGPT</strong></td>
+<td>DE (Berlin)</td>
+<td>GPT-4o, Claude, Gemini, Mistral, Llama</td>
+<td>Open Telekom Cloud (DE, C5)</td>
+<td>🟡 DE-Hosting, aber GPT/Claude-Prompts via Azure/API an US-Modelle</td>
+</tr>
+<tr>
+<td><strong>meinGPT</strong></td>
+<td>DE</td>
+<td>OpenAI (Azure EU), Claude, Mistral</td>
+<td>DE-hosted</td>
+<td>🟡 Azure OpenAI EU = Microsoft-Jurisdiktion</td>
+</tr>
+<tr>
+<td><strong>Plotdesk</strong></td>
+<td>DE</td>
+<td>GPT-4o via Azure OpenAI (EU)</td>
+<td>EU</td>
+<td>🟡 Explizit Azure OpenAI — Microsoft-CLOUD-Act-Risiko bleibt</td>
+</tr>
+<tr>
+<td><strong>Omnifact</strong></td>
+<td>DE</td>
+<td>Diverse; Privacy Filter™ maskiert Daten vor KI-Übergabe</td>
+<td>EU</td>
+<td>🟡 Maskierung reduziert Exposition, löst Grundproblem nicht (s.u.)</td>
+</tr>
+<tr>
+<td><strong>Neuroflash</strong></td>
+<td>DE (Hamburg)</td>
+<td>GPT-4o, eigene Modelle</td>
+<td>EU</td>
+<td>🟡 OpenAI-Abhängigkeit für Kernfunktionen</td>
+</tr>
+<tr>
+<td><strong>kamium</strong></td>
+<td>DE</td>
+<td>ChatGPT, Gemini, Claude, Perplexity</td>
+<td>Eigener Azure-Tenant (EU)</td>
+<td>🟡 Azure = Microsoft-Jurisdiktion</td>
+</tr>
+<tr>
+<td><strong>Dust.tt</strong></td>
+<td>FR (Paris)</td>
+<td>OpenAI, Claude, Mistral, Gemini</td>
+<td>EU/US (wählbar, SOC 2)</td>
+<td>🟡 EU-Hosting wählbar, aber US-Modelle verarbeiten Prompts</td>
+</tr>
+<tr>
+<td><strong>nexos.ai</strong></td>
+<td>LT (Vilnius)</td>
+<td>200+ Modelle (OpenAI, Claude, Mistral…)</td>
+<td>EU (ISO 27001, SOC 2)</td>
+<td>🟡 EU-Gateway, US-Modelle im Backend</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Omnifact-Sonderfall — und warum Maskierung kein Souveränitätsersatz ist:</strong> Omnifact bietet als einziger Broker in dieser Übersicht einen "Privacy Filter", der sensible Daten (Namen, Diagnosen, Versichertennummern) <strong>vor</strong> der Übergabe an das KI-Modell maskiert. Die Rücktransformation erfolgt lokal. Das klingt nach Lösung — bei genauerer Analyse bleiben jedoch fünf strukturelle Probleme:</p>
+<ol>
+<li><strong>Kontextuelle Re-Identifizierbarkeit.</strong> Medizinische Daten sind strukturell identifizierend. "43-jährige Patientin, bilaterale Mastektomie 2024, BRCA1-positiv, Olaparib-Therapie" ist auch ohne Namen einem überschaubaren Personenkreis zuordenbar — insbesondere in Kombination mit Zeitstempel, behandelnder Einrichtung oder Diagnosesequenz. Je seltener die Erkrankung, desto geringer die Anonymisierungswirkung.</li>
+<li><strong>Maskierungslücken.</strong> Kein regelbasierter oder KI-gestützter Filter erkennt alle sensiblen Informationen zuverlässig. Medizinischer Freitext enthält unstrukturierte Angaben, Abkürzungen, kontextabhängige Sensitivität ("Ehemann positiv getestet" ist ohne medizinischen Kontext harmlos, im HIV-Kontext hochsensibel). Wenn der Filter eine Information übersieht, gehen ungeschützte Patientendaten an das US-Modell.</li>
+<li><strong>Funktionale Grenze.</strong> Ein Arztbrief-Generator, der den klinischen Kontext benötigt, funktioniert mit maskierten Daten nur eingeschränkt oder gar nicht. "Patient [MASKIERT], Diagnose [MASKIERT], Therapie [MASKIERT]" kann kein Modell zu einem sinnvollen Arztbrief verarbeiten. Je aggressiver die Maskierung, desto nutzloser die KI-Ausgabe — je weniger maskiert wird, desto größer die Exposition.</li>
+<li><strong>Wer führt die Maskierung durch?</strong> Wenn der Privacy Filter selbst ein KI-Modell nutzt, um sensible Daten zu erkennen, sieht dieses Modell die vollständigen Rohdaten. Die Frage verschiebt sich nur: Auf welcher Infrastruktur und bei welchem Anbieter läuft der Maskierungsfilter?</li>
+<li><strong>Pseudonymisierung ≠ Anonymisierung.</strong> Maskierte Daten sind pseudonymisiert, nicht anonymisiert im DSGVO-Sinne (Art. 4 Nr. 5). Pseudonymisierte Daten bleiben personenbezogene Daten — mit allen DSGVO-Pflichten inklusive Art. 48. Die CLOUD-Act-Exposition wird reduziert, nicht eliminiert.</li>
+</ol>
+<p>Omnifacts Ansatz ist der beste unter den Brokern — aber "besser als die anderen" ist nicht dasselbe wie "ausreichend für Gesundheitsdaten". Für unkritische Workloads (Klasse 2–3) ist Maskierung ein pragmatischer Teilschutz. Für Klasse-1-Daten (ePA, Diagnosen, Medikation) bleibt das Urteil: Nur vollständig EU-gehostete Modelle ohne US-Anbieter-Beteiligung bieten strukturellen Schutz.</p>
+<p><strong>Kernaussage für den Gesundheitssektor:</strong> "DSGVO-konformer KI-Broker" ist kein Souveränitätsnachweis. Ein Broker kann DSGVO-konform betrieben werden und gleichzeitig Patientendaten an CLOUD-Act-exponierte Infrastruktur weiterleiten. Für Gesundheitsdaten nach § 393 SGB V Klasse 1 (ePA, Diagnosedaten, Medikation) gilt: Nur KI-Modelle, die vollständig auf EU-Infrastruktur ohne US-Anbieter-Beteiligung laufen (Mistral self-hosted, Aleph Alpha auf STACKIT/IONOS, OpenEuroLLM auf EuroHPC), bieten strukturellen CLOUD-Act-Schutz. KI-Broker mit US-Backend-Modellen sind für unkritische Workloads (Klasse 2–3) akzeptabel — für Patientendaten nicht.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/bdegenkolbe/Wolkenklar" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "toc.integrate", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

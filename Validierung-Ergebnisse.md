@@ -42,6 +42,20 @@ Keine.
 - Neue Version: 14.0
 - Quellen: 173 → 184
 
+### Nachbesserung (Recherche-Ergebnisse)
+
+Drei gezielte Ergänzungen nach Abschluss der Hintergrundrecherche:
+1. SecNumCloud-Eigentümerschaftscaps präzisiert: 24% individuell, 39% kollektiv, kein Vetorecht/Vorstandsmehrheit für Nicht-EU
+2. BSI C5:2025 Souveränitätskriterien als separates Dokument geplant; BSI-AWS-Kooperation als Kontrastpunkt zu ANSSI
+3. Deutschland hat EUCS-Position gewechselt (anfangs unterstützend, dann unter Industriedruck umgeschwenkt)
+4. Neuer Absatz "Ansätze zur Konvergenz": Deutsch-Französischer Souveränitätsgipfel Nov. 2025, CSA-Überarbeitung
+5. Drei weitere Quellen [185]–[187] nachgetragen (BSI-AWS, C5:2025 Draft, Élysée-Gipfel)
+
+Nachprüfung: validate.py ✅ (0 Fehler, 187 Quellen), red_thread.py ✅ (0 Fehler, 9 Warnungen)
+Export: PDF ✅, DOCX ✅ (142 KB)
+
+Endgültiger Stand: Version 14.0, 187 Quellen.
+
 ---
 
 ## Validierung 09.04.2026 — Version 13.0 (Re-Validierung + Export)

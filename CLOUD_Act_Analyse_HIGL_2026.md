@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 12.0 — April 2026 · 161 Quellen · 18 Kapitel  
+**Version:** 13.0 — April 2026 · 161 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -128,7 +128,7 @@ Big Tech gibt 19-mal mehr für EU-Lobbyarbeit aus als die Automobilindustrie. 89
 
 ### 1.3 Die Telematikinfrastruktur — souverän in der Governance, exponiert im Betrieb
 
-Die Telematikinfrastruktur (TI) ist das digitale Nervensystem des deutschen Gesundheitswesens: Sie verbindet alle Leistungserbringer in einem gemeinsamen Sicherheitsnetz und transportiert ePA, E-Rezept, elektronische Arbeitsunfähigkeitsbescheinigung (eAU) und Versichertenstammdaten. Die gematik GmbH, die die TI reguliert und weiterentwickelt, steht zu 51 Prozent im Eigentum des Bundesministeriums für Gesundheit — sie ist keine US-Gesellschaft und unterliegt keiner US-Jurisdiktion. Soweit zur guten Nachricht.
+Die Telematikinfrastruktur (TI) ist das digitale Nervensystem des deutschen Gesundheitswesens: Sie verbindet alle Leistungserbringer in einem gemeinsamen Sicherheitsnetz und transportiert ePA (elektronische Patientenakte), E-Rezept, elektronische Arbeitsunfähigkeitsbescheinigung (eAU) und Versichertenstammdaten. Die gematik GmbH, die die TI reguliert und weiterentwickelt, steht zu 51 Prozent im Eigentum des Bundesministeriums für Gesundheit — sie ist keine US-Gesellschaft und unterliegt keiner US-Jurisdiktion. Soweit zur guten Nachricht.
 
 Die schlechte: Im operativen Betrieb der TI sind US-Unternehmen tief verankert.
 
@@ -150,7 +150,6 @@ Die schlechte: Im operativen Betrieb der TI sind US-Unternehmen tief verankert.
 | TI-Gateway-Betreiber (TI 2.0) | Noch offen | 🟡 Regulatorisch ungeklärt |
 
 **Fazit:** Die TI ist kein US-Cloud-Problem im klassischen Sinne — ihre Governance und Verschlüsselung sind konzeptionell souverän. Aber IBM als CLOUD-Act-exponierter Betreiber von Rezeptserver und Identity Provider ist eine strukturelle Schwachstelle, die in der öffentlichen Debatte kaum thematisiert wird.
-
 
 ---
 
@@ -411,7 +410,9 @@ Die Tabelle in 5.4 zeigt die Risikoeinstufung — dieser Abschnitt erklärt für
 
 - **Konstellation A:** US-Mutter → EU-Tochter. Herausgabepflicht direkt durchsetzbar, kein Widerspruch möglich.
 - **Konstellation B:** EU-Mutter → US-Tochter. EU-Mutter kann widersprechen, aber US-Tochter ist Druckmittel.
-- **Konstellation C:** Schwestergesellschaften ohne direkten Konzernverbund. Juristisch unklar, praktisch geringes Risiko wenn STACKIT bewusst auf US-Expansion verzichtet.
+- **Konstellation C:** Schwestergesellschaften oder Konzernhebel über ein anderes Geschäftsfeld. Juristisch unklar, praktisch geringes Risiko wenn kein operativer Datenzugriff besteht.
+
+> **Hinweis Konstellationen ↔ Risikotypen (§5.4):** Die juristischen Konstellationen (A/B/C aus Kapitel 2) beschreiben die *Rechtsbeziehung* zwischen EU- und US-Entität. Die Risikotypen in der Tabelle §5.4 fassen die daraus resultierenden *praktischen Risiken* zusammen: Typ A-direkt = Konstellation A, Typ A-indirekt = Konstellation B, Typ B = kein Konstellation-Äquivalent (reine Technologieabhängigkeit), Typ C = Konstellation C.
 
 #### Hetzner — eigene US-Tochter als Druckmittel (Konstellation B)
 
@@ -441,7 +442,7 @@ Der CLOUD Act gilt für den US-Provider (AWS, Microsoft) — nicht für Arvato s
 
 Deutsche Telekom AG (Bonn, DAX: DTE) ist ein deutsches Unternehmen — die NYSE-Notierung DTEGY ist ein American Depositary Receipt (ADR), kein primäres US-Listing. Die entscheidende US-Verbindung ist T-Mobile US Inc., eine börsennotierte US-Mobilfunktochtergesellschaft, an der Deutsche Telekom rund 48 % hält.
 
-**Warum das weniger riskant ist als zunächst sichtbar:** T-Mobile US ist ein Telekommunikationsunternehmen. Es betreibt keine Cloud-Infrastruktur, hat keinen Zugriff auf Daten der Open Telekom Cloud und teilt keine IT-Systeme mit T-Systems (dem OTC-Betreiber). T-Mobile US und T-Systems sind Schwestergesellschaften unter demselben Konzernmutter — operativ vollständig getrennt.
+**Warum das weniger riskant ist als zunächst sichtbar:** T-Mobile US ist ein Telekommunikationsunternehmen. Es betreibt keine Cloud-Infrastruktur, hat keinen Zugriff auf Daten der Open Telekom Cloud und teilt keine IT-Systeme mit T-Systems (dem OTC-Betreiber). T-Mobile US und T-Systems sind Schwestergesellschaften unter derselben Konzernmutter — operativ vollständig getrennt.
 
 **Die CLOUD-Act-Mechanik in dieser Konstellation:** US-Behörden könnten T-Mobile US nutzen, um Druck auf Deutsche Telekom AG auszuüben — und Deutsche Telekom AG könnte theoretisch zur Herausgabe von T-Systems/OTC-Daten angehalten werden, weil sie als Konzernmutter Kontrolle über T-Systems ausübt. Aber dieser Weg ist lang: (1) CLOUD-Act-Beschluss gegen T-Mobile US, (2) Übertragung auf Deutsche Telekom AG als Mutter, (3) Verpflichtung Deutsche Telekoms zur Weitergabe von T-Systems-Daten — gegen ausdrückliches DSGVO-Widerspruchsrecht. Kein direkter Datenzugriff, keine geteilte Infrastruktur.
 
@@ -528,7 +529,7 @@ Das übergeordnete Muster: 25 CEOs europäischer Cloud-Anbieter warnten in einem
 
 ### 5.8 Vollständige Zertifizierungsmatrix
 
-| Anbieter | BSI C5 | SecNumCloud | ISO 27001 | HDS | CLOUD Act | §393 SGB V |
+| Anbieter | BSI C5 | SecNumCloud | ISO 27001 | HDS | CLOUD Act | § 393 SGB V |
 |---|---|---|---|---|---|---|
 | Oracle Cerner / OCI | — | — | — | — | 🔴 Direkt | ❌ KIS-Migration kritisch prüfen |
 | Microsoft Azure | ✅ | — | ✅ | — | 🔴 Direkt | ❌ Nicht geeignet |
@@ -556,7 +557,7 @@ Das übergeordnete Muster: 25 CEOs europäischer Cloud-Anbieter warnten in einem
 
 > Vollständige Entscheidungsmatrix mit Workload-Zuordnung, AVV-Klauseln und Migrationsstrategie: **Kapitel 16** (Handlungsempfehlungen).
 
-**Tier 1 — ePA / KRITIS / §393 Klasse 1:** plusserver · EWERK Leipzig · 3DS Outscale · Cloud Temple
+**Tier 1 — ePA / KRITIS / § 393 Klasse 1:** plusserver · EWERK Leipzig · 3DS Outscale · Cloud Temple
 
 **Tier 2 — Regulierte Enterprise-Workloads / Microsoft-Migration:** STACKIT · Open Telekom Cloud (C — Konzernhebel) · Delos Cloud (+15%) · OVHcloud SNC-Tier · Scaleway (GPU/KI)
 
@@ -689,7 +690,7 @@ Echtes Hyperscaling hat drei Dimensionen:
 | **STACKIT** | 4 operative RZ (DE+AT), Lübbenau ab 2027 | Heute: ~15.000–25.000 (Schätzung) · Lübbenau ab 2027: **bis zu 100.000 GPUs**, 200 MW — Ausbau der Schwarz-Gruppe-Rechenleistung auf das **7-fache** | Heute: k.A. · **Ab 2027: bis zu 100.000 GPUs** | **11 Mrd. EUR** bis 2027 | ~40–60 Services |
 | **Hetzner** | 5 Standorte (DE/FI/US) | ~100.000 | k.A. (RTX-Pro-6000-Angebot, kein H100-Training) | — | ~20 Services |
 | **plusserver** | 4 DE-Standorte | ~20.000 | k.A. (kein GPU-Cloud-Angebot) | — | ~15 Services |
-| **Arvato Systems** | 3 eigene RZ Gütersloh + Colocation | k.A. | Nicht-Cloud-Betreiber — MSP auf Azure/AWS/GCP | — | MSP-Modell |
+| **Arvato Systems** | 3 eigene RZ Gütersloh + Colocation | k.A. | Nicht-Cloud-Betreiber — MSP (Managed Service Provider) auf Azure/AWS/GCP | — | MSP-Modell |
 
 **Warum Meta und xAI in der Tabelle stehen — obwohl sie keine Cloud-Anbieter sind:**
 Meta und xAI kaufen GPU-Kapazitäten in einer Größenordnung, die den gesamten europäischen Cloud-Markt in den Schatten stellt — und sie tun das ausschließlich für eigene KI-Modelle. Ende 2024 hatte Meta ein Portfolio mit einer Rechenleistung entsprechend fast 600.000 H100-Äquivalenten. xAI brachte den Colossus-Cluster mit 100.000 H100-GPUs in Memphis in 122 Tagen online. Diese Zahlen zeigen: STACKIT mit seinen geplanten 100.000 GPUs in Lübbenau ist für Europa ein Meilenstein — im globalen KI-Wettrüsten aber lediglich Aufholen.
@@ -737,7 +738,7 @@ Die folgende Tabelle bewertet ausschließlich Services, die für GKVen, KVen und
 
 > **Snowflake-Hinweis:** Snowflake Inc. (NYSE: SNOW) ist ein US-Unternehmen mit Hauptsitz in Bozeman/Montana und unterliegt direkt dem CLOUD Act. Daten in Snowflake-EU-Regionen (Frankfurt) sind strukturell nicht geschützt. Für GKV-Scoring-Daten und Morbi-RSA-Analysen: DuckDB on-premise oder ClickHouse auf STACKIT/plusserver sind produktionsreife Alternativen.
 
-> **Qlik Cloud — C5 ≠ CLOUD-Act-Schutz:** Qlik (Hauptsitz King of Prussia, Pennsylvania, US) ist ein US-Unternehmen und unterliegt dem CLOUD Act als Kategorie A — unabhängig von Zertifizierungen. Ein C5-Testat, sofern Qlik Cloud eines erworben hat oder anstrebt, bescheinigt lediglich Informationssicherheit nach BSI-Mindestanforderungen — es schützt **nicht** gegen US-Behördenzugriff. Das ist die Kernaussage von Kapitel 5.3: "C5 belegt technische Sicherheit — nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver hat C5 und unterliegt ihm strukturell nicht." Dasselbe gilt für Qlik Cloud. Ein C5-Testat als Eingangsbedingung nach §393 SGB V für Patientendaten löst den CLOUD-Act-Konflikt nicht — es verschleiert ihn. Für GKV-Analytics und Versorgungssteuerungsdaten mit Patientenbezug: Qlik on-premise (selbst betriebene Instanz ohne US-Cloud-Verbindung) oder EU-souveräne BI-Alternativen (Metabase, Apache Superset, Grafana) auf STACKIT/plusserver.
+> **Qlik Cloud — C5 ≠ CLOUD-Act-Schutz:** Qlik (Hauptsitz King of Prussia, Pennsylvania, US) ist ein US-Unternehmen und unterliegt dem CLOUD Act als Kategorie A — unabhängig von Zertifizierungen. Ein C5-Testat, sofern Qlik Cloud eines erworben hat oder anstrebt, bescheinigt lediglich Informationssicherheit nach BSI-Mindestanforderungen — es schützt **nicht** gegen US-Behördenzugriff. Das ist die Kernaussage von Kapitel 5.3: "C5 belegt technische Sicherheit — nicht rechtliche Souveränität. Azure hat C5 und unterliegt dem CLOUD Act. plusserver hat C5 und unterliegt ihm strukturell nicht." Dasselbe gilt für Qlik Cloud. Ein C5-Testat als Eingangsbedingung nach § 393 SGB V für Patientendaten löst den CLOUD-Act-Konflikt nicht — es verschleiert ihn. Für GKV-Analytics und Versorgungssteuerungsdaten mit Patientenbezug: Qlik on-premise (selbst betriebene Instanz ohne US-Cloud-Verbindung) oder EU-souveräne BI-Alternativen (Metabase, Apache Superset, Grafana) auf STACKIT/plusserver.
 
 #### C — KI & Analytik (zunehmend kritisch für GKV-Versorgungsmanagement)
 
@@ -745,7 +746,7 @@ Die folgende Tabelle bewertet ausschließlich Services, die für GKVen, KVen und
 |---|---|---|---|
 | **LLM-Inferenz / generative KI** | Azure OpenAI / AWS Bedrock (GPT-4, Claude) | S3NS (Google Vertex AI ab H2 2026) | ✅ vLLM + Mistral (lokal / STACKIT / Scaleway) |
 | **Mistral AI direkt** | Mistral API (FR-Unternehmen, aber API-Infrastruktur prüfen) | — | ✅ Mistral-Modelle self-hosted via vLLM (bevorzugt) |
-| **BI / Dashboarding** | Power BI / Microsoft Fabric (MSFT) · **Qlik Cloud (US, NYSE: QLIK)** | Delos Cloud (Power BI) | ✅ Metabase, Apache Superset, Grafana |
+| **BI / Dashboarding** | Power BI / Microsoft Fabric (MSFT) · **Qlik Cloud (US, Thoma Bravo — privat)** | Delos Cloud (Power BI) | ✅ Metabase, Apache Superset, Grafana |
 | **ML-Plattform / MLOps** | Azure ML, AWS SageMaker | — | ⚠️ MLflow + Kubernetes (selbst-gehostet) |
 | **Vektordatenbank (RAG)** | Azure AI Search, Pinecone (US) | — | ✅ Qdrant (DE), Weaviate (NL), Chroma (self-hosted) |
 | **Embedding-Modelle** | OpenAI text-embedding, AWS Titan | — | ✅ Sentence-Transformers lokal, Mistral Embed |
@@ -786,7 +787,6 @@ Keine GKV mit 5 Millionen Versicherten braucht 3,5 Millionen Server. STACKIT ist
 3. **Qlik Cloud** für GKV-BI und Versorgungssteuerung — US-Unternehmen (PA, Thoma Bravo), Kategorie A; Qlik Cloud läuft auf AWS und hat EU-Regionen in Frankfurt, Irland, Paris, London und Mailand — die Frankfurt-Region ändert die US-Jurisdiktion nicht; BSI C5 ist erst für Q1 2026 geplant (noch nicht zertifiziert), schützt ohnehin nicht gegen CLOUD Act
 
 Beide werden in der Praxis kaum als CLOUD-Act-Risiko diskutiert — obwohl sie tägliche Kernsysteme für Gesundheitsdaten betreiben.
-
 
 ---
 
@@ -894,7 +894,6 @@ Ein Abkommen, das den EuGH überlebt, müsste richterliche Einzelfallprüfung, V
 Selbst wenn ein Executive Agreement 2026/2027 zustande käme: FISA § 702 bliebe unangetastet, Massenüberwachung wäre weiter möglich, der EuGH könnte es kippen (Schrems III), und für Gesundheitsdaten der höchsten Schutzklasse wäre es nicht ausreichend.
 
 Das DPF und ein mögliches Executive Agreement sind Ergänzungen — kein Ersatz für EU-souveräne Infrastruktur. Wer sieben Jahre auf ein Abkommen gewartet hat, das nicht kommt, sollte aufgehört haben zu warten.
-
 
 ---
 
@@ -1106,7 +1105,6 @@ Azure ist damit nicht als Option formuliert, sondern als gegebene, bereits beste
 **CLOUD-Act-Bewertung:** Microsoft (NYSE: MSFT) ist CLOUD-Act-Kategorie A — direkte US-Exposition. Die Azure-Infrastruktur der KVNO verarbeitet Honorardaten, die implizit Diagnose- und Leistungsinformationen zu Arzt-Patienten-Beziehungen enthalten. C5 und DSGVO-Konformität adressieren technische Sicherheit und datenschutzrechtliche Verarbeitung — nicht die Frage, ob US-Behörden auf die Infrastruktur zugreifen könnten. Das ist das strukturelle Problem: Die KVNO kauft C5-konformen Betrieb ein, aber C5 ≠ CLOUD-Act-Immunität (→ Kapitel 5.3).
 
 **Das strukturelle KV-Muster:** Als Körperschaften des öffentlichen Rechts sind KVen EU-ausschreibungspflichtig. Vergabekriterien wie "2 vergleichbare Referenzprojekte mit Cloud-PaaS auf Azure" schreiben Microsoft strukturell fest — nicht durch bösen Willen, sondern weil Azure der de-facto-Standard ist, gegen den Referenzen gemessen werden. Ein Umstieg würde einen aktiven Beschluss erfordern, Azure als Referenzplattform zu ersetzen.
-
 
 ---
 
@@ -1348,7 +1346,6 @@ Alle Regionen der Welt stehen vor demselben Problem: Wer Daten bei einem US-Unte
 - Afrika erzeugt 18% der Weltbevölkerung, aber weniger als 4% der globalen KI-Trainingsdaten
 - Strategischer Ausweg: Shared Digital Infrastructure — regionale RZ-Pools statt Einzelkämpfer je Land
 
-
 ### 15.10 Das globale Muster — ein Satz je Region
 
 - **China & Russland:** Souverän — aber wegen staatlicher Kontrolle, nicht Datenschutz. Kein Modell für Europa.
@@ -1434,19 +1431,19 @@ Geeignet für: Keine personenbezogenen Gesundheitsdaten, keine regulierten Daten
 
 | Workload | Schutzklasse | Empfohlene Stufe | Konkrete Anbieter / Software |
 |---|---|---|---|
-| ePA-Kerndaten, Diagnosen, Medikation | KRITIS / §393 Klasse 1 | **Stufe 1** | plusserver, EWERK Leipzig |
-| GKV-Kernabrechnungssysteme | KRITIS / §393 Klasse 1 | **Stufe 1** | plusserver, STACKIT |
-| Klinik-KIS, psychiatr. Daten | KRITIS / §393 Klasse 1 | **Stufe 1–2** | plusserver oder Delos Cloud |
-| **E-Mail (intern, mit Patientenbezug)** | §393 Klasse 1–2 | **Stufe 1** | Open-Xchange + Thunderbird auf plusserver/STACKIT |
+| ePA-Kerndaten, Diagnosen, Medikation | KRITIS / § 393 Klasse 1 | **Stufe 1** | plusserver, EWERK Leipzig |
+| GKV-Kernabrechnungssysteme | KRITIS / § 393 Klasse 1 | **Stufe 1** | plusserver, STACKIT |
+| Klinik-KIS, psychiatr. Daten | KRITIS / § 393 Klasse 1 | **Stufe 1–2** | plusserver oder Delos Cloud |
+| **E-Mail (intern, mit Patientenbezug)** | § 393 Klasse 1–2 | **Stufe 1** | Open-Xchange + Thunderbird auf plusserver/STACKIT |
 | **E-Mail (allgemein, kein Patientenbezug)** | Klasse 2 | **Stufe 1–2** | Open-Xchange auf EU-Cloud oder Delos |
-| **Office-Suite, Dokumente** | §393 Klasse 2 | **Stufe 1** | Euro-Office / Nextcloud Hub / Office.eu |
-| **SharePoint / Dokumentenmanagement** | §393 Klasse 1–2 | **Stufe 1** | Nextcloud, OpenCloud, GoFAST auf plusserver/STACKIT |
-| **Microsoft 365 (tief integriert, nicht migrierbar)** | §393 Klasse 2 | **Stufe 2** | Delos Cloud (Azure-Basis, BSI CPR, +15%) |
+| **Office-Suite, Dokumente** | § 393 Klasse 2 | **Stufe 1** | Euro-Office / Nextcloud Hub / Office.eu |
+| **SharePoint / Dokumentenmanagement** | § 393 Klasse 1–2 | **Stufe 1** | Nextcloud, OpenCloud, GoFAST auf plusserver/STACKIT |
+| **Microsoft 365 (tief integriert, nicht migrierbar)** | § 393 Klasse 2 | **Stufe 2** | Delos Cloud (Azure-Basis, BSI CPR, +15%) |
 | **Videokonferenz intern** | Klasse 2 | **Stufe 1** | Jitsi / OpenTalk auf EU-Cloud |
 | **Identity / Active Directory** | Klasse 1 | **Stufe 1** | Keycloak / Univention Corporate Server |
-| KI-Diagnostik (LLM-Inferenz auf Patientendaten) | §393 Klasse 1 | **Stufe 1** | vLLM + Mistral on-premise / STACKIT |
-| Analytics / BI auf GKV-Daten | §393 Klasse 2 | **Stufe 1–2** | Metabase/Superset auf STACKIT, OVHcloud SNC |
-| Telemedizin-Plattform | §393 Klasse 2 | **Stufe 1–2** | STACKIT, plusserver |
+| KI-Diagnostik (LLM-Inferenz auf Patientendaten) | § 393 Klasse 1 | **Stufe 1** | vLLM + Mistral on-premise / STACKIT |
+| Analytics / BI auf GKV-Daten | § 393 Klasse 2 | **Stufe 1–2** | Metabase/Superset auf STACKIT, OVHcloud SNC |
+| Telemedizin-Plattform | § 393 Klasse 2 | **Stufe 1–2** | STACKIT, plusserver |
 | Dev/Test-Umgebungen | Klasse 3 | **Stufe 3–4** | Hetzner, IONOS |
 | Öffentliche Webpräsenz | Klasse 3 | **Stufe 4** | Beliebig |
 
@@ -1528,7 +1525,6 @@ Für GKVen und Kliniken gilt: Ein Anbieterwechsel für Kernsysteme dauert 6 bis 
 ### 16.7 Verschlüsselung — wo HYOK hilft und wo nicht
 
 Clientseitige Verschlüsselung mit eigener Schlüsselhoheit (HYOK — Hold Your Own Key) schützt strukturell vor CLOUD-Act-Zugriff, aber nur bei ruhenden Daten: Archivdaten, Backups, Objektspeicher, File-Storage. Für Daten, die der Anbieter verarbeiten muss — Microsoft 365, E-Mail-Spam-Filter, KI-Inferenz, SaaS-Anwendungen, Real-time-Analytics — funktioniert HYOK nicht, weil das System Klartextzugang benötigt. BYOK (Bring Your Own Key) bietet nur schwachen Schutz, weil der Anbieter die Schlüssel in seinem eigenen Key Management System verwaltet und technisch Zugriff hat. Die vollständige Analyse der drei Verschlüsselungsmodelle und die Gesundheitssektor-Matrix: → Kapitel 13.
-
 
 ### 16.8 Reise-Hygiene bei US-Einreisen
 
@@ -1700,7 +1696,6 @@ Zwölf Kernaussagen:
     **Bedeutung für das Gesundheitswesen:** Unikliniken unterstehen ihrer Landesaufsicht — ein Klinikum in Hessen oder Bayern hat strukturell mehr Spielraum für Azure als eines in Hamburg oder Schleswig-Holstein. GKVen unterstehen je nach Kassengröße dem BAS oder Landesaufsichten. Der BAS hat keine eigene öffentliche Microsoft-Positionierung — bundesunmittelbare Kassen wie Barmer oder TK operieren faktisch in einem Vakuum.
 
     **Das Fazit-Fazit:** Wer bei der "richtigen" Aufsichtsbehörde sitzt, bekommt Azure genehmigt oder zumindest toleriert. Wer Pech hat, bekommt eine Mahnung ohne Konsequenz. **STACKIT und EU-souveräne Alternativen werden primär dort gewählt, wo die Aufsicht Druck macht (Hamburg, Schleswig-Holstein) oder die Ausschreibungsgestaltung es erzwingt.** Das Enforcement-Gap ist das eigentliche strukturelle Problem: Die Regelungslücke existiert — aber sie hat keinen einheitlichen Preis.
-
 
 4. **Das Operator-Modell ist der pragmatische Mittelweg** für Organisationen, die heute in Microsoft- oder Google-Ökosysteme integriert sind: Delos Cloud (SAP × Azure) für Verwaltung und Kliniken, S3NS (Thales × Google) als europäisches Referenzmodell mit SecNumCloud. Preis der Souveränität: +15% auf Listenpreise.
 
@@ -1939,4 +1934,4 @@ Zwölf Kernaussagen:
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 12.0, April 2026. 161 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 13.0, April 2026. 161 Quellen. Es stellt keine Rechtsberatung dar.*

@@ -2,6 +2,26 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 16.0 (Ergänzung Vibecoding-Plattformen)
+
+### Änderungen
+
+§7.5 erweitert um **Vibecoding-Plattformen** (Lovable, Bolt.new, Replit, v0, Cursor, GitHub Copilot, Windsurf). Doppeltes CLOUD-Act-Risiko dokumentiert: (1) KI-Backend verarbeitet Prompts mit Geschäftslogik im Klartext, (2) fertige Anwendungen verbleiben auf Plattform-Hosting (US-Infrastruktur). Risikotabelle 7 Plattformen. Souveräne Alternative (Mistral Codestral/StarCoder lokal + EU-Hosting) aufgezeigt.
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis |
+|---|---|
+| validate.py | ✅ 0 Fehler, 189 Quellen, v16.0 konsistent |
+| red_thread.py | ✅ 0 Fehler, 9 Warnungen (informativ) |
+
+### Export
+
+- PDF erstellt: ✅
+- Word erstellt: ✅ (150 KB)
+
+---
+
 ## Validierung 09.04.2026 — Version 15.0 → Version 16.0
 
 ### Änderungen

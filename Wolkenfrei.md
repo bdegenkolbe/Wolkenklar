@@ -883,6 +883,30 @@ Die ersten drei blinden Flecken (Snowflake, Oracle Health, Qlik Cloud — §7.4)
 
 **Die souveräne Alternative existiert:** Mistral-Modelle (oder vergleichbare Open-Source-LLMs) lassen sich über vLLM auf STACKIT, plusserver oder eigenem GPU-Cluster betreiben — vollständig innerhalb EU-Jurisdiktion, ohne API-Calls an US-Anbieter. Für Sprachtranskription: Whisper (OpenAI, aber Open-Source-Modell, lokal deploybar) auf eigener GPU. Für Integrationsplattformen: n8n (self-hosted, Berlin) statt Zapier. Der Funktionsumfang ist für 80 % der Gesundheits-KI-Anwendungsfälle ausreichend — und wächst mit jeder Mistral/Llama-Generation.
 
+#### Vibecoding-Plattformen — KI-Entwicklung mit doppelter Bindung
+
+Ein wachsender Trend im Gesundheitswesen: Fachabteilungen und IT-Teams nutzen KI-gestützte Entwicklungsplattformen ("Vibecoding"), um interne Tools, Dashboards oder Patientenportale per natürlichsprachigem Prompt zu erstellen — ohne klassische Softwareentwicklung. Das CLOUD-Act-Problem ist hier **doppelt**:
+
+**Erstens — die KI im Hintergrund.** Vibecoding-Plattformen nutzen große Sprachmodelle (typischerweise GPT-4o, Claude oder Gemini) als Code-Generatoren. Jeder Prompt — "Erstelle eine Anwendung, die Patientendaten aus unserem KIS lädt und eine Übersicht nach ICD-10-Diagnosen erstellt" — wird an den KI-Dienst übertragen und dort im Klartext verarbeitet. Die Prompts enthalten Geschäftslogik, Datenstrukturen, API-Schlüssel, und beschreiben im Detail, wie die Organisation Patientendaten verarbeitet. Bei US-KI-Anbietern sind diese Prompts CLOUD-Act-exponiert.
+
+**Zweitens — die Plattform als Laufzeitumgebung.** Der entscheidende Unterschied zu klassischen KI-Assistenten: Vibecoding-Plattformen sind darauf ausgelegt, dass die erstellten Anwendungen **auf der Plattform gehostet bleiben** — nicht exportiert und selbst betrieben werden. Lovable, Bolt, Replit und v0 bieten integrierten Hosting-Service: Die Anwendung wird auf der Plattform entwickelt, getestet und produktiv betrieben. Wenn diese Anwendung Patientendaten verarbeitet, liegen die Daten dauerhaft auf der Plattform-Infrastruktur — und unterliegen der Jurisdiktion des Plattformbetreibers.
+
+| Plattform | Eigentümer | KI-Backend | Hosting | CLOUD-Act-Risiko |
+|---|---|---|---|---|
+| **Lovable** | SE (Stockholm) | GPT-4o / Claude (US) | Plattform-hosted (AWS/Vercel) | 🟡 EU-Eigentümer, aber US-KI + US-Hosting-Infrastruktur |
+| **Bolt.new (StackBlitz)** | US (San Francisco) | GPT-4o / Claude (US) | StackBlitz Cloud (US) | 🔴 Direkt — US-Unternehmen, US-KI, US-Hosting |
+| **Replit** | US (San Francisco) | Eigene + GPT-4o (US) | Replit Cloud (GCP, US) | 🔴 Direkt — US-Unternehmen auf Google Cloud |
+| **v0 (Vercel)** | US (San Francisco) | GPT-4o (US) | Vercel Edge (AWS, US) | 🔴 Direkt — US-Unternehmen, US-Infrastruktur |
+| **Cursor** | US (San Francisco) | GPT-4o / Claude (US) | Lokale IDE, aber Prompts an US-KI | 🟠 Code bleibt lokal, Prompts an US-Cloud |
+| **GitHub Copilot** | US (Microsoft/GitHub) | GPT-4o (US) | Cloud-basiert (Azure) | 🔴 Direkt — Microsoft-Tochter |
+| **Windsurf (Codeium)** | US (Mountain View) | Eigene Modelle (US) | Cloud-basiert | 🔴 Direkt — US-Unternehmen |
+
+**Das Muster:** Bei Lovable (schwedischer Eigentümer) entsteht der Eindruck eines EU-Produkts. Aber die KI-Verarbeitung läuft über US-Modelle (OpenAI/Anthropic), und das Hosting der fertigen Anwendungen erfolgt typischerweise auf AWS oder Vercel — beides US-Infrastruktur. Der EU-Eigentümer ändert nichts an der US-Jurisdiktion über die Datenverarbeitung. Bei Bolt, Replit und v0 ist die Kette durchgängig US: US-Unternehmen → US-KI → US-Hosting.
+
+**Warum das im Gesundheitswesen relevant ist:** Der Vibecoding-Trend senkt die Hürde für Fachanwendungen drastisch. Eine GKV-IT-Abteilung kann in Stunden ein internes Analysetool bauen, das Versichertendaten visualisiert. Eine Klinik-Verwaltung erstellt ein Patientenportal per Prompt. Das Problem: Wenn diese Anwendungen auf der Plattform verbleiben und Patientendaten verarbeiten, entsteht eine dauerhafte CLOUD-Act-Exposition, die weder durch C5 noch durch die DSGVO-Einwilligung des Patienten gedeckt ist.
+
+**Die souveräne Alternative:** Für die Entwicklungsphase können Open-Source-KI-Assistenten (Mistral Codestral, StarCoder, lokal via Continue.dev oder Tabby) auf eigener Infrastruktur genutzt werden. Entscheidend ist die Trennung: KI-gestütztes Entwickeln auf EU-Infrastruktur, Hosting der fertigen Anwendung auf EU-Infrastruktur (STACKIT, plusserver, eigenes RZ). Die Plattform-Bequemlichkeit von Lovable oder Replit geht verloren — aber die Datenhoheit bleibt gewahrt. Für unkritische Anwendungen ohne Patientendaten (interne Dashboards, öffentliche Informationsseiten) ist das Risiko geringer, aber auch hier sollte die Plattformwahl dokumentiert werden.
+
 ---
 
 ## 8. Der vollständige EU-Plattformstack: US-Hyperscaler ersetzen {#8-eu-stack}

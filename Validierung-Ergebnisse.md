@@ -2,6 +2,41 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 13.0 (Re-Validierung + Export)
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis | Auffälligkeiten |
+|---|---|---|
+| 2.1.1 Gliederung | ✅ | 19 ToC-Einträge stimmen mit 19 H2-Überschriften überein |
+| 2.1.2 Nummerierung | ✅ | Lückenlos |
+| 2.1.3 Querverweise | ✅ | Alle §-Querverweise und Kapitelverweise gültig |
+| 2.1.4 Leere Abschnitte | ✅ | Keine leeren Abschnitte |
+| 2.1.5 Formatierung | ✅ | Keine Formatierungsartefakte |
+| 2.4 Quellenprüfung | ✅ | 173 Quellen, Nummerierung konsistent |
+| 2.5 Versionskonsistenz | ✅ | Version 13.0 an allen Stellen identisch |
+| 2.6 Automatisierte Prüfung | ✅ | validate.py: 0 Fehler; red_thread.py: 0 Fehler, 9 Warnungen (informativ) |
+
+### Gefundene Fehler
+
+Keine.
+
+### Warnungen red_thread.py (informativ)
+
+9 Kapitel ohne explizite Rückverweise auf frühere Kapitel (Kap. 2, 3, 4, 6, 9, 10, 13, 14, 15). Thematisch abgegrenzte Kapitel — kein Handlungsbedarf.
+
+### Export
+
+- PDF erstellt: ✅ (252 KB)
+- Word erstellt: ✅ (135 KB)
+
+### Abschluss
+
+- Fehler gefunden: 0
+- Version unverändert: 13.0
+
+---
+
 ## Validierung 09.04.2026 — Version 12.0 → Version 13.0
 
 ### Prüfergebnis

@@ -91,9 +91,45 @@ Eine Validierung gilt erst als abgeschlossen, wenn alle Prüfschritte durchlaufe
 
 ### 2.4 Quellenprüfung
 
-- Ist die Quellennummerierung lückenlos?
+#### 2.4.1 Vollständigkeit und Nummerierung
+
+- Ist die Quellennummerierung lückenlos (keine Lücken, keine Dopplungen)?
 - Stimmen die Quellenanzahlen in Versionshinweis, Abschlusssatz und tatsächlichem Bestand überein?
 - Steht der Abschlusssatz am tatsächlichen Dokumentende?
+- Gibt es im Fließtext zitierte `[N]`-Verweise, die im Quellenverzeichnis keinen Eintrag haben?
+- Gibt es Einträge im Quellenverzeichnis, die im Fließtext nie zitiert werden (unverlinkte Quellen)?
+
+#### 2.4.2 Formale Einheitlichkeit
+
+- Hat jede Quelle das Format `[N] Autor/Herausgeber: "Titel", Quelle, Datum. URL`?
+- Sind Quellen ohne URL mit einer nachprüfbaren bibliographischen Angabe versehen?
+- Werden URLs vollständig angegeben (kein URL-Shortener, kein Redirect-Link)?
+- Sind Datumsangaben einheitlich formatiert (z. B. `Monat YYYY`)?
+
+#### 2.4.3 Thematische Sektionierung
+
+- Ist jede Quelle der inhaltlich passenden Sektion im Quellenverzeichnis zugeordnet?
+- Gibt es Quellen, die in die falsche Sektion einsortiert sind?
+- Sind alle Sektionsüberschriften im Quellenverzeichnis korrekt benannt?
+
+#### 2.4.4 Aktualität und Belastbarkeit
+
+- Sind Quellen, die als aktuell dargestellt werden, tatsächlich jünger als 24 Monate?
+- Werden für zentrale Rechtsaussagen (US CLOUD Act, DSGVO, § 393 SGB V) Primärquellen oder anerkannte Fachgutachten zitiert — keine bloßen Presseartikel?
+- Werden Unternehmensangaben (Eigentümerstruktur, Umsatz, Installationszahlen) mit datierten Belegen gestützt?
+- Sind Zitate aus Wikipedia durch belastbarere Quellen ergänzt, wo der Sachverhalt rechts- oder faktenkritisch ist?
+
+#### 2.4.5 URL-Prüfung (Stichprobe)
+
+- Mindestens 10 % der URLs stichprobenartig manuell aufrufen — sind sie erreichbar?
+- Führen URLs direkt zur zitierten Quelle (kein Redirect auf Startseite oder 404)?
+- Wurde eine URL durch eine Paywall oder einen Login gesperrt? Wenn ja: alternative Quelle ergänzen oder Archiv-Link (archive.org) hinterlegen.
+
+#### 2.4.6 Zitatgenauigkeit
+
+- Werden direkte Zitate oder Zahlenangaben aus Quellen korrekt wiedergegeben (Stichprobe: 5 Kernaussagen des Dokuments)?
+- Werden Quellen inhaltlich korrekt zusammengefasst, ohne sinnentstellende Verkürzung?
+- Werden Meinungen, Prognosen oder Hochrechnungen als solche gekennzeichnet und nicht als Fakten dargestellt?
 
 ### 2.5 Versionskonsistenz
 
@@ -120,7 +156,23 @@ Jede Validierung wird in `Validierung-Ergebnisse.md` als eigener Block protokoll
 |---|---|---|
 | 2.1.1 Gliederung | ✅ / ❌ | Beschreibung |
 | 2.1.2 Nummerierung | ✅ / ❌ | Beschreibung |
-| ... | ... | ... |
+| 2.1.3 Querverweise | ✅ / ❌ | Beschreibung |
+| 2.1.4 Roter Faden | ✅ / ❌ | Beschreibung |
+| 2.1.5 Formatierung | ✅ / ❌ | Beschreibung |
+| 2.2.1 Sachliche Richtigkeit | ✅ / ❌ | Beschreibung |
+| 2.2.2 Redundanzprüfung | ✅ / ❌ | Beschreibung |
+| 2.2.3 Argumentation | ✅ / ❌ | Beschreibung |
+| 2.2.4 Ausgewogenheit | ✅ / ❌ | Beschreibung |
+| 2.3.1 Tippfehler und Grammatik | ✅ / ❌ | Beschreibung |
+| 2.3.2 Terminologie | ✅ / ❌ | Beschreibung |
+| 2.4.1 Vollständigkeit und Nummerierung | ✅ / ❌ | Beschreibung |
+| 2.4.2 Formale Einheitlichkeit | ✅ / ❌ | Beschreibung |
+| 2.4.3 Thematische Sektionierung | ✅ / ❌ | Beschreibung |
+| 2.4.4 Aktualität und Belastbarkeit | ✅ / ❌ | Beschreibung |
+| 2.4.5 URL-Prüfung (Stichprobe) | ✅ / ❌ | Beschreibung |
+| 2.4.6 Zitatgenauigkeit | ✅ / ❌ | Beschreibung |
+| 2.5 Versionskonsistenz | ✅ / ❌ | Beschreibung |
+| 2.6 Automatisierte Prüfung | ✅ / ❌ | Beschreibung |
 
 ### Gefundene Fehler
 

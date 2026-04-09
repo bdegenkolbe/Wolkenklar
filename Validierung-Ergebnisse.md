@@ -2,6 +2,34 @@
 
 ---
 
+## Validierung 09.04.2026 — Version 16.0 → Version 17.0
+
+### Änderungen
+
+§7.5 erweitert um zwei neue Unterabschnitte:
+
+1. **Base44 (Wix)** in Vibecoding-Abschnitt ergänzt: NASDAQ: WIX, Auto-Auswahl Claude/Gemini, integriertes Hosting, Anwendungen verbleiben auf Plattform.
+
+2. **Neuer Unterabschnitt "KI-Broker — das DSGVO-Versprechen und seine Grenzen":** 9 KI-Broker bewertet (Langdock, DeutschlandGPT, meinGPT, Plotdesk, Omnifact, Neuroflash, kamium, Dust.tt, nexos.ai). Drei Routing-Optionen analysiert (direkte OpenAI-API, Azure OpenAI EU, Self-hosted). Omnifact Privacy Filter als Sonderfall. Kernaussage: "DSGVO-konformer KI-Broker" ≠ Souveränitätsnachweis — Prompts mit Patientendaten werden an CLOUD-Act-exponierte Modelle weitergeleitet.
+
+### Prüfergebnis
+
+| Prüfschritt | Ergebnis |
+|---|---|
+| validate.py | ✅ 0 Fehler, 189 Quellen, v17.0 konsistent |
+| red_thread.py | ✅ 0 Fehler, 9 Warnungen (informativ) |
+
+### Export
+
+- PDF erstellt: ✅
+- Word erstellt: ✅ (153 KB)
+
+### Abschluss
+
+- Version: 17.0
+
+---
+
 ## Validierung 09.04.2026 — Version 16.0 (Ergänzung Vibecoding-Plattformen)
 
 ### Änderungen

@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 16.0 — April 2026 · 189 Quellen · 18 Kapitel  
+**Version:** 17.0 — April 2026 · 189 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -905,7 +905,37 @@ Ein wachsender Trend im Gesundheitswesen: Fachabteilungen und IT-Teams nutzen KI
 
 **Warum das im Gesundheitswesen relevant ist:** Der Vibecoding-Trend senkt die Hürde für Fachanwendungen drastisch. Eine GKV-IT-Abteilung kann in Stunden ein internes Analysetool bauen, das Versichertendaten visualisiert. Eine Klinik-Verwaltung erstellt ein Patientenportal per Prompt. Das Problem: Wenn diese Anwendungen auf der Plattform verbleiben und Patientendaten verarbeiten, entsteht eine dauerhafte CLOUD-Act-Exposition, die weder durch C5 noch durch die DSGVO-Einwilligung des Patienten gedeckt ist.
 
+**Base44 (Wix):** Eine Sonderstellung nimmt Base44 ein — ein Vibecoding-Tool, das 2025 von Wix (NASDAQ: WIX, Israel/US) übernommen wurde. Base44 wählt automatisch zwischen Claude Sonnet und Gemini 2.5 Pro, bietet integriertes Hosting mit Datenbank und Authentifizierung. Die gesamte Anwendung verbleibt auf der Plattform. Da Wix an der NASDAQ gelistet und US-kontrolliert ist, gilt für Base44-gehostete Anwendungen mit Patientendaten dasselbe Risiko wie für andere US-Plattformen — unabhängig davon, wo die Server stehen.
+
 **Die souveräne Alternative:** Für die Entwicklungsphase können Open-Source-KI-Assistenten (Mistral Codestral, StarCoder, lokal via Continue.dev oder Tabby) auf eigener Infrastruktur genutzt werden. Entscheidend ist die Trennung: KI-gestütztes Entwickeln auf EU-Infrastruktur, Hosting der fertigen Anwendung auf EU-Infrastruktur (STACKIT, plusserver, eigenes RZ). Die Plattform-Bequemlichkeit von Lovable oder Replit geht verloren — aber die Datenhoheit bleibt gewahrt. Für unkritische Anwendungen ohne Patientendaten (interne Dashboards, öffentliche Informationsseiten) ist das Risiko geringer, aber auch hier sollte die Plattformwahl dokumentiert werden.
+
+#### KI-Broker — das DSGVO-Versprechen und seine Grenzen
+
+Ein wachsender Markt deutscher und europäischer Anbieter verspricht "DSGVO-konforme KI" für Unternehmen: sogenannte KI-Broker oder KI-Gateways, die als Zwischenschicht zwischen der Organisation und den großen Sprachmodellen (OpenAI, Claude, Gemini) fungieren. Das Versprechen klingt überzeugend: **EU-gehostet, ISO 27001-zertifiziert, DSGVO-konform — und trotzdem GPT-4o, Claude und Gemini nutzen.** Für den Gesundheitssektor ist dieses Versprechen kritisch zu hinterfragen.
+
+**Das Grundproblem:** Ein KI-Broker kann die eigene Plattform DSGVO-konform betreiben — Nutzerauthentifizierung, Audit-Logs, Datenverarbeitung in der EU. Aber wenn der Prompt mit Patientendaten an ein US-Sprachmodell weitergeleitet wird, verlässt er die EU-Jurisdiktion — zumindest für die Dauer der Verarbeitung. Die Optionen der Broker:
+
+1. **Direkte OpenAI-API (US-Server):** Prompt geht an OpenAI in den USA. "Zero Data Retention" (OpenAI speichert nichts nach Verarbeitung) — aber während der Verarbeitung liegen die Daten im Klartext auf US-Infrastruktur und sind CLOUD-Act-exponiert.
+2. **Azure OpenAI (EU-Region, z.B. Schweden/Frankfurt):** Prompt bleibt physisch in der EU, aber Azure ist ein Microsoft-Dienst (MSFT) — CLOUD Act greift über die Unternehmensstruktur, nicht den Serverstandort (vgl. §1.1).
+3. **Self-hosted Modelle (Mistral, Llama):** Kein US-Anbieter involviert — die einzige Option ohne CLOUD-Act-Exposition. Aber nicht alle Broker bieten das an, und die Modellqualität ist für manche Anwendungsfälle noch eingeschränkt.
+
+Die meisten KI-Broker nutzen Option 1 oder 2 — und kommunizieren das als "DSGVO-konform", weil sie einen Auftragsverarbeitungsvertrag (AVV) mit OpenAI/Microsoft haben und das DPF als Rechtsgrundlage anführen. Für den Gesundheitssektor ist das aus denselben Gründen unzureichend, die §1.2 und §9 dokumentieren: Das DPF ist anfechtbar (Schrems III), der AVV schützt nicht vor CLOUD-Act-Herausgabepflichten, und "Zero Data Retention" bedeutet "nicht gespeichert" — nicht "nicht verarbeitet".
+
+| KI-Broker / Gateway | Sitz | KI-Backend | Hosting | CLOUD-Act-Risiko des KI-Backends |
+|---|---|---|---|---|
+| **Langdock** | DE (Berlin) | OpenAI, Claude, Mistral, Aleph Alpha | EU (ISO 27001, SOC 2) | 🟡 EU-Plattform, aber Prompts an US-Modelle (je nach Konfiguration) |
+| **DeutschlandGPT** | DE (Berlin) | GPT-4o, Claude, Gemini, Mistral, Llama | Open Telekom Cloud (DE, C5) | 🟡 DE-Hosting, aber GPT/Claude-Prompts via Azure/API an US-Modelle |
+| **meinGPT** | DE | OpenAI (Azure EU), Claude, Mistral | DE-hosted | 🟡 Azure OpenAI EU = Microsoft-Jurisdiktion |
+| **Plotdesk** | DE | GPT-4o via Azure OpenAI (EU) | EU | 🟡 Explizit Azure OpenAI — Microsoft-CLOUD-Act-Risiko bleibt |
+| **Omnifact** | DE | Diverse; Privacy Filter™ maskiert Daten vor KI-Übergabe | EU | 🟢 Bester Ansatz — Datenmaskierung vor US-Modell-Kontakt |
+| **Neuroflash** | DE (Hamburg) | GPT-4o, eigene Modelle | EU | 🟡 OpenAI-Abhängigkeit für Kernfunktionen |
+| **kamium** | DE | ChatGPT, Gemini, Claude, Perplexity | Eigener Azure-Tenant (EU) | 🟡 Azure = Microsoft-Jurisdiktion |
+| **Dust.tt** | FR (Paris) | OpenAI, Claude, Mistral, Gemini | EU/US (wählbar, SOC 2) | 🟡 EU-Hosting wählbar, aber US-Modelle verarbeiten Prompts |
+| **nexos.ai** | LT (Vilnius) | 200+ Modelle (OpenAI, Claude, Mistral…) | EU (ISO 27001, SOC 2) | 🟡 EU-Gateway, US-Modelle im Backend |
+
+**Omnifact-Sonderfall:** Omnifact ist der einzige Broker in dieser Übersicht, der einen strukturellen Lösungsansatz für das Klartextproblem bietet: Der "Privacy Filter" maskiert sensible Daten (Namen, Diagnosen, Versichertennummern) **bevor** sie an das KI-Modell übertragen werden. Das Modell verarbeitet nur anonymisierte Prompts, die Rücktransformation erfolgt lokal. Wenn die Maskierung robust ist, reduziert das die CLOUD-Act-Exposition erheblich — ähnlich wie Pseudonymisierung im FDZ-Kontext (vgl. §12.6). Die Frage bleibt, ob die Maskierung für alle Gesundheits-Anwendungsfälle ausreicht: Ein Arztbrief-Generator, der den klinischen Kontext benötigt, funktioniert mit maskierten Daten nur eingeschränkt.
+
+**Kernaussage für den Gesundheitssektor:** "DSGVO-konformer KI-Broker" ist kein Souveränitätsnachweis. Ein Broker kann DSGVO-konform betrieben werden und gleichzeitig Patientendaten an CLOUD-Act-exponierte Infrastruktur weiterleiten. Für Gesundheitsdaten nach § 393 SGB V Klasse 1 (ePA, Diagnosedaten, Medikation) gilt: Nur KI-Modelle, die vollständig auf EU-Infrastruktur ohne US-Anbieter-Beteiligung laufen (Mistral self-hosted, Aleph Alpha auf STACKIT/IONOS, OpenEuroLLM auf EuroHPC), bieten strukturellen CLOUD-Act-Schutz. KI-Broker mit US-Backend-Modellen sind für unkritische Workloads (Klasse 2–3) akzeptabel — für Patientendaten nicht.
 
 ---
 
@@ -2120,4 +2150,4 @@ Zwölf Kernaussagen:
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 16.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 17.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*

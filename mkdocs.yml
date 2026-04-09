@@ -1,0 +1,80 @@
+site_name: "Wolkenfrei"
+site_description: "US CLOUD Act & Deutsche Datensouveranitat — Rechtliche Analyse, Anbieterbewertung, DSGVO-Handlungsempfehlungen"
+site_author: "Bjorn Degenkolbe, 4K Analytics GmbH / HIGL"
+repo_url: https://github.com/bdegenkolbe/Wolkenklar
+repo_name: bdegenkolbe/Wolkenklar
+
+theme:
+  name: material
+  language: de
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Dunkles Design
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Helles Design
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - toc.integrate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: de
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Start: index.md
+  - "1. Kernproblem": 01-das-kernproblem.md
+  - "2. Rechtliche Grundlagen": 02-rechtliche-grundlagen.md
+  - "3. US-Zugriffsebenen": 03-die-vier-us-zugriffsebenen-im-detail.md
+  - "4. EU-Behordenzugriff": 04-europaeischer-behoerdenzugriff.md
+  - "5. Anbieterbewertung": 05-anbieterbewertung.md
+  - "6. Operator-Modell": 06-das-operator-modell.md
+  - "7. Hyperscaling": 07-das-hyperscaling-problem.md
+  - "8. EU-Plattformstack": 08-der-vollstaendige-eu-plattformstack.md
+  - "9. EU-US-Abkommen": 09-rechtliche-abkommen-zwischen-eu-und-usa.md
+  - "10. Lobbyarbeit": 10-big-tech-lobbyarbeit-in-europa-und-deutschland.md
+  - "11. Berater-Falle": 11-die-berater-falle.md
+  - "12. Marktbeispiele": 12-marktbeispiele.md
+  - "13. Verschluesselung": 13-clientseitige-verschluesselung.md
+  - "14. Bewertungsschema": 14-bewertungsschema-und-laenderranking.md
+  - "15. Globaler Vergleich": 15-globaler-vergleich.md
+  - "16. Handlungsempfehlungen": 16-dsgvo-handlungsempfehlungen.md
+  - "17. Ausblick": 17-regulatorischer-ausblick-2025.md
+  - Fazit: fazit.md
+  - "18. Quellen": 18-quellenverzeichnis.md
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bdegenkolbe/Wolkenklar

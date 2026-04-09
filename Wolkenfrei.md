@@ -126,10 +126,6 @@ Für die Haftungsbewertung ist das relevant: Eine Gesundheitsinstitution, die si
 
 Big Tech gibt 19-mal mehr für EU-Lobbyarbeit aus als die Automobilindustrie. 890 Digital-Lobbyisten arbeiten Vollzeit in Brüssel — mehr als Sitze im Europäischen Parlament. Das Google-Lobbypapier vom August 2025 zur Einschränkung des DSGVO-Auskunftsrechts wurde wortgleich in den Digital-Omnibus-Entwurf der EU-Kommission übernommen. Datenschutz gilt — aber seine Weiterentwicklung und Durchsetzung wird durch diese Finanzasymmetrie systematisch gebremst. Ausführlich dokumentiert in Kapitel 11.
 
-### 1.3 Telematikinfrastruktur — ein unterschätztes Einfallstor
-
-Auch die Telematikinfrastruktur (TI), das digitale Nervensystem des deutschen Gesundheitswesens, ist CLOUD-Act-exponiert: IBM betreibt den Rezeptserver und den Identity Provider, Arvato Systems (Bertelsmann) die Sicherheitsinfrastruktur. Die gematik als Regulierer ist souverän — der operative Betrieb ist es nicht. Die vollständige Analyse mit Risikomatrix und TI-2.0-Ausblick findet sich in §12.8 (Marktbeispiele) und §17.1 (Regulatorischer Ausblick).
-
 ---
 
 ## 2. Rechtliche Grundlagen: Was der CLOUD Act wirklich sagt {#2-rechtliche-grundlagen}

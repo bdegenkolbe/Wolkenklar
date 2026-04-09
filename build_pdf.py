@@ -202,6 +202,72 @@ def build_table(rows, styles, content_width):
     return t
 
 
+def build_blockquote_table(raw_lines, content_width):
+    """Render a blockquote as a nested Table: outer table for left indent,
+    inner table with accent-colored bar column and content column.
+    This avoids ReportLab's borderPadding height-calculation bug."""
+    inner_style = ParagraphStyle(
+        "BQText", fontName="Helvetica-Oblique", fontSize=9,
+        textColor=DARK_GRAY, leading=12, spaceBefore=1 * mm,
+    )
+    bullet_style = ParagraphStyle(
+        "BQBullet", fontName="Helvetica-Oblique", fontSize=9,
+        textColor=DARK_GRAY, leading=12, leftIndent=4 * mm, spaceBefore=0.5 * mm,
+    )
+
+    items = []
+    for raw in raw_lines:
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("- ") or line.startswith("* "):
+            items.append(Paragraph(f"\u2022 {clean_inline(line[2:])}", bullet_style))
+        else:
+            t = clean_inline(line)
+            if t:
+                items.append(Paragraph(t, inner_style))
+
+    if not items:
+        return None
+
+    BAR_W = 3 * mm
+    INDENT = 8 * mm
+    PAD = 4 * mm
+    box_width = content_width - INDENT
+
+    inner = Table(
+        [["", items]],
+        colWidths=[BAR_W, box_width - BAR_W],
+    )
+    inner.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), BLOCKQUOTE_BG),
+        ("BACKGROUND", (0, 0), (0, 0), ACCENT),
+        ("LEFTPADDING", (0, 0), (0, 0), 0),
+        ("RIGHTPADDING", (0, 0), (0, 0), 0),
+        ("TOPPADDING", (0, 0), (0, 0), 0),
+        ("BOTTOMPADDING", (0, 0), (0, 0), 0),
+        ("LEFTPADDING", (1, 0), (1, 0), PAD),
+        ("RIGHTPADDING", (1, 0), (1, 0), PAD),
+        ("TOPPADDING", (1, 0), (1, 0), PAD),
+        ("BOTTOMPADDING", (1, 0), (1, 0), PAD),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+    ]))
+
+    wrapper = Table(
+        [["", inner]],
+        colWidths=[INDENT, box_width],
+    )
+    wrapper.setStyle(TableStyle([
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 2 * mm),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 2 * mm),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+    ]))
+
+    return wrapper
+
+
 class DocTemplate(BaseDocTemplate):
     def __init__(self, filename, version, **kwargs):
         self.version = version
@@ -295,8 +361,9 @@ def build_pdf():
             else:
                 # Flush blockquote if pending
                 if in_blockquote and blockquote_lines:
-                    bq_text = clean_inline(" ".join(blockquote_lines))
-                    story.append(Paragraph(bq_text, styles["blockquote"]))
+                    bq_table = build_blockquote_table(blockquote_lines, content_width)
+                    if bq_table:
+                        story.append(bq_table)
                     blockquote_lines = []
                     in_blockquote = False
                 in_code_block = True
@@ -310,16 +377,15 @@ def build_pdf():
 
         # Blockquote
         if stripped.startswith(">"):
-            quote_text = stripped[1:].strip()
-            if quote_text.startswith(">"):
-                quote_text = quote_text[1:].strip()
-            blockquote_lines.append(quote_text)
+            # Preserve inner content as-is (including "- " bullet prefix)
+            blockquote_lines.append(stripped[1:])
             in_blockquote = True
             i += 1
             continue
         elif in_blockquote and blockquote_lines:
-            bq_text = clean_inline(" ".join(blockquote_lines))
-            story.append(Paragraph(bq_text, styles["blockquote"]))
+            bq_table = build_blockquote_table(blockquote_lines, content_width)
+            if bq_table:
+                story.append(bq_table)
             blockquote_lines = []
             in_blockquote = False
 
@@ -430,6 +496,12 @@ def build_pdf():
         para_text = clean_inline(" ".join(para_lines))
         if para_text.strip():
             story.append(Paragraph(para_text, styles["body"]))
+
+    # Flush any trailing blockquote
+    if in_blockquote and blockquote_lines:
+        bq_table = build_blockquote_table(blockquote_lines, content_width)
+        if bq_table:
+            story.append(bq_table)
 
     # Build PDF
     doc.build(story)

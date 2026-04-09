@@ -98,9 +98,11 @@ Textausrichtung Fließtext: Blocksatz.
 
 - Eingerückt (8 mm links)
 - Hintergrund #F0F5FA
-- Seitenbalken links: 1,5 pt, #2E75B6
+- Seitenbalken links: 3 mm breit, Vollfarbe #2E75B6
 - Schrift: Italic, 9 pt
-- Innenabstand: 4 mm
+- Innenabstand: 4 mm (oben/unten/links/rechts im Inhaltsbereich)
+
+**Hinweis zur PDF-Implementierung:** Blockquotes werden als verschachtelte Tabelle realisiert — eine äußere Tabelle (8 mm Einzug-Spalte + Box-Spalte) und eine innere Tabelle (3 mm Balken-Spalte + Inhalts-Spalte mit #F0F5FA-Hintergrund). Innere Aufzählungspunkte (`> -`) werden als separate Bullet-Absätze im Inhaltsbereich dargestellt. Kein `borderPadding` in `ParagraphStyle` verwenden — ReportLab bezieht diesen Wert nicht in die Höhenberechnung ein, was zu Überlappungen mit benachbarten Elementen führt.
 
 ---
 

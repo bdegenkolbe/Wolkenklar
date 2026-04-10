@@ -262,7 +262,15 @@
 - [200] LfDI Baden-Württemberg: Empfehlungen zum Einsatz von KI-Anwendungen von Anbietern außerhalb der EU, 2025. Warnung vor KI-Anbietern ohne Art.-27-DSGVO-Vertreter; koordiniertes Verfahren gegen DeepSeek: https://www.baden-wuerttemberg.datenschutz.de/drittstaaten-ki/
 - [201] BayLfD: Orientierungshilfe zum Gesundheitsdatennutzungsgesetz (GDNG), Januar 2026. §§ 5 und 6 GDNG und EHDS; Muster-Einwilligung: https://www.datenschutz-bayern.de/infothek/OH_GDNG.pdf
 - [202] HBDI / DGIM: Leitfaden für Datenschutz in der medizinischen Forschung, Dezember 2025. Vier Use Cases; Pseudonymisierung; föderierte Datenmodelle: https://datenschutz.hessen.de/sites/datenschutz.hessen.de/files/2025-12/20251028_dgim_hbdi_leifaden_datenschutz_1.01.pdf
+- [203] BAS: Rundschreiben "Wesentliche Anforderungen an Cloud-basierte IT-Lösungen in der Sozialversicherung", 14. März 2018 (aktualisiert). Datenortung EU/EWR, AVV-Pflicht: https://www.bundesamtsozialesicherung.de/de/service/rundschreiben/detail/wesentliche-anforderungen-an-cloud-basierte-it-loesungen-in-der-sozialversicherung/
+- [204] BAS: Digitalausschuss — Cloud Computing, KI und automatisierte Bearbeitung in der Sozialversicherung. Sondervereinbarung Microsoft; KI-Systeme zur Fehlverhaltensbekämpfung: https://www.bundesamtsozialesicherung.de/de/themen/digitalausschuss/ki-big-data-cloud-computing-und-automatisierte-bearbeitung/cloud-computing/
+- [205] KBV: IT-Sicherheitsrichtlinie nach § 390 SGB V, verpflichtend ab Oktober 2025. Cloud-Apps nur mit C5; Microsoft-Cloud-Sync deaktivieren: https://www.kbv.de/html/it-sicherheit.php
+- [206] KBV: PraxisWissen "Künstliche Intelligenz — Hinweise zum Einsatz in Praxen", 28. Mai 2025. KI = Cloud-Anwendung mit C5-Pflicht; Patienteneinwilligung bei KI-Transkription: https://www.kbv.de/documents/infothek/publikationen/praxiswissen/praxiswissen-ki.pdf
+- [207] gematik: Impulspapier "Künstliche Intelligenz im Gesundheitswesen", Juli 2025. FHIR-Starter; KI für Datenstrukturierung: https://www.gematik.de/media/gematik/Medien/Telematikinfrastruktur/gematik_Impulspapier_KI_Juli_2025.pdf
+- [208] BMG: C5-Äquivalenzverordnung Referentenentwurf, 6. Januar 2025. Definiert C5-äquivalente Sicherheitsstandards: https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/Gesetze_und_Verordnungen/GuV/C/C5-AequivalenzVO_RefE.pdf
+- [209] DKG: Positionspapier "Nutzung von Künstlicher Intelligenz (KI) im Krankenhaus", 23. Oktober 2025. Cloud-Betrieb für KI als Notwendigkeit; KHZG 2.0 gefordert: https://www.dkgev.de/fileadmin/default/Mediapool/1_DKG/1.3_Politik/Positionen/2025-10-23_DKG-Positionspapier_KI_im_Krankenhaus.pdf
+- [210] AWS: Lobbyregister Bundestag, Regelungsvorhaben RV0008560 — Lobbytätigkeit zu § 393 SGB V / Digital-Gesetz: https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0008560/8636
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 202 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 210 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*

@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 21.0 — April 2026 · 202 Quellen · 19 Kapitel  
+**Version:** 21.0 — April 2026 · 210 Quellen · 19 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -1583,21 +1583,19 @@ Alle Regionen der Welt stehen vor demselben Problem: Wer Daten bei einem US-Unte
 |---|---|---|
 | **BfDI** (Bundesbeauftragter für den Datenschutz) | DSGVO-Aufsicht über Bundesbehörden; KI-Handreichung Dezember 2025 | Keine Fachaufsicht über GKVen oder Kliniken; keine Sanktionskompetenz gegen US-Anbieter |
 | **16 Landesaufsichtsbehörden** | DSGVO-Aufsicht über Landesbehörden, Unikliniken, landesunmittelbare GKVen | Kein koordiniertes Enforcement; DSK-Beschlüsse nicht rechtsverbindlich; keine Jurisdiktionsprüfung |
-| **BAS** (Bundesamt für Soziale Sicherung) | Rechts- und Fachaufsicht über bundesunmittelbare GKVen (TK, Barmer, DAK, AOK BV u.a.); Digitalausschuss seit 2020; Rundschreiben "Cloud-basierte IT-Lösungen in der Sozialversicherung" (2017) | Kein DSGVO-Enforcement — das bleibt beim BfDI; keine eigene öffentliche Cloud- oder KI-Positionierung; Rundschreiben veraltet (vor § 393 SGB V und vor CLOUD-Act-Debatte) |
-| **BMG** (Bundesgesundheitsministerium) | Gesetzgebung: DigiG/§ 393 SGB V (2024), GDNG (2024), GeDIG (Entwurf 2026); Digitalisierungsstrategie | Reguliert Rahmenbedingungen, nicht Einzelfälle; § 393 adressiert IT-Sicherheit (C5), nicht Jurisdiktion; keine Anbieterbewertung |
-| **gematik** | TI-Betrieb; Zulassung von TI-Komponenten, TI-Gateways, ePA-Anbietern; C5-Testat-Liste (INA-Portal); TI 2.0 Sicherheitsarchitektur (ZETA/Zero Trust) | Keine DSGVO-Aufsicht; keine Jurisdiktionsprüfung bei Zulassungen; TI-Gateway-Zulassung prüft Sicherheit, nicht CLOUD-Act-Exposition des Betreibers |
+| **BAS** (Bundesamt für Soziale Sicherung) | Rechts- und Fachaufsicht über bundesunmittelbare GKVen (TK, Barmer, DAK, AOK BV u.a.); Digitalausschuss seit 2020; Rundschreiben "Cloud-basierte IT-Lösungen in der Sozialversicherung" (2017/2018, aktualisiert); Selbstverpflichtende KI-Leitlinien im BMAS-Netzwerk; betreut Kassen-Sondervereinbarung mit Microsoft | Kein DSGVO-Enforcement — das bleibt beim BfDI; Cloud-Rundschreiben fokussiert Datenortung (EU/EWR) und AVV, nicht Jurisdiktionsprüfung; keine öffentliche CLOUD-Act-Bewertung |
+| **BMG** (Bundesgesundheitsministerium) | Gesetzgebung: DigiG/§ 393 SGB V (2024), GDNG (2024), GeDIG (Entwurf 2026); C5-Äquivalenzverordnung (RefE Januar 2025); Digitalisierungsstrategie "Gemeinsam Digital" (Update Februar 2026: KI-Dokumentation in 70% der Einrichtungen bis 2028); GDAG — gematik wird Gesundheits-Digitalagentur mit Durchsetzungsbefugnissen | Reguliert Rahmenbedingungen, nicht Einzelfälle; § 393 adressiert IT-Sicherheit (C5), nicht Jurisdiktion; US-Anbieter nicht ausgeschlossen wenn DPF-zertifiziert + C5 + DE-Niederlassung; AWS hat Lobbytätigkeit zu § 393 im Lobbyregister (RV0008560) eingetragen |
+| **gematik** | TI-Betrieb; Zulassung von TI-Komponenten, TI-Gateways, ePA-Anbietern; C5-Testat-Liste (INA-Portal); TI 2.0 ZETA/Zero Trust (quelloffen seit Dezember 2025); Impulspapier "KI im Gesundheitswesen" (Juli 2025): FHIR-Starter-Projekt, KI für Datenstrukturierung; wird unter GDAG zur Digitalagentur mit Durchsetzungsbefugnissen | Keine DSGVO-Aufsicht; keine Jurisdiktionsprüfung bei Zulassungen; TI-Gateway-Zulassung prüft Sicherheit, nicht CLOUD-Act-Exposition; Datensouveränität als Designprinzip formuliert, aber kein Ausschluss US-basierter Gateway-Betreiber |
 | **G-BA** (Gemeinsamer Bundesausschuss) | Höchstes Beschlussgremium der gemeinsamen Selbstverwaltung; DiGA-Aufnahme (BfArM zuständig); Richtlinien für Versorgung | Keine Cloud- oder KI-spezifische Regulierung; keine Datenschutzaufsicht |
 | **BfArM** | DiGA-Zulassung; Datensicherheitsanforderungen (mit BSI) für digitale Gesundheitsanwendungen ab 01.01.2025 | Prüft Funktionstauglichkeit und Datensicherheit, nicht Cloud-Jurisdiktion des Herstellers |
 | **BSI** | IT-Sicherheit: C5-Testat, C5:2026, BSI-TR Gesundheitsanwendungen; Souveränitätskriterien angekündigt (mit ANSSI, separates Dokument) | C5 prüft Informationssicherheit, **nicht** Jurisdiktion — das ist die dokumentierte Lücke aus §1.1 |
-| **KBV** (Kassenärztliche Bundesvereinigung) | IT-Sicherheitsrichtlinie nach § 390 SGB V (verpflichtend ab Oktober 2025); Zertifizierung von IT-Dienstleistern für Praxen | Richtlinie adressiert IT-Sicherheit in Praxen, nicht Cloud-Anbieterjurisdiktion; keine KI-spezifischen Vorgaben |
+| **KBV** (Kassenärztliche Bundesvereinigung) | IT-Sicherheitsrichtlinie nach § 390 SGB V (verpflichtend ab Oktober 2025); Cloud-Apps nur mit C5-Testat nach § 393; Microsoft-Cloud-Sync muss deaktiviert werden; PraxisWissen "KI in Praxen" (Mai 2025): KI = Cloud-Anwendung mit C5-Pflicht, Arzt behält Entscheidungshoheit, Patienteneinwilligung bei KI-Transkription | Cloud-Anbieterjurisdiktion nicht adressiert; Deaktivierung Microsoft-Cloud-Sync ist stärkste praktische Einschränkung, aber begründet mit Datensicherheit, nicht CLOUD Act |
 | **DKG** (Deutsche Krankenhausgesellschaft) | Positionspapier "KI im Krankenhaus" (Oktober 2025): fordert Cloud-Betrieb für KI als Notwendigkeit; KHZG-2.0-Finanzierung | Interessenvertretung, keine Aufsicht; fordert regulatorische Klarstellung, setzt sie nicht selbst |
 | **GKV-Spitzenverband** | Digitalstrategie (Dezember 2025): KI-gestützte ePA-Analyse, FDZ-Datennutzung; digitales Primärversorgungssystem | Interessenvertretung der Kassen; keine Aufsichtsfunktion; Cloud-Souveränität kein dokumentierter Schwerpunkt |
 | **PKV-Verband** | Digitalisierungsstrategie für private Krankenversicherungen | Keine öffentliche Cloud- oder KI-Positionierung bekannt; PKV unterliegt nicht § 393 SGB V |
 | **MD Bund** (Medizinischer Dienst) | Qualitätsprüfungen; KI-Grundregeln (MD Sachsen-Anhalt, 2025): nur geschlossene Systeme, keine kommerziellen KI-Modelle, abschließende Entscheidung beim Menschen | Keine Cloud-Regulierung; KI-Grundregeln nur intern; keine Aufsicht über andere Institutionen |
 
 ### 16.2 Datenschutzaufsicht — Flickenteppich bei Microsoft 365 / Azure
-
-Die Positionierung aller deutschen Datenschutzaufsichtsbehörden zu Microsoft 365 / Azure (Stand April 2026):
 
 Die Positionierung aller deutschen Datenschutzaufsichtsbehörden zu Microsoft 365 / Azure (Stand April 2026):
 
@@ -1668,7 +1666,7 @@ Die Tabelle in §16.1 zeigt das strukturelle Problem: Die CLOUD-Act-Exposition v
 
 **Das BMG** hat mit § 393 SGB V die Cloud-Nutzung erlaubt und C5 als Mindeststandard festgelegt — ohne die Jurisdiktionsfrage zu adressieren. Das GeDIG (Entwurf 2026) erweitert den Datenpool (ePA-Ausbau, FDZ-Ausleitung), adressiert aber ebenfalls nicht, auf welcher Infrastruktur diese Daten verarbeitet werden dürfen.
 
-**Das BAS** beaufsichtigt die bundesunmittelbaren GKVen (TK, Barmer, DAK — zusammen > 30 Mio. Versicherte), hat aber keine eigene öffentliche Cloud- oder KI-Positionierung. Das Rundschreiben zu Cloud-IT-Lösungen stammt von 2017 — vor § 393 SGB V, vor der CLOUD-Act-Debatte, vor KI im Gesundheitswesen. Der BAS-Digitalausschuss berät Kassen zu Digitalisierungsfragen, aber eine CLOUD-Act-Bewertung gehört nicht zum dokumentierten Prüfprogramm.
+**Das BAS** beaufsichtigt die bundesunmittelbaren GKVen (TK, Barmer, DAK — zusammen > 30 Mio. Versicherte). Es hat ein Rundschreiben zu Cloud-IT-Lösungen (2017/2018, aktualisiert), das Datenortung (EU/EWR) und Auftragsverarbeitungsverträge regelt — aber keine Jurisdiktionsprüfung verlangt. Der BAS-Digitalausschuss betreut eine Sondervereinbarung mit Microsoft für die Sozialversicherungsträger und berät Kassen zu KI und Automatisierung. Aber eine CLOUD-Act-Bewertung gehört nicht zum dokumentierten Prüfprogramm. Das BAS reguliert, **ob** die Cloud in der EU steht — nicht **wer** per Gesetz auf die Daten zugreifen kann.
 
 **Die gematik** vergibt TI-Gateway-Zulassungen, die bestimmen, über welchen Anbieter Praxen und Kliniken künftig ihre TI-Anbindung beziehen. Ob ein TI-Gateway-Betreiber dem CLOUD Act unterliegt, ist kein Zulassungskriterium. Die TI-2.0-Architektur (ZETA/Zero Trust, seit Dezember 2025 quelloffen auf GitHub) ist ein Sicherheitskonzept — kein Souveränitätskonzept.
 
@@ -2288,7 +2286,15 @@ Zwölf Kernaussagen:
 - [200] LfDI Baden-Württemberg: Empfehlungen zum Einsatz von KI-Anwendungen von Anbietern außerhalb der EU, 2025. Warnung vor KI-Anbietern ohne Art.-27-DSGVO-Vertreter; koordiniertes Verfahren gegen DeepSeek: https://www.baden-wuerttemberg.datenschutz.de/drittstaaten-ki/
 - [201] BayLfD: Orientierungshilfe zum Gesundheitsdatennutzungsgesetz (GDNG), Januar 2026. §§ 5 und 6 GDNG und EHDS; Muster-Einwilligung: https://www.datenschutz-bayern.de/infothek/OH_GDNG.pdf
 - [202] HBDI / DGIM: Leitfaden für Datenschutz in der medizinischen Forschung, Dezember 2025. Vier Use Cases; Pseudonymisierung; föderierte Datenmodelle: https://datenschutz.hessen.de/sites/datenschutz.hessen.de/files/2025-12/20251028_dgim_hbdi_leifaden_datenschutz_1.01.pdf
+- [203] BAS: Rundschreiben "Wesentliche Anforderungen an Cloud-basierte IT-Lösungen in der Sozialversicherung", 14. März 2018 (aktualisiert). Datenortung EU/EWR, AVV-Pflicht: https://www.bundesamtsozialesicherung.de/de/service/rundschreiben/detail/wesentliche-anforderungen-an-cloud-basierte-it-loesungen-in-der-sozialversicherung/
+- [204] BAS: Digitalausschuss — Cloud Computing, KI und automatisierte Bearbeitung in der Sozialversicherung. Sondervereinbarung Microsoft; KI-Systeme zur Fehlverhaltensbekämpfung: https://www.bundesamtsozialesicherung.de/de/themen/digitalausschuss/ki-big-data-cloud-computing-und-automatisierte-bearbeitung/cloud-computing/
+- [205] KBV: IT-Sicherheitsrichtlinie nach § 390 SGB V, verpflichtend ab Oktober 2025. Cloud-Apps nur mit C5; Microsoft-Cloud-Sync deaktivieren: https://www.kbv.de/html/it-sicherheit.php
+- [206] KBV: PraxisWissen "Künstliche Intelligenz — Hinweise zum Einsatz in Praxen", 28. Mai 2025. KI = Cloud-Anwendung mit C5-Pflicht; Patienteneinwilligung bei KI-Transkription: https://www.kbv.de/documents/infothek/publikationen/praxiswissen/praxiswissen-ki.pdf
+- [207] gematik: Impulspapier "Künstliche Intelligenz im Gesundheitswesen", Juli 2025. FHIR-Starter; KI für Datenstrukturierung: https://www.gematik.de/media/gematik/Medien/Telematikinfrastruktur/gematik_Impulspapier_KI_Juli_2025.pdf
+- [208] BMG: C5-Äquivalenzverordnung Referentenentwurf, 6. Januar 2025. Definiert C5-äquivalente Sicherheitsstandards: https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/Gesetze_und_Verordnungen/GuV/C/C5-AequivalenzVO_RefE.pdf
+- [209] DKG: Positionspapier "Nutzung von Künstlicher Intelligenz (KI) im Krankenhaus", 23. Oktober 2025. Cloud-Betrieb für KI als Notwendigkeit; KHZG 2.0 gefordert: https://www.dkgev.de/fileadmin/default/Mediapool/1_DKG/1.3_Politik/Positionen/2025-10-23_DKG-Positionspapier_KI_im_Krankenhaus.pdf
+- [210] AWS: Lobbyregister Bundestag, Regelungsvorhaben RV0008560 — Lobbytätigkeit zu § 393 SGB V / Digital-Gesetz: https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0008560/8636
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 202 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 210 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*

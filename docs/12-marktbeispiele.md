@@ -105,7 +105,7 @@ Die schlechte: Im operativen Betrieb der TI sind US-Unternehmen tief verankert.
 
 **Arvato Systems (Bertelsmann) trägt die Sicherheitsinfrastruktur.** Arvato Systems betreibt den zentralen Verzeichnisdienst, die KIM-Dienste (Kommunikation im Medizinwesen) und die übergreifende TI-Sicherheitsarchitektur. Arvato ist eine Tochter der deutschen Bertelsmann SE — formal kein US-Unternehmen. Das CLOUD-Act-Risiko ist deutlich geringer als bei IBM, aber nicht null, sofern Bertelsmann US-Tochtergesellschaften mit Datenzugang unterhält.
 
-**TI 2.0 öffnet neue Einfallstore.** Unter TI 2.0 ersetzen cloudbasierte TI-Gateways die bisherigen Hardware-Konnektoren: Praxen und Kliniken mieten TI-Zugang als Managed Service von zertifizierten Anbietern. Wer diese Gateway-Betreiber sein werden und ob darunter US-Konzerne zugelassen werden, ist regulatorisch noch nicht abschließend definiert. Hier entsteht mit der Umstellung ein strukturell neues CLOUD-Act-Einfallstor. Die regulatorischen Auswirkungen von TI 2.0 werden in §17.1 vertieft.
+**TI 2.0 öffnet neue Einfallstore.** Unter TI 2.0 ersetzen cloudbasierte TI-Gateways die bisherigen Hardware-Konnektoren: Praxen und Kliniken mieten TI-Zugang als Managed Service von zertifizierten Anbietern. Wer diese Gateway-Betreiber sein werden und ob darunter US-Konzerne zugelassen werden, ist regulatorisch noch nicht abschließend definiert. Hier entsteht mit der Umstellung ein strukturell neues CLOUD-Act-Einfallstor. Die regulatorischen Auswirkungen von TI 2.0 werden in §18.1 vertieft.
 
 **Risikomatrix TI:**
 

@@ -1,14 +1,14 @@
-# 17. Regulatorischer Ausblick 2025–2027
+# 18. Regulatorischer Ausblick 2025–2027
 
-Dieses Kapitel behandelt regulatorische Entwicklungen, die bis 2027 neue CLOUD-Act-Relevanz entfalten. Bereits abgeschlossene oder im Dokument ausführlich analysierte Regelwerke werden hier nicht wiederholt, sondern querverwiesen: CLOUD Act und FISA § 702 (→ Kap. 3), e-Evidence-VO (→ Kap. 4), Data Privacy Framework und Executive Agreement (→ Kap. 9), Digital Omnibus und Lobbyarbeit (→ Kap. 10), EU Data Act und Cloud-Portabilität (→ §16.6).
+Dieses Kapitel behandelt regulatorische Entwicklungen, die bis 2027 neue CLOUD-Act-Relevanz entfalten. Bereits abgeschlossene oder im Dokument ausführlich analysierte Regelwerke werden hier nicht wiederholt, sondern querverwiesen: CLOUD Act und FISA § 702 (→ Kap. 3), e-Evidence-VO (→ Kap. 4), Data Privacy Framework und Executive Agreement (→ Kap. 9), Digital Omnibus und Lobbyarbeit (→ Kap. 10), EU Data Act und Cloud-Portabilität (→ §17.6).
 
 Die folgende Tabelle gibt den Überblick über laufende und kommende Entwicklungen mit unmittelbarer Relevanz für die CLOUD-Act-Exposition des Gesundheitswesens. Die drei wichtigsten werden im Anschluss vertieft: TI 2.0, GeDIG und EHDS.
 
 | Instrument / Entwicklung | Status | CLOUD-Act-Relevanz |
 |---|---|---|
-| **TI 2.0 (Telematikinfrastruktur)** | Migration ab 2025, Vollbetrieb 2027 | Cloud-basierte TI-Gateways ersetzen Hardware-Konnektoren. Offene Frage: US-Konzerne als Gateway-Betreiber? (→ §17.1) |
-| **GeDIG** | Referentenentwurf April 2026 | ePA-Ausbau auf 20 Mio. Nutzer, automatische FDZ-Ausleitung Ende 2026. Vergrößert CLOUD-Act-Angriffsfläche erheblich. (→ §17.2) |
-| **EHDS (European Health Data Space)** | Ab 2026 schrittweise | Sekundärnutzung erhöht Datenpool-Attraktivität. Keine Cloud-Infrastrukturvorgaben — CLOUD-Act-Lücke. (→ §17.3) |
+| **TI 2.0 (Telematikinfrastruktur)** | Migration ab 2025, Vollbetrieb 2027 | Cloud-basierte TI-Gateways ersetzen Hardware-Konnektoren. Offene Frage: US-Konzerne als Gateway-Betreiber? (→ §18.1) |
+| **GeDIG** | Referentenentwurf April 2026 | ePA-Ausbau auf 20 Mio. Nutzer, automatische FDZ-Ausleitung Ende 2026. Vergrößert CLOUD-Act-Angriffsfläche erheblich. (→ §18.2) |
+| **EHDS (European Health Data Space)** | Ab 2026 schrittweise | Sekundärnutzung erhöht Datenpool-Attraktivität. Keine Cloud-Infrastrukturvorgaben — CLOUD-Act-Lücke. (→ §18.3) |
 | **Schrems III (EuGH)** | Anhängig | Kippt das DPF, ändert sich das Enforcement-Bild schlagartig — sofortiger Handlungsdruck für alle US-Cloud-Nutzer. (Analyse: → §9.1) |
 | **FISA § 702 Verlängerung** | Auslaufdatum 20. April 2026 | Verlängerung ohne Reformen zementiert RISAA-Erweiterungen. Ablauf würde US-Zugriff temporär einschränken. (Analyse: → §3.2) |
 | **NIS2-Richtlinie** | In deutsches Recht umgesetzt (BSIG-Novelle) | Lieferketten-Risikobewertung ist Pflicht (Art. 21 Abs. 2 lit. d) — erfasst CLOUD-Act-exponierte Anbieter. GF-Haftung nach § 38 BSIG bei Verletzung der Sorgfaltspflicht. |
@@ -19,7 +19,7 @@ Die folgende Tabelle gibt den Überblick über laufende und kommende Entwicklung
 | **ANSSI-BSI Souveränitätskriterien** | Joint Statement 17. Nov. 2025 | ANSSI und BSI entwickeln gemeinsam Souveränitätskriterien auf Basis des EU Cloud Sovereignty Framework. Drei-Stufen-Progressionsmodell. Veröffentlichung "in Kürze". (Analyse: → §5.3) |
 | **EuroHPC AI Factories** | 19 Standorte, laufend seit 2025 | Souveräne GPU-Infrastruktur für KI-Training. Zugang für Gesundheitsorganisationen. |
 
-## 17.1 Telematikinfrastruktur (TI 2.0) — was sich durch die Migration ändert
+## 18.1 Telematikinfrastruktur (TI 2.0) — was sich durch die Migration ändert
 
 Die CLOUD-Act-Exposition der heutigen TI ist in §12.8 dokumentiert: IBM betreibt zwei Kerndienste (Rezeptserver, Identity Provider), Arvato Systems trägt die Sicherheitsinfrastruktur mit US-Technologieabhängigkeit. An dieser Bestandsaufnahme ändert sich kurzfristig nichts. Was sich ändert, ist die Architektur selbst.
 
@@ -27,9 +27,9 @@ Die CLOUD-Act-Exposition der heutigen TI ist in §12.8 dokumentiert: IBM betreib
 
 **Die offene Frage:** Wer die TI-Gateway-Betreiber sein werden und ob darunter US-Konzerne zugelassen werden, ist regulatorisch nicht abschließend definiert. Hier entsteht ein strukturell neues CLOUD-Act-Einfallstor — zusätzlich zu den bestehenden IBM- und Arvato-Abhängigkeiten.
 
-**Was Organisationen konkret tun können:** Die TI-Abhängigkeit ist derzeit nicht auflösbar — die TI-Nutzung ist gesetzlich verpflichtend und die gematik legt die Anbieter fest. Was zählt: eigene Systeme, die über die TI kommunizieren, sollten so gebaut sein, dass Daten auf dem Transportweg und im eigenen System verschlüsselt sind. Inhalte, die nicht zwingend im Klartext übertragen werden müssen, sollten Ende-zu-Ende verschlüsselt werden. Für die Architekturentscheidung eigener Gesundheits-IT-Systeme bleibt die TI ein Systembestandteil mit Restrisiko, das transparent dokumentiert werden sollte — auch im TIA (vgl. §16.4).
+**Was Organisationen konkret tun können:** Die TI-Abhängigkeit ist derzeit nicht auflösbar — die TI-Nutzung ist gesetzlich verpflichtend und die gematik legt die Anbieter fest. Was zählt: eigene Systeme, die über die TI kommunizieren, sollten so gebaut sein, dass Daten auf dem Transportweg und im eigenen System verschlüsselt sind. Inhalte, die nicht zwingend im Klartext übertragen werden müssen, sollten Ende-zu-Ende verschlüsselt werden. Für die Architekturentscheidung eigener Gesundheits-IT-Systeme bleibt die TI ein Systembestandteil mit Restrisiko, das transparent dokumentiert werden sollte — auch im TIA (vgl. §17.4).
 
-## 17.2 GeDIG 2026 — wie das neue Digitalgesetz die CLOUD-Act-Exposition erhöht
+## 18.2 GeDIG 2026 — wie das neue Digitalgesetz die CLOUD-Act-Exposition erhöht
 
 Das Gesetz für Daten und digitale Innovation im Gesundheitswesen (GeDIG) ist das Nachfolgeprojekt des DigiG und GDNG. Bundesgesundheitsministerin Nina Warken (CDU) hat den Referentenentwurf im ersten Quartal 2026 vorgelegt. Das Gesetz hat erhebliche Konsequenzen für die CLOUD-Act-Exposition des deutschen Gesundheitswesens — obwohl der Begriff im Gesetzentwurf nicht vorkommt.
 
@@ -43,7 +43,7 @@ Je mehr Versicherte die ePA nutzen und je mehr Daten in ihr gespeichert werden, 
 
 Hinzu kommt der geplante FDZ-Ausbau: Ab Ende 2026 soll die automatische Ausleitung von ePA-Daten an das Forschungsdatenzentrum Gesundheit beim BfArM starten (aktuelle CLOUD-Act-Bewertung des FDZ: §12.6). Eine zentrale Plattform mit pseudonymisierten Gesundheitsdaten von Millionen Versicherten ist ein hochattraktives Ziel für CLOUD-Act-Zugriffe — auch pseudonymisierte Daten bleiben im Kontext einer großen Gesundheitsdatenbank re-identifizierbar. Die Frage, auf welcher Infrastruktur das FDZ für diese Skalierung betrieben wird, ist regulatorisch noch nicht abschließend festgelegt.
 
-## 17.3 EHDS — der europäische Gesundheitsdatenraum und seine Grenzen
+## 18.3 EHDS — der europäische Gesundheitsdatenraum und seine Grenzen
 
 Der European Health Data Space (EHDS — Europäischer Gesundheitsdatenraum) ist eine EU-Verordnung, die ab 2026 schrittweise anwendbar wird. Sie schafft einen einheitlichen Rahmen für die Nutzung von Gesundheitsdaten in der EU — für die Versorgung (Primärnutzung) und für Forschung, Regulierung und Politikgestaltung (Sekundärnutzung).
 

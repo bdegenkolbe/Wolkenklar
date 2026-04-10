@@ -88,7 +88,7 @@ Für jede Beauftragung einer externen Beratung im Kontext von Cloud-Infrastruktu
 **Zur Qualität der Empfehlung:**
 - Wurden beim Cloud-Anbietervergleich EU-souveräne Alternativen (STACKIT, plusserver, 3DS Outscale, Cloud Temple etc.) mit gleichem methodischen Aufwand evaluiert?
 - Wer hat die Evaluation der EU-Alternativen durchgeführt — und welche Qualifikationen hat das Beraterteam für EU-Cloud-Anbieter?
-- Wurde eine Datentransfer-Folgenabschätzung (TIA, §16.4) für den empfohlenen Anbieter erstellt und dem Auftraggeber übergeben?
+- Wurde eine Datentransfer-Folgenabschätzung (TIA, §17.4) für den empfohlenen Anbieter erstellt und dem Auftraggeber übergeben?
 - Ist das CLOUD-Act-Risiko des empfohlenen Anbieters explizit im schriftlichen Beratungsergebnis adressiert?
 
 **Zur Vertragssituation:**

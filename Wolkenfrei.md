@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 21.0 — April 2026 · 189 Quellen · 18 Kapitel  
+**Version:** 21.0 — April 2026 · 198 Quellen · 18 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -1843,6 +1843,34 @@ Die Positionierung aller deutschen Datenschutzaufsichtsbehörden zu Microsoft 36
 
 **Das Fazit:** Wer bei der "richtigen" Aufsichtsbehörde sitzt, bekommt Azure genehmigt oder zumindest toleriert. Wer Pech hat, bekommt eine Mahnung ohne Konsequenz. **STACKIT und EU-souveräne Alternativen werden primär dort gewählt, wo die Aufsicht Druck macht (Hamburg, Schleswig-Holstein) oder die Ausschreibungsgestaltung es erzwingt.** Das Enforcement-Gap ist das eigentliche strukturelle Problem: Die Regelungslücke existiert — aber sie hat keinen einheitlichen Preis.
 
+#### Aufsichtsbehörden-Hinweise zu Cloud und KI im Gesundheitswesen
+
+Die Microsoft-365-Tabelle oben bildet nur eine Dimension ab: die Haltung der Aufsichtsbehörden zu einem bestimmten Produkt. Parallel dazu haben DSK und einzelne Landesaufsichtsbehörden zwischen 2023 und 2026 konkrete Orientierungshilfen, Beschlüsse und Prüfaktionen veröffentlicht, die **Cloud-Nutzung für Gesundheitsdaten** und **KI-Anwendungen mit Cloud-Infrastruktur** direkt adressieren. Für Gesundheitsinstitutionen sind diese Dokumente handlungsrelevanter als die Microsoft-365-Positionierung — sie definieren, was Aufsichtsbehörden bei einer Prüfung tatsächlich verlangen.
+
+| Dokument | Herausgeber | Datum | Kernaussage für Gesundheitsinstitutionen |
+|---|---|---|---|
+| **Positionspapier cloudbasierte digitale Gesundheitsanwendungen** | DSK | 06.11.2023 | Cloud-Funktionen standardmäßig deaktiviert (Privacy by Default); Nutzung ohne Benutzerkonto möglich, es sei denn Cloud ist therapeutisch zwingend; BSI-TR "Anforderungen an Anwendungen im Gesundheitswesen" als Maßstab |
+| **Orientierungshilfe KI-Systeme** (TOM für Entwicklung und Betrieb) | DSK (KI-Taskforce + AG KI) | Mai/Juni 2025 | Erste koordinierte KI-Orientierungshilfe aller Aufsichtsbehörden; Risikoanalyse für LLMs als Kernstück; auch pseudonymisierte Eingaben = personenbezogene Daten; DSFA nach Art. 35 DSGVO erforderlich; 3 Phasen: Konzeption → Implementierung → Betrieb |
+| **Entschließung Confidential Cloud Computing** | DSK | 16.06.2025 | Cloud-Betreiber behalten "umfassenden physischen und technischen Zugriff" — Marketingversprechen halten "regelmäßig einer Prüfung nicht stand"; Vertraulichkeit nur gegeben wenn Betreiber **keinerlei** Zugriff auf Entschlüsselungsschlüssel hat; Confidential Computing = ein Baustein, kein Allheilmittel |
+| **Positionspapier Terminverwaltung Heilberufspraxen** | DSK | 16.06.2025 | Patientenstammdaten dürfen nicht pauschal an Cloud-Termindienstleister übermittelt werden; nur Minimum für konkreten Termin; zeitnahe Löschung |
+| **KI-Handreichung Bundesverwaltung** ("KI in Behörden — Datenschutz von Anfang an mitdenken") | BfDI | 22.12.2025 | Leitfaden für Bundesbehörden inkl. bundesunmittelbare GKVen; Fokus LLMs und cloud-basierte KI-Dienste; Datenschutz ab Konzeptionsphase |
+| **Diskussionspapier "Rechtsgrundlagen Datenschutz + KI"** (v2.0) | LfDI Baden-Württemberg | 17.10.2024 | Rechtsgrundlage für jede KI-Phase separat erforderlich; cloud-basierte KI = eigene Rechtsgrundlage wenn Nutzerdaten Modell verbessern; EHDS-VO für sekundäre Gesundheitsdatennutzung referenziert |
+| **Checkliste "Datenschutz und KI"** + Flyer "Next-Level-Bausteine für KI" | BayLDA | 2024/2025 | AI-as-a-Service = Auftragsverarbeitung (Art. 28 DSGVO); Drittlandstransfer bei US-Anbietern prüfen; Halluzinationen und Bias in DSFA einbeziehen |
+| **Aktive KI-Prüfung im Gesundheitswesen** (Auskunftsersuchen nach Art. 58 Abs. 1 lit. a DSGVO) | LfDI Rheinland-Pfalz | März 2026 | **Erste dokumentierte Enforcement-Aktion KI + Gesundheitswesen:** Prüft KI-Telefonanlagen, KI-Dokumentenmanagement, KI-Websites in Arztpraxen; verlangt vollständiges Verzeichnis aller KI-Tools inkl. Einsatzzweck und zugrundeliegende Modelle; fehlende Dokumentation = Verstoß gegen Rechenschaftspflicht |
+| **CEF Cloud-Nutzung öffentlicher Stellen** | EDPB (7 deutsche Landesbehörden beteiligt) | 2023 (Bericht) | Koordinierte Prüfung der Cloud-Nutzung durch öffentliche Stellen inkl. Gesundheitswesen; Ergebnisbericht mit Empfehlungen zu Auftragsverarbeitung und Drittlandstransfer |
+
+**Was das für Gesundheitsinstitutionen bedeutet:**
+
+1. **Cloud-Gesundheitsanwendungen** unterliegen seit dem DSK-Beschluss November 2023 konkreten Anforderungen an Privacy by Default — Cloud-Funktionen müssen deaktivierbar sein. Jede GKV oder Klinik, die eine Cloud-basierte Gesundheitsanwendung einführt (z.B. DiGA-ähnliche Apps, Patientenportale), muss diese Anforderungen nachweisen können.
+
+2. **KI-Anwendungen** mit Cloud-Backend erfordern seit der DSK-Orientierungshilfe Mai/Juni 2025 eine eigene DSFA — insbesondere für LLMs. Das betrifft direkt die KI-Anwendungsfälle aus §7.5: Arztbrief-Generierung, Transkription, Kodierung. Wer Azure OpenAI, Google Gemini oder AWS Bedrock für Gesundheitsdaten nutzt, muss eine DSFA vorlegen, die explizit die Klartextverarbeitung und den Drittlandstransfer adressiert.
+
+3. **Confidential Cloud Computing** schützt laut DSK-Entschließung Juni 2025 **nicht** vor Provider-Zugriff — das bestätigt die CLOUD-Act-Analyse aus §1 und §13: Technische Maßnahmen allein lösen das Jurisdiktionsproblem nicht.
+
+4. **Rheinland-Pfalz macht ernst:** Die Art.-58-Auskunftsersuchen des LfDI Rheinland-Pfalz ab März 2026 sind die erste dokumentierte anlassbezogene Prüfung von KI im Gesundheitswesen durch eine Landesaufsicht. Gesundheitsinstitutionen müssen ein vollständiges Verzeichnis aller eingesetzten KI-Tools vorhalten — inklusive der zugrundeliegenden Modelle und deren Infrastruktur. Wer nicht dokumentieren kann, welches Modell seine Arztbrief-KI antreibt und wo es läuft, riskiert einen Rechenschaftspflicht-Verstoß nach Art. 5 Abs. 2 DSGVO.
+
+5. **BfDI-Handreichung** (Dezember 2025) gilt für alle bundesunmittelbaren Stellen — das schließt die großen bundesunmittelbaren GKVen (Barmer, TK, DAK, AOK-Bundesverband) ein, die bislang im "Vakuum" operierten (s.o.). Für diese Kassen ist die BfDI-Handreichung die erste konkrete Erwartungshaltung des Bundesbeauftragten zu KI und Cloud.
+
 ---
 
 ## 17. Regulatorischer Ausblick 2025–2027 {#17-ausblick}
@@ -2187,7 +2215,16 @@ Zwölf Kernaussagen:
 - [187] Élysée: Summit on European Digital Sovereignty delivers landmark commitments, 18. November 2025. Macron/Merz, Joint Task Force, 12 Mrd. EUR Investitionszusagen, 900+ Teilnehmer: https://www.elysee.fr/en/emmanuel-macron/2025/11/18/summit-on-european-digital-sovereignty-delivers-landmark-commitments-for-a-more-competitive-and-sovereign-europe
 - [188] BSI Pressemitteilung: "Sicheres Cloud-Computing: BSI veröffentlicht C5:2026", 7. April 2026. 168 Kriterien in 17 Themengebieten; Container-Management, Post-Quanten-Kryptographie, Confidential Computing, Supply-Chain-Management; strukturell an EUCS angelehnt; maschinenlesbar: https://www.bsi.bund.de/DE/Service-Navi/Presse/Pressemitteilungen/Presse2026/260407_C5_Cloud_Computing.html
 - [189] BSI/ANSSI: Joint Statement by ANSSI and BSI on Cloud Sovereignty Criteria, 17. November 2025. Gemeinsame Souveränitätskriterien auf Basis EU Cloud Sovereignty Framework; Drei-Stufen-Progressionsmodell; strikte Datenlokalisierung, kein Zugang durch nicht-europäische Dritte, Geschäftskontinuität ohne außereuropäische Technologien: https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/ANSSI-BSI-joint-releases/Cloud-Sovereignty-Criteria.html
+- [190] DSK: Beschluss Positionspapier zu cloudbasierten digitalen Gesundheitsanwendungen, 06. November 2023. Cloud-Funktionen standardmäßig deaktiviert; Privacy by Default; BSI-TR als Maßstab: https://www.datenschutzkonferenz-online.de/media/dskb/2023_11_06_Beschluss_cloudbasierte_digitale_Gesundheitsanwendungen.pdf
+- [191] DSK: Entschließung zu Confidential Cloud Computing, 16. Juni 2025. Cloud-Betreiber behalten umfassenden physischen und technischen Zugriff; Marketingversprechen halten regelmäßig einer Prüfung nicht stand: https://www.datenschutz-berlin.de/fileadmin/user_upload/pdf/publikationen/DSK/2025/20250617-DSK-Entschliessung_Confidential-Cloud-Computing.pdf
+- [192] DSK: Orientierungshilfe zu empfohlenen technischen und organisatorischen Maßnahmen bei der Entwicklung und beim Betrieb von KI-Systemen, Mai/Juni 2025. Erste koordinierte KI-Orientierungshilfe aller Aufsichtsbehörden; DSFA für LLMs erforderlich: https://www.lfd.niedersachsen.de/dsk-ki
+- [193] DSK: Positionspapier Datenschutz bei der Terminverwaltung durch Heilberufspraxen, 16. Juni 2025. Patientenstammdaten nicht pauschal an Cloud-Termindienstleister übermitteln: https://www.datenschutzkonferenz-online.de/media/dskb/DSK-Beschluss_Positionspapier_Terminverwaltungsunternehmen.pdf
+- [194] BfDI: "KI in Behörden — Datenschutz von Anfang an mitdenken", KI-Handreichung für die Bundesverwaltung, 22. Dezember 2025: https://www.bfdi.bund.de/SharedDocs/Downloads/DE/DokumenteBfDI/Dokumente-allg/2025/Handreichung-KI.pdf
+- [195] LfDI Baden-Württemberg: Diskussionspapier "Rechtsgrundlagen im Datenschutz beim Einsatz von Künstlicher Intelligenz", Version 2.0, 17. Oktober 2024. Rechtsgrundlage für jede KI-Phase separat; EHDS-VO referenziert: https://www.baden-wuerttemberg.datenschutz.de/rechtsgrundlagen-datenschutz-ki/
+- [196] BayLDA: Checkliste "Datenschutz und KI" (Konsultationsentwurf) + Flyer "Next-Level-Bausteine für KI", 2024/2025. AI-as-a-Service = Auftragsverarbeitung; Drittlandstransfer prüfen: https://www.lda.bayern.de/de/ki.html
+- [197] LfDI Rheinland-Pfalz: Aktive KI-Prüfung im Gesundheitswesen — Auskunftsersuchen nach Art. 58 Abs. 1 lit. a DSGVO, März 2026. Erste dokumentierte Enforcement-Aktion KI + Gesundheitswesen: https://www.bublitzpeters.de/2026/03/12/datenschutzaufsicht-prueft-ki-einsatz-im-gesundheitswesen/
+- [198] EDPB: Report on Coordinated Enforcement Framework — Use of cloud-based services by the public sector, 2023. 7 deutsche Landesbehörden beteiligt: https://www.edpb.europa.eu/coordinated-enforcement-framework_en
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 189 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 198 Quellen. Es stellt keine Rechtsberatung dar.*

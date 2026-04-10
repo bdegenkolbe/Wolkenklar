@@ -1,0 +1,33 @@
+name: Deploy Wiki to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Wolkenfrei.md'
+      - 'mkdocs.yml'
+      - 'build_wiki.py'
+      - 'docs/stylesheets/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install mkdocs mkdocs-material
+
+      - name: Build wiki pages from Wolkenfrei.md
+        run: python build_wiki.py
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force

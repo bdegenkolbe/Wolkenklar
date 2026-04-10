@@ -1,0 +1,7 @@
+node_modules/
+site/
+docs/*.md
+!docs/stylesheets/
+wiki/
+__pycache__/
+__pycache__/

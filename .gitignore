@@ -1,6 +1,5 @@
 node_modules/
 site/
-docs/*.md
 !docs/stylesheets/
 wiki/
 __pycache__/

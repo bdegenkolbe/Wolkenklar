@@ -44,25 +44,25 @@ extra_css:
 
 nav:
   - Start: index.md
-  - "1. Kernproblem": 01-das-kernproblem.md
+  - "1. Das Kernproblem": 01-das-kernproblem.md
   - "2. Rechtliche Grundlagen": 02-rechtliche-grundlagen.md
   - "3. US-Zugriffsebenen": 03-die-vier-us-zugriffsebenen-im-detail.md
-  - "4. EU-Behordenzugriff": 04-europaeischer-behoerdenzugriff.md
+  - "4. EU-Behördenzugriff": 04-europaeischer-behoerdenzugriff.md
   - "5. Anbieterbewertung": 05-anbieterbewertung.md
   - "6. Operator-Modell": 06-das-operator-modell.md
-  - "7. Hyperscaling": 07-das-hyperscaling-problem.md
+  - "7. Hyperscaling-Problem": 07-das-hyperscaling-problem.md
   - "8. EU-Plattformstack": 08-der-vollstaendige-eu-plattformstack.md
   - "9. EU-US-Abkommen": 09-rechtliche-abkommen-zwischen-eu-und-usa.md
   - "10. Lobbyarbeit": 10-big-tech-lobbyarbeit-in-europa-und-deutschland.md
   - "11. Berater-Falle": 11-die-berater-falle.md
   - "12. Marktbeispiele": 12-marktbeispiele.md
-  - "13. Verschluesselung": 13-clientseitige-verschluesselung.md
+  - "13. Verschlüsselung": 13-clientseitige-verschluesselung.md
   - "14. Bewertungsschema": 14-bewertungsschema-und-laenderranking.md
   - "15. Globaler Vergleich": 15-globaler-vergleich.md
   - "16. Handlungsempfehlungen": 16-dsgvo-handlungsempfehlungen.md
-  - "17. Ausblick": 17-regulatorischer-ausblick-2025.md
+  - "17. Regulatorischer Ausblick": 17-regulatorischer-ausblick-2025-2027.md
   - Fazit: fazit.md
-  - "18. Quellen": 18-quellenverzeichnis.md
+  - "18. Quellenverzeichnis": 18-quellenverzeichnis.md
 
 markdown_extensions:
   - tables

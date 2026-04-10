@@ -59,10 +59,11 @@ nav:
   - "13. Verschlüsselung": 13-clientseitige-verschluesselung.md
   - "14. Bewertungsschema": 14-bewertungsschema-und-laenderranking.md
   - "15. Globaler Vergleich": 15-globaler-vergleich.md
-  - "16. Handlungsempfehlungen": 16-dsgvo-handlungsempfehlungen.md
-  - "17. Regulatorischer Ausblick": 17-regulatorischer-ausblick-2025-2027.md
+  - "16. Aufsichtslandschaft": 16-aufsichts-und-regulierungslandschaft.md
+  - "17. Handlungsempfehlungen": 17-dsgvo-handlungsempfehlungen.md
+  - "18. Regulatorischer Ausblick": 18-regulatorischer-ausblick-2025-2027.md
   - Fazit: fazit.md
-  - "18. Quellenverzeichnis": 18-quellenverzeichnis.md
+  - "19. Quellenverzeichnis": 19-quellenverzeichnis.md
 
 markdown_extensions:
   - tables

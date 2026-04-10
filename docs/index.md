@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 21.0 — April 2026 · 202 Quellen · 18 Kapitel  
+**Version:** 21.0 — April 2026 · 202 Quellen · 19 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -26,8 +26,9 @@
 13. [Clientseitige Verschlüsselung: Teilschutz, kein Allheilmittel](13-clientseitige-verschluesselung.md)
 14. [Bewertungsschema und Länderranking](14-bewertungsschema-und-laenderranking.md)
 15. [Globaler Vergleich: Wie Regionen dem CLOUD Act entkommen](15-globaler-vergleich.md)
-16. [DSGVO-Handlungsempfehlungen](16-dsgvo-handlungsempfehlungen.md)
-17. [Regulatorischer Ausblick 2025–2027](17-regulatorischer-ausblick-2025-2027.md)
-18. [Quellenverzeichnis](18-quellenverzeichnis.md)
+16. [Aufsichts- und Regulierungslandschaft](16-aufsichts-und-regulierungslandschaft.md)
+17. [DSGVO-Handlungsempfehlungen](17-dsgvo-handlungsempfehlungen.md)
+18. [Regulatorischer Ausblick 2025–2027](18-regulatorischer-ausblick-2025-2027.md)
+19. [Quellenverzeichnis](19-quellenverzeichnis.md)
 
 [Fazit](fazit.md)

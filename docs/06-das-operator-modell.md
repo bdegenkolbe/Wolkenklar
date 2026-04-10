@@ -92,6 +92,6 @@ CLOUD Act: kein         CLOUD Act: kein direkter  CLOUD Act: nur            CLOU
 Angriffspunkt           Angriff; Restfrage         Data Residency            angreifbar
 ```
 
-Workload-Zuordnung und vollständige Entscheidungsmatrix: → **Kapitel 16** (Handlungsempfehlungen).
+Workload-Zuordnung und vollständige Entscheidungsmatrix: → **Kapitel 17** (Handlungsempfehlungen).
 
 ---

@@ -1,6 +1,6 @@
-# 16. DSGVO-Handlungsempfehlungen
+# 17. DSGVO-Handlungsempfehlungen
 
-## 16.1 Sofortmaßnahmen — Priorität hoch
+## 17.1 Sofortmaßnahmen — Priorität hoch
 
 | # | Maßnahme | Was konkret zu tun ist |
 |---|---|---|
@@ -10,7 +10,7 @@
 | **4** | DPF nicht als Schutzschild | Das Data Privacy Framework basiert auf einem Präsidialerlass. PCLOB-Aufsicht ausgehöhlt seit Jan. 2025. Schrems III läuft. Keine Infrastrukturentscheidungen auf DPF-Dauerhaftigkeit bauen. |
 | **5** | Operator-Modell prüfen | Für Organisationen tief in Microsoft 365 oder Azure integriert: Delos Cloud GmbH (SAP-Tochter) als souveräner Betreiber von Azure-Technologie prüfen. BSI Cloud Platform Requirements erfüllt, VS-NfD-fähig. Preisaufschlag: +15% auf Microsoft-Listenpreise. |
 
-## 16.2 Das Vier-Stufen-Modell — welche Stufe für welchen Workload
+## 17.2 Das Vier-Stufen-Modell — welche Stufe für welchen Workload
 
 Das entscheidende Planungswerkzeug ist nicht mehr die binäre Frage "US-Hyperscaler oder nicht" — sondern die Einordnung jedes Workloads in das Souveränitätsspektrum:
 
@@ -68,7 +68,7 @@ Anbieter: AWS Frankfurt, Azure Deutschland, Google Cloud DE (Standard-Angebote o
 
 Geeignet für: Keine personenbezogenen Gesundheitsdaten, keine regulierten Daten, keine KRITIS-Systeme.
 
-## 16.3 Entscheidungsmatrix — Workload-Zuordnung
+## 17.3 Entscheidungsmatrix — Workload-Zuordnung
 
 | Workload | Schutzklasse | Empfohlene Stufe | Konkrete Anbieter / Software |
 |---|---|---|---|
@@ -96,7 +96,7 @@ Zone 2 — Mittelfristig (1–3 Jahre): Office-Suite vollständig (Euro-Office/N
 
 Zone 3 — Komplex, langfristig (3–5 Jahre): Tief integrierte Fachverfahren (KIS-Systeme, GKV-Primärsoftware), Windows-Desktop-Ablösung (→ Linux, wie Schleswig-Holstein), SAP-Konsolidierung. Hier ist das Operator-Modell (Delos Cloud) der realistische Übergangspfad bis zur vollständigen Migration.
 
-## 16.4 Datentransfer-Folgenabschätzung (TIA) — Pflichtinstrument für bestehende US-Provider
+## 17.4 Datentransfer-Folgenabschätzung (TIA) — Pflichtinstrument für bestehende US-Provider
 
 Wer heute Azure, AWS oder andere US-kontrollierte Dienste für Gesundheitsdaten nutzt, muss rechtlich handeln — nicht erst beim nächsten Vertrag, sondern jetzt. Das Instrument dafür heißt Transfer Impact Assessment, kurz TIA — auf Deutsch: Datentransfer-Folgenabschätzung.
 
@@ -120,7 +120,7 @@ Viertens die Dokumentation und Schlussfolgerung: Das TIA ist schriftlich zu doku
 
 Eine GKV, die Microsoft 365 mit Exchange Online für interne Kommunikation nutzt, bei der Patientenbezüge in E-Mails vorkommen, muss ein TIA für diese Datenübermittlung erstellt und dokumentiert haben. Liegt kein TIA vor, ist die Verarbeitung formell rechtswidrig — auch wenn § 393 SGB V und C5 eingehalten werden. Das TIA ist nicht die Lösung des CLOUD-Act-Problems, sondern der dokumentarische Nachweis, dass die Organisation das Problem kennt, bewertet hat und Maßnahmen ergreift. Als Überbrückungsmaßnahme bis zur vollständigen Migration zur EU-Infrastruktur (Kap. 8, 15.2) ist es das Mindestdokument, das jede Aufsichtsbehörde erwarten wird.
 
-## 16.5 Vertragliche Absicherung — AVV-Erweiterungen
+## 17.5 Vertragliche Absicherung — AVV-Erweiterungen
 
 Unabhängig von der gewählten Stufe: AVV-Erweiterungen (AVV = Auftragsverarbeitungsvertrag, der Standardvertrag zwischen einer Organisation und ihrem Cloud-Anbieter nach Art. 28 DSGVO) für CLOUD-Act-Schutz aufnehmen:
 
@@ -131,7 +131,7 @@ Unabhängig von der gewählten Stufe: AVV-Erweiterungen (AVV = Auftragsverarbeit
 - **Technologieänderungs-Klausel** (für Operator-Modell): Delos/S3NS müssen Veränderungen im Verhältnis zum US-Technologielieferanten melden, die die Souveränitätsarchitektur berühren
 - **Change-of-Control-Klausel:** Bei Eigentümerwechsel des Anbieters (z.B. Übernahme durch US-Unternehmen) ist der Vertrag neu zu prüfen und ggf. zu kündigen — besonders relevant für PE-geführte Anbieter wie EWERK
 
-## 16.6 Exit-Strategie und Cloud-Portabilität — der unterschätzte Engpass
+## 17.6 Exit-Strategie und Cloud-Portabilität — der unterschätzte Engpass
 
 Das häufigste Missverständnis in der Souveränitätsdebatte: Organisationen glauben, sie können Azure oder AWS jederzeit verlassen, wenn es nötig wird. In der Praxis ist ein Anbieterwechsel ohne Vorbereitung ein Mehrjahresprojekt mit erheblichen versteckten Kosten. Diesen Effekt nennt man Anbieterabhängigkeit (englisch: Vendor Lock-in) — die wachsende Schwierigkeit, einen einmal gewählten Cloud-Anbieter zu verlassen.
 
@@ -161,13 +161,13 @@ Architektur für Portabilität: Workloads, die in Containern (standardisierte So
 
 Migrationspfad für kritische Workloads: Die realistischen Kosten einer Migration — Personentage, Schulung, Ausfallzeiten, Vertragsrestlaufzeiten — sollten geschätzt und dokumentiert sein, damit die Entscheidung im Bedarfsfall schnell getroffen werden kann.
 
-Für GKVen und Kliniken gilt: Ein Anbieterwechsel für Kernsysteme dauert 6 bis 18 Monate. Wer 2026 nicht beginnt zu planen, handelt 2028 unter Druck. Die Drei-Zonen-Strategie in §16.3 ist die praktische Umsetzung dieser Reihenfolge.
+Für GKVen und Kliniken gilt: Ein Anbieterwechsel für Kernsysteme dauert 6 bis 18 Monate. Wer 2026 nicht beginnt zu planen, handelt 2028 unter Druck. Die Drei-Zonen-Strategie in §17.3 ist die praktische Umsetzung dieser Reihenfolge.
 
-## 16.7 Verschlüsselung — wo HYOK hilft und wo nicht
+## 17.7 Verschlüsselung — wo HYOK hilft und wo nicht
 
 Clientseitige Verschlüsselung mit eigener Schlüsselhoheit (HYOK — Hold Your Own Key) schützt strukturell vor CLOUD-Act-Zugriff, aber nur bei ruhenden Daten: Archivdaten, Backups, Objektspeicher, File-Storage. Für Daten, die der Anbieter verarbeiten muss — Microsoft 365, E-Mail-Spam-Filter, KI-Inferenz, SaaS-Anwendungen, Real-time-Analytics — funktioniert HYOK nicht, weil das System Klartextzugang benötigt. BYOK (Bring Your Own Key) bietet nur schwachen Schutz, weil der Anbieter die Schlüssel in seinem eigenen Key Management System verwaltet und technisch Zugriff hat. Die vollständige Analyse der drei Verschlüsselungsmodelle und die Gesundheitssektor-Matrix: → Kapitel 13.
 
-## 16.8 Reise-Hygiene bei US-Einreisen
+## 17.8 Reise-Hygiene bei US-Einreisen
 
 Betrifft Mitarbeitende mit Zugang zu sensiblen Gesundheitssystemen:
 
@@ -176,7 +176,7 @@ Betrifft Mitarbeitende mit Zugang zu sensiblen Gesundheitssystemen:
 - Keine KRITIS-relevanten Zugangsdaten, SSH-Schlüssel oder API-Tokens auf Reisegeräten
 - Für hochsensible Positionen: dediziertes Reisegerät mit frischer Installation
 
-## 16.9 Haftungskette: Wer haftet, wenn der Patient klagt?
+## 17.9 Haftungskette: Wer haftet, wenn der Patient klagt?
 
 Die bisherigen Kapitel haben das CLOUD-Act-Risiko als regulatorisches und technisches Problem beschrieben. Dieser Abschnitt zeigt die zivilrechtliche Konsequenz — in zwei Szenarien, die sich fundamental unterscheiden.
 
@@ -202,13 +202,13 @@ Die Schadensersatzsummen pro Person liegen bei dokumentiertem Zugriff auf sensib
 
 **Die doppelte Haftung — Verantwortlicher und Auftragsverarbeiter.** Die Klinik, Krankenkasse oder Kassenärztliche Vereinigung ist als Verantwortlicher nach Art. 4 Nr. 7 DSGVO haftbar. Sie bestimmt Zweck und Mittel der Verarbeitung und hat nach Art. 28 Abs. 1 DSGVO die Pflicht, nur Auftragsverarbeiter einzusetzen, die hinreichende Garantien bieten. Wenn sie wissentlich einen Anbieter unter US-Jurisdiktion gewählt hat und die CLOUD-Act-Exposition nicht dokumentiert und bewertet hat, haftet sie für diese Entscheidung.
 
-Der Cloud-Anbieter haftet als Auftragsverarbeiter nach Art. 82 Abs. 2 DSGVO direkt gegenüber Betroffenen, wenn er einer CLOUD-Act-Anordnung nachgekommen ist, ohne den Verantwortlichen zu informieren und ohne alle verfügbaren Rechtsmittel auszuschöpfen. In der Praxis wendet sich die Aufsichtsbehörde aber zuerst an den Verantwortlichen — an die GKV oder die Klinik. Liegt kein TIA vor (vgl. §16.4), ist die Haftungsfrage schnell beantwortet.
+Der Cloud-Anbieter haftet als Auftragsverarbeiter nach Art. 82 Abs. 2 DSGVO direkt gegenüber Betroffenen, wenn er einer CLOUD-Act-Anordnung nachgekommen ist, ohne den Verantwortlichen zu informieren und ohne alle verfügbaren Rechtsmittel auszuschöpfen. In der Praxis wendet sich die Aufsichtsbehörde aber zuerst an den Verantwortlichen — an die GKV oder die Klinik. Liegt kein TIA vor (vgl. §17.4), ist die Haftungsfrage schnell beantwortet.
 
 **Die persönliche Geschäftsführerhaftung — drei Wege, sauber getrennt.**
 
 Die DSGVO selbst kennt keine explizite persönliche GF-Haftung. Bußgelder nach Art. 83 DSGVO treffen die Organisation — die GKV, die Klinik, die KV. Nicht den Geschäftsführer als Person. Aber die persönliche Haftung kommt über zwei andere Wege:
 
-Der erste Weg ist die gesellschaftsrechtliche Organhaftung nach § 43 GmbHG beziehungsweise § 93 AktG. Wenn ein Geschäftsführer eine Entscheidung trifft, die vorhersehbar zu einem DSGVO-Bußgeld oder zu Schadensersatzansprüchen führt — etwa die bewusste Wahl eines CLOUD-Act-exponierten Anbieters ohne dokumentierte Risikoabwägung und ohne Prüfung europäischer Alternativen —, kann die Organisation ihren Geschäftsführer in Regress nehmen. Ein Bußgeld von 20 Millionen Euro oder Schadensersatzforderungen von hunderttausenden Patienten sind ein bezifferbarer Schaden, der auf eine konkrete Leitungsentscheidung zurückgeführt werden kann. Voraussetzung: Die Entscheidung beruhte nicht auf einer sorgfältigen, dokumentierten Abwägung. Liegt kein TIA vor (vgl. §16.4), fehlt genau diese Dokumentation.
+Der erste Weg ist die gesellschaftsrechtliche Organhaftung nach § 43 GmbHG beziehungsweise § 93 AktG. Wenn ein Geschäftsführer eine Entscheidung trifft, die vorhersehbar zu einem DSGVO-Bußgeld oder zu Schadensersatzansprüchen führt — etwa die bewusste Wahl eines CLOUD-Act-exponierten Anbieters ohne dokumentierte Risikoabwägung und ohne Prüfung europäischer Alternativen —, kann die Organisation ihren Geschäftsführer in Regress nehmen. Ein Bußgeld von 20 Millionen Euro oder Schadensersatzforderungen von hunderttausenden Patienten sind ein bezifferbarer Schaden, der auf eine konkrete Leitungsentscheidung zurückgeführt werden kann. Voraussetzung: Die Entscheidung beruhte nicht auf einer sorgfältigen, dokumentierten Abwägung. Liegt kein TIA vor (vgl. §17.4), fehlt genau diese Dokumentation.
 
 Der zweite Weg ist die NIS2-Richtlinie, umgesetzt durch die BSIG-Novelle. NIS2 regelt Cybersicherheit, nicht Datenschutz — die Haftung nach § 38 BSIG greift bei Verletzung von Cybersicherheitspflichten. Ein US-Behördenzugriff per CLOUD Act ist kein Cyberangriff im klassischen Sinne. Aber NIS2 verlangt in Art. 21 Abs. 2 lit. d ausdrücklich die Bewertung von Sicherheitsrisiken in der Lieferkette — und ein CLOUD-Act-exponierter Cloud-Anbieter ist ein Lieferkettenrisiko. Wer als GKV oder Klinik unter NIS2 fällt und seine Cloud-Lieferkette nicht auf Jurisdiktionsrisiken geprüft hat, verletzt die NIS2-Sorgfaltspflicht. Für diese Verletzung haften Geschäftsführer nach § 38 BSIG persönlich — unabhängig davon, ob jemals ein US-Zugriff stattfindet.
 
@@ -216,7 +216,7 @@ In der Praxis verstärken sich beide Wege: Die fehlende DSGVO-Dokumentation (kei
 
 **Die Dokumentationsfalle.** Dieses Dokument — und zahlreiche vergleichbare Analysen, Aufsichtsbehörden-Beschlüsse und EuGH-Urteile — sind öffentlich zugänglich. Für eine Gesundheitsinstitution wird es zunehmend schwer zu argumentieren, sie habe von dem Risiko nichts gewusst. Das Wissen ist verfügbar. Die Frage vor Gericht wird sein: Hat die Leitung es zur Kenntnis genommen und darauf reagiert — oder hat sie es ignoriert?
 
-## 16.10 Grundprinzip: Rechtsstaatlicher Zugriff als Maßstab — nicht politisches Vertrauen
+## 17.10 Grundprinzip: Rechtsstaatlicher Zugriff als Maßstab — nicht politisches Vertrauen
 
 Aus der Analyse in Kapitel 4 ergibt sich ein handlungsleitendes Prinzip für Infrastrukturentscheidungen:
 
@@ -238,67 +238,12 @@ Vier Leitfragen für jede Infrastrukturentscheidung im Gesundheitsbereich:
 
 **Für den "westlichen Verbund"-Gedanken (NATO/Five Eyes):** Militärische und geheimdienstliche Kooperation legitimiert keinen anlasslosen Zugriff auf Krankenakten. Der Kategorieunterschied zwischen SIGINT (Fernmeldeaufklärung)-Kooperation und Gesundheitsdaten ist nicht akademisch — er ist die Grundlage jeder verhältnismäßigen Abwägung.
 
-## 16.11 Aufsichtsbehörden-Flickenteppich — wer was toleriert
+## 17.11 Aufsichts- und Regulierungslandschaft
 
-Die Positionierung aller deutschen Datenschutzaufsichtsbehörden zu Microsoft 365 / Azure (Stand April 2026):
+Die vollständige Analyse der Aufsichts- und Regulierungslandschaft — Datenschutzaufsichtsbehörden, Gesundheitsregulierer, Selbstverwaltung und ihre jeweilige Positionierung zu Cloud und KI im Gesundheitswesen — ist in **§16** als eigenständiges Kapitel dargestellt.
+---
 
-| Behörde | Zuständigkeit | Position Microsoft 365 / Azure | Tendenz |
-|---|---|---|---|
-| **BfDI** (Bund) | Bundesbehörden, bundesweite GKVen (BAS) | 2022: Rundschreiben an alle Bundesministerien mit Bedenken; kein förmliches Verbot | ⚠️ Kritisch, keine Sanktionen |
-| **BAS** | Bundesunmittelbare GKVen (AOK Bund, Barmer, TK, DAK u.a.) | Keine eigene Microsoft-Positionierung öffentlich bekannt; orientiert sich an BfDI | ⚠️ Unklar |
-| **Bayern BayLDA** (privat) | Private Unternehmen, GKVen mit Landesaufsicht | DSK-Gesamtbewertung 2022 "zu undifferenziert" — kein Verbot; Freistaat verhandelt Rahmenvertrag M365 für gesamte Verwaltung (Stand 2025) | 🟡 Pragmatisch, Einzelfallprüfung |
-| **Bayern BayLfD** (öffentlich) | Landesbehörden, Unikliniken BY | Lehnte M365 an Schulen ab (2021); Einzelfallverbot auf Beschwerde; kein generelles Verbot | ⚠️ Kritisch, aber kein Generalverbot |
-| **Baden-Württemberg LfDI** | Landesbehörden, Unikliniken BW | M365 2021 abgelehnt für Schulen; 2022 Ausstiegsgebot; digitaler Arbeitsplatz Lehrkräfte mit M365 gestartet April 2024 — faktische Kehrtwende | 🟡 Kritisch→pragmatisch |
-| **Berlin BlnBDI** | Landesbehörden, Unikliniken BE | 2020: "nicht möglich"; Copilot an Berliner Schulen 2024 eingeführt ohne DSB-Einbindung (Tagesspiegel) — faktischer Widerspruch zur eigenen Position | ⚠️ Kritisch, Umsetzung widersprüchlich |
-| **Brandenburg LDA** | Landesbehörden, Unikliniken BB | Beteiligt an EDSA-Kontrollaktion 2024; keine spezifische M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Bremen LfDI** | Landesbehörden | 2023/24 Tätigkeitsbericht: iCloud-Nutzung als rechtswidrig eingestuft; M365 mit Bedenken | ⚠️ Kritisch |
-| **Hamburg HmbBfDI** | Landesbehörden, Polizei | Signalisierte 2024 Abweichung von Niedersachsen-Modell; Microsoft Teams für Polizei Hamburg trotzdem im Einsatz | 🔴 Kritisch, aber kein Verbot durchgesetzt |
-| **Hessen HBDI** | Landesbehörden, Unikliniken HE | Nov. 2025: 137-seitiger Bericht — "Microsoft 365 kann datenschutzkonform genutzt werden" unter Bedingungen; Verhandlungen mit Microsoft direkt | 🟢 Positiv (mit Auflagen) |
-| **Mecklenburg-Vorpommern LfDI** | Landesbehörden | Beteiligt an EDSA-Kontrollaktion 2024; keine eigene M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Niedersachsen LfD** | Landesbehörden, Unikliniken NI | April/Mai 2024: Microsoft Teams Vereinbarung als "akzeptabel" bewertet; Rollout 13.500 Arbeitsplätze | 🟢 Positiv (Vorreiter) |
-| **NRW LDI** | Landesbehörden, Unikliniken NW, KVNO/KVWL | Mai 2024: "Keine Informationen vor, die Überarbeitung bieten würden" — kritisch zu neuem Outlook; kein Verbot | ⚠️ Kritisch, kein Verbot |
-| **Rheinland-Pfalz LfDI** | Landesbehörden, Unikliniken RP | Beteiligt an EDSA-Kontrollaktion 2024; keine eigene M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Saarland LfDI** | Landesbehörden | DSK-Gesamtbewertung 2022 nicht geteilt; signalisierte 2024 Abweichung vom Niedersachsen-Modell | 🟡 Pragmatisch |
-| **Sachsen DSB** | Landesbehörden, Unikliniken SN (UKL Dresden!) | Keine spezifische M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Sachsen-Anhalt LfDI** | Landesbehörden, Unikliniken SA | Keine spezifische M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Schleswig-Holstein ULD** | Landesbehörden | Mai 2024: "Teile die Ansicht des EDPS, dass Zwecke nicht transparent genug sind"; bisher keine geänderte Bewertung; SH setzt parallel auf Open-Source-Stack | 🔴 Kritisch |
-| **Thüringen TLfDI** | Landesbehörden, Unikliniken TH | Keine spezifische M365-Positionierung öffentlich bekannt | ⚠️ Unklar |
-| **Vergabekammer München** | Vergaberechtlich (nicht Datenschutz) | Feb. 2023: Pauschaler Azure-Ausschluss unzulässig — Einzelfallprüfung geboten | 🟡 Pragmatisch (vergaberechtlich) |
 
-**Bedeutung für das Gesundheitswesen:** Unikliniken unterstehen ihrer Landesaufsicht — ein Klinikum in Hessen oder Bayern hat strukturell mehr Spielraum für Azure als eines in Hamburg oder Schleswig-Holstein. GKVen unterstehen je nach Kassengröße dem BAS oder Landesaufsichten. Der BAS hat keine eigene öffentliche Microsoft-Positionierung — bundesunmittelbare Kassen wie Barmer oder TK operieren faktisch in einem Vakuum.
 
-**Das Fazit:** Wer bei der "richtigen" Aufsichtsbehörde sitzt, bekommt Azure genehmigt oder zumindest toleriert. Wer Pech hat, bekommt eine Mahnung ohne Konsequenz. **STACKIT und EU-souveräne Alternativen werden primär dort gewählt, wo die Aufsicht Druck macht (Hamburg, Schleswig-Holstein) oder die Ausschreibungsgestaltung es erzwingt.** Das Enforcement-Gap ist das eigentliche strukturelle Problem: Die Regelungslücke existiert — aber sie hat keinen einheitlichen Preis.
-
-### Aufsichtsbehörden-Hinweise zu Cloud und KI im Gesundheitswesen
-
-Die Microsoft-365-Tabelle oben bildet nur eine Dimension ab: die Haltung der Aufsichtsbehörden zu einem bestimmten Produkt. Parallel dazu haben DSK und einzelne Landesaufsichtsbehörden zwischen 2023 und 2026 konkrete Orientierungshilfen, Beschlüsse und Prüfaktionen veröffentlicht, die **Cloud-Nutzung für Gesundheitsdaten** und **KI-Anwendungen mit Cloud-Infrastruktur** direkt adressieren. Für Gesundheitsinstitutionen sind diese Dokumente handlungsrelevanter als die Microsoft-365-Positionierung — sie definieren, was Aufsichtsbehörden bei einer Prüfung tatsächlich verlangen.
-
-| Dokument | Herausgeber | Datum | Kernaussage für Gesundheitsinstitutionen |
-|---|---|---|---|
-| **Positionspapier cloudbasierte digitale Gesundheitsanwendungen** | DSK | 06.11.2023 | Cloud-Funktionen standardmäßig deaktiviert (Privacy by Default); Nutzung ohne Benutzerkonto möglich, es sei denn Cloud ist therapeutisch zwingend; BSI-TR "Anforderungen an Anwendungen im Gesundheitswesen" als Maßstab |
-| **Orientierungshilfe KI-Systeme** (TOM für Entwicklung und Betrieb) | DSK (KI-Taskforce + AG KI) | Mai/Juni 2025 | Erste koordinierte KI-Orientierungshilfe aller Aufsichtsbehörden; Risikoanalyse für LLMs als Kernstück; auch pseudonymisierte Eingaben = personenbezogene Daten; DSFA nach Art. 35 DSGVO erforderlich; 3 Phasen: Konzeption → Implementierung → Betrieb |
-| **Entschließung Confidential Cloud Computing** | DSK | 16.06.2025 | Cloud-Betreiber behalten "umfassenden physischen und technischen Zugriff" — Marketingversprechen halten "regelmäßig einer Prüfung nicht stand"; Vertraulichkeit nur gegeben wenn Betreiber **keinerlei** Zugriff auf Entschlüsselungsschlüssel hat; Confidential Computing = ein Baustein, kein Allheilmittel |
-| **Positionspapier Terminverwaltung Heilberufspraxen** | DSK | 16.06.2025 | Patientenstammdaten dürfen nicht pauschal an Cloud-Termindienstleister übermittelt werden; nur Minimum für konkreten Termin; zeitnahe Löschung |
-| **KI-Handreichung Bundesverwaltung** ("KI in Behörden — Datenschutz von Anfang an mitdenken") | BfDI | 22.12.2025 | Leitfaden für Bundesbehörden inkl. bundesunmittelbare GKVen; Fokus LLMs und cloud-basierte KI-Dienste; Datenschutz ab Konzeptionsphase |
-| **Diskussionspapier "Rechtsgrundlagen Datenschutz + KI"** (v2.0) | LfDI Baden-Württemberg | 17.10.2024 | Rechtsgrundlage für jede KI-Phase separat erforderlich; cloud-basierte KI = eigene Rechtsgrundlage wenn Nutzerdaten Modell verbessern; EHDS-VO für sekundäre Gesundheitsdatennutzung referenziert |
-| **Checkliste "Datenschutz und KI"** + Flyer "Next-Level-Bausteine für KI" | BayLDA | 2024/2025 | AI-as-a-Service = Auftragsverarbeitung (Art. 28 DSGVO); Drittlandstransfer bei US-Anbietern prüfen; Halluzinationen und Bias in DSFA einbeziehen |
-| **Aktive KI-Prüfung im Gesundheitswesen** (Auskunftsersuchen nach Art. 58 Abs. 1 lit. a DSGVO) | LfDI Rheinland-Pfalz | März 2026 | **Erste dokumentierte Enforcement-Aktion KI + Gesundheitswesen:** Prüft KI-Telefonanlagen, KI-Dokumentenmanagement, KI-Websites in Arztpraxen; verlangt vollständiges Verzeichnis aller KI-Tools inkl. Einsatzzweck und zugrundeliegende Modelle; fehlende Dokumentation = Verstoß gegen Rechenschaftspflicht |
-| **Positionspapier "Kriterien für Souveräne Clouds"** | DSK | 11.05.2023 | Souveräne Cloud nur wenn Verantwortlicher Datenschutzpflichten "wirksam, überprüfbar und dauerhaft" erfüllen kann; Drittlandszugriffsrisiko muss **ausgeschlossen** sein; Open-Source-Basis empfohlen; offene Standards und Exportmöglichkeiten |
-| **Empfehlungen zu KI-Anbietern außerhalb der EU** (inkl. koordiniertes Verfahren gegen DeepSeek) | LfDI Baden-Württemberg | 2025 | Warnung vor KI-Anbietern ohne Art.-27-DSGVO-Vertreter in der EU; koordinierte Verfahren gegen DeepSeek eingeleitet; Drittstaatentransfer bei KI-as-a-Service systematisch prüfen |
-| **Orientierungshilfe Gesundheitsdatennutzungsgesetz (GDNG)** | BayLfD | Januar 2026 | Orientierungshilfe zu §§ 5 und 6 GDNG und EHDS; Muster-Einwilligung nach § 6; Living Document mit regelmäßigen Updates |
-| **Leitfaden Datenschutz in der medizinischen Forschung** (mit DGIM) | HBDI | Dezember 2025 | Vier konkrete Use Cases aus der medizinischen Forschung; Pseudonymisierung über Treuhandstelle; föderierte Datenmodelle; Living Document |
-| **CEF Cloud-Nutzung öffentlicher Stellen** | EDPB (7 deutsche Landesbehörden beteiligt) | 2023 (Bericht) | Koordinierte Prüfung der Cloud-Nutzung durch öffentliche Stellen inkl. Gesundheitswesen; nur 32 von 86 geprüften Stellen hatten vor Cloud-Einsatz eine DSFA durchgeführt; Ergebnisbericht mit Empfehlungen zu Auftragsverarbeitung und Drittlandstransfer |
-
-**Was das für Gesundheitsinstitutionen bedeutet:**
-
-1. **Cloud-Gesundheitsanwendungen** unterliegen seit dem DSK-Beschluss November 2023 konkreten Anforderungen an Privacy by Default — Cloud-Funktionen müssen deaktivierbar sein. Jede GKV oder Klinik, die eine Cloud-basierte Gesundheitsanwendung einführt (z.B. DiGA-ähnliche Apps, Patientenportale), muss diese Anforderungen nachweisen können.
-
-2. **KI-Anwendungen** mit Cloud-Backend erfordern seit der DSK-Orientierungshilfe Mai/Juni 2025 eine eigene DSFA — insbesondere für LLMs. Das betrifft direkt die KI-Anwendungsfälle aus §7.5: Arztbrief-Generierung, Transkription, Kodierung. Wer Azure OpenAI, Google Gemini oder AWS Bedrock für Gesundheitsdaten nutzt, muss eine DSFA vorlegen, die explizit die Klartextverarbeitung und den Drittlandstransfer adressiert.
-
-3. **Confidential Cloud Computing** schützt laut DSK-Entschließung Juni 2025 **nicht** vor Provider-Zugriff — das bestätigt die CLOUD-Act-Analyse aus §1 und §13: Technische Maßnahmen allein lösen das Jurisdiktionsproblem nicht.
-
-4. **Rheinland-Pfalz macht ernst:** Die Art.-58-Auskunftsersuchen des LfDI Rheinland-Pfalz ab März 2026 sind die erste dokumentierte anlassbezogene Prüfung von KI im Gesundheitswesen durch eine Landesaufsicht. Gesundheitsinstitutionen müssen ein vollständiges Verzeichnis aller eingesetzten KI-Tools vorhalten — inklusive der zugrundeliegenden Modelle und deren Infrastruktur. Wer nicht dokumentieren kann, welches Modell seine Arztbrief-KI antreibt und wo es läuft, riskiert einen Rechenschaftspflicht-Verstoß nach Art. 5 Abs. 2 DSGVO.
-
-5. **BfDI-Handreichung** (Dezember 2025) gilt für alle bundesunmittelbaren Stellen — das schließt die großen bundesunmittelbaren GKVen (Barmer, TK, DAK, AOK-Bundesverband) ein, die bislang im "Vakuum" operierten (s.o.). Für diese Kassen ist die BfDI-Handreichung die erste konkrete Erwartungshaltung des Bundesbeauftragten zu KI und Cloud.
 
 ---

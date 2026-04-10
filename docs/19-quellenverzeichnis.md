@@ -1,4 +1,4 @@
-# 18. Quellenverzeichnis
+# 19. Quellenverzeichnis
 
 ## Gesetzestexte & Primärquellen
 
@@ -265,4 +265,4 @@
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 202 Quellen. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 21.0, April 2026. 202 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*

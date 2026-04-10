@@ -196,7 +196,7 @@ Damit ist Oracle — ein US-Konzern mit Hauptsitz in Austin, Texas, NYSE: ORCL �
 
 Diese Annahme ist falsch. Der CLOUD Act knüpft an "possession, custody, or control" an — nicht an den Besitz der Hardware. Oracle Cerner hat als Managed-Service-Betreiber in der Regel administrativen Fernzugriff auf die Systeme: um Patches einzuspielen, Konfigurationen anzupassen, Fehler zu analysieren. Dieser Fernzugriff bedeutet "control" im Sinne des CLOUD Act. Es ist technisch irrelevant, wem der Server gehört — entscheidend ist, ob Oracle Cerner auf die Daten zugreifen kann. Und bei einem KIS-Managed-Service ist genau das der Fall, weil Support und Wartung eines Krankenhausinformationssystems ohne Klartextzugriff auf Patientendaten praktisch nicht möglich sind.
 
-Die Differenzierung ist dennoch wichtig: Ein Managed Service ohne Cloud-Migration ist eine geringere Exposition als eine vollständige OCI-Migration, bei der Oracle nicht nur den Zugriff, sondern auch den physischen Besitz aller Daten hat. Bei einer OCI-Migration liegt alles — Speicher, Compute, Backup — bei einem US-Hyperscaler. Beim Managed Service liegt die Infrastruktur beim Klinikum oder bei einem deutschen Betreiber; Oracle hat "nur" den administrativen Zugang. Das ist ein gradueller Unterschied, kein kategorischer. Für die DSGVO-Bewertung bleibt in beiden Fällen ein TIA erforderlich (vgl. §16.4), und in beiden Fällen muss der Auftragsverarbeitungsvertrag die CLOUD-Act-Exposition adressieren (vgl. §16.5).
+Die Differenzierung ist dennoch wichtig: Ein Managed Service ohne Cloud-Migration ist eine geringere Exposition als eine vollständige OCI-Migration, bei der Oracle nicht nur den Zugriff, sondern auch den physischen Besitz aller Daten hat. Bei einer OCI-Migration liegt alles — Speicher, Compute, Backup — bei einem US-Hyperscaler. Beim Managed Service liegt die Infrastruktur beim Klinikum oder bei einem deutschen Betreiber; Oracle hat "nur" den administrativen Zugang. Das ist ein gradueller Unterschied, kein kategorischer. Für die DSGVO-Bewertung bleibt in beiden Fällen ein TIA erforderlich (vgl. §17.4), und in beiden Fällen muss der Auftragsverarbeitungsvertrag die CLOUD-Act-Exposition adressieren (vgl. §16.5).
 
 Für Kliniken, die heute i.s.h.med im Managed-Service-Modell betreiben und eine Entscheidung über die Zukunft treffen müssen, ergibt sich eine klare Reihenfolge: Die Migration auf OCI vertieft die Exposition. Der Verbleib im Managed-Service-Modell auf eigener Infrastruktur reduziert sie relativ, löst sie aber nicht. Nur der Wechsel auf ein europäisches KIS — Dedalus, CGM, NEXUS, Meierhofer — oder ein Betriebsmodell, bei dem Oracle keinen administrativen Klartextzugriff mehr hat, eliminiert das CLOUD-Act-Risiko strukturell.
 
@@ -271,7 +271,7 @@ Das übergeordnete Muster: 25 CEOs europäischer Cloud-Anbieter warnten in einem
 
 ## 5.9 Empfehlungen nach Anwendungsfall
 
-> Vollständige Entscheidungsmatrix mit Workload-Zuordnung, AVV-Klauseln und Migrationsstrategie: **Kapitel 16** (Handlungsempfehlungen).
+> Vollständige Entscheidungsmatrix mit Workload-Zuordnung, AVV-Klauseln und Migrationsstrategie: **Kapitel 17** (Handlungsempfehlungen).
 
 **Tier 1 — ePA / KRITIS / § 393 Klasse 1:** plusserver · EWERK Leipzig · 3DS Outscale · Cloud Temple
 

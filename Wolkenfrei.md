@@ -3,7 +3,7 @@
 
 **Autor:** Björn Degenkolbe, Geschäftsführer · 4K Analytics GmbH / HIGL – Health Innovators Group Leipzig  
 **Stand:** April 2026  
-**Version:** 22.0 — April 2026 · 210 Quellen · 19 Kapitel  
+**Version:** 22.0 — April 2026 · 214 Quellen · 19 Kapitel  
 **Zweck:** Wissensgrundlage für GKV (Gesetzliche Krankenversicherung)/KV (Kassenärztliche Vereinigung)/Klinik-IT-Beratung, LinkedIn-Content, interne Architekturentscheidungen  
 **Hinweis:** Dieses Dokument basiert auf öffentlich verfügbaren Quellen, wurde mit Claude (Anthropic) erstellt und stellt keine Rechtsberatung dar.
 
@@ -1122,9 +1122,21 @@ Big Tech arbeitet intensiv mit scheinbar unabhängigen Denkfabriken zusammen. Di
 
 Meta und andere Tech-Konzerne haben Treffen mit rechtspopulistischen und rechtsextremen EU-Parlamentsfraktionen signifikant intensiviert. Hintergrund: antiregulatorische Positionen finden dort fruchtbaren Boden. Eine taktische Allianz zwischen Finanzstärke und politischen Kräften, die europäische Schutzstandards als Innovationsbremse darstellen — das ist eine neue Qualität der Einflussnahme.
 
-**5. Wahlkampf-Lobbying**
+**5. Wahlkampf-Lobbying und Deregulierungs-Narrative**
 
-Amazon und Google betrieben rund um die Bundestagswahl aktiv Lobbyarbeit, um den Datenschutz zu schwächen und "Datennutzung" zu fördern.
+Amazon und Google betrieben rund um die Bundestagswahl aktiv Lobbyarbeit, um den Datenschutz zu schwächen und "Datennutzung" zu fördern. Dahinter steht ein Set wiederkehrender Lobby-Narrative, die in Positionspapieren, Konferenzbeiträgen und politischen Beratungen systematisch eingesetzt werden:
+
+| Narrativ | Wer es nutzt | Was es bezweckt |
+|---|---|---|
+| **"Datenschutz ist etwas für Gesunde"** | Jens Spahn (2016, als Staatssekretär BMF); Brainlab-CEO Stefan Vilsmeier: "Daten nicht zu nutzen tötet Patienten im großen Stil" | Datenschutz als Hindernis für Gesundheitsforschung framen; emotionale Druckkulisse für Lockerung von Art. 9 DSGVO |
+| **"DSGVO als Innovationskiller"** | Mario Draghi (EU-Berater, 2025); DigitalEurope; CCIA | Falsche Dichotomie Regulierung vs. Innovation; verschweigt, dass regulierte Märkte (Pharma, Finanzsektor) Innovationsführer sind |
+| **"Europa fällt zurück"** | Meta: "Critical to first pause the implementation and enforcement of the AI Act...risking the EU falling behind in the global AI race" | Geopolitische Angst als Hebel für Deregulierung; verschweigt, dass US-Tech-Konzerne **in** Europa reguliert werden wollen, nicht **von** Europa |
+| **"Legitimate Interest reicht für KI"** | DigitalEurope: "Reinforce the use of 'legitimate interest' as a ground to process personal data for key use cases such as product development — including of AI models"; CCIA | Art. 6 Abs. 1 lit. f DSGVO als Universalschlüssel für KI-Training mit personenbezogenen Daten; untergräbt Art. 9 (Gesundheitsdaten) |
+| **"Art. 9 DSGVO behindert KI im Gesundheitswesen"** | Dot Europe (Big-Tech-Lobbyorganisation) an dänische Regierung: "GDPR Article 9 strictly limits the processing of special category data...posing challenges for AI development, particularly in healthcare" | Direkte Forderung nach Lockerung des Schutzes für Gesundheitsdaten; verpackt als KI-Qualitätssicherung |
+| **"Vereinfachung" statt Deregulierung** | EU-Kommission (Digital Omnibus, November 2025): "simplify the EU's Digital Rulebook" | Framing verschleiert, dass die meisten Artikel komplexer werden und Schlupflöcher entstehen, die nur große Konzerne nutzen können (noyb-Analyse) |
+| **"Disproportionate effort"** | Google (Lobbypapier an Bundesregierung, August 2025) → wortgleich in Bundesregierungs-Positionspapier → wortgleich im Digital-Omnibus-Entwurf | Einschränkung des DSGVO-Auskunftsrechts (Art. 15–22); dokumentierter 1:1-Lobbyerfolg |
+
+**Das Muster:** Jedes dieser Narrative adressiert ein reales Problem (KI braucht Daten, Bürokratie ist real, Gesundheitsforschung ist wichtig) — und leitet daraus eine unverhältnismäßige Schlussfolgerung ab (also müssen Grundrechte weichen). Die Corporate Europe Observatory dokumentierte im Januar 2026 Artikel für Artikel, wie Big-Tech-Forderungen in den Digital Omnibus eingeflossen sind — in sieben Fällen deckungsgleich mit Lobbypapieren.
 
 ### 10.3 Deutschland im Besonderen
 
@@ -2291,7 +2303,11 @@ Zwölf Kernaussagen:
 - [208] BMG: C5-Äquivalenzverordnung Referentenentwurf, 6. Januar 2025. Definiert C5-äquivalente Sicherheitsstandards: https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/Gesetze_und_Verordnungen/GuV/C/C5-AequivalenzVO_RefE.pdf
 - [209] DKG: Positionspapier "Nutzung von Künstlicher Intelligenz (KI) im Krankenhaus", 23. Oktober 2025. Cloud-Betrieb für KI als Notwendigkeit; KHZG 2.0 gefordert: https://www.dkgev.de/fileadmin/default/Mediapool/1_DKG/1.3_Politik/Positionen/2025-10-23_DKG-Positionspapier_KI_im_Krankenhaus.pdf
 - [210] AWS: Lobbyregister Bundestag, Regelungsvorhaben RV0008560 — Lobbytätigkeit zu § 393 SGB V / Digital-Gesetz: https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0008560/8636
+- [211] Corporate Europe Observatory: "Article by article, how Big Tech shaped the EU's roll-back of digital rights", Januar 2026. Dokumentiert 7 Fälle deckungsgleicher Übernahme von Big-Tech-Lobbyforderungen in den Digital Omnibus: https://corporateeurope.org/en/2026/01/article-article-how-big-tech-shaped-eus-roll-back-digital-rights
+- [212] Corporate Europe Observatory / LobbyControl: "Tech industry now spending record €151 million on lobbying the EU", Oktober 2025. 890 Lobbyisten, 437 Parlamentsausweise, 3 Treffen/Tag: https://corporateeurope.org/en/2025/10/revealed-tech-industry-now-spending-record-eu151-million-lobbying-eu
+- [213] noyb: "Digital Omnibus: EU Commission wants to wreck core GDPR principles", 2025. Analyse der DSGVO-Aufweichungen im Digital Omnibus: https://noyb.eu/en/digital-omnibus-eu-commission-wants-wreck-core-gdpr-principles
+- [214] netzpolitik.org: "Datenschutzkritik: Jens Spahn versucht, sein eigenes Versagen zu verschleiern", 2021. Spahn-Narrativ "Datenschutz ist etwas für Gesunde": https://netzpolitik.org/2021/datenschutzkritik-jens-spahn-versucht-sein-eigenes-versagen-zu-verschleiern/
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 22.0, April 2026. 210 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 22.0, April 2026. 214 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*

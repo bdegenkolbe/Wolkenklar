@@ -270,7 +270,11 @@
 - [208] BMG: C5-Äquivalenzverordnung Referentenentwurf, 6. Januar 2025. Definiert C5-äquivalente Sicherheitsstandards: https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/Gesetze_und_Verordnungen/GuV/C/C5-AequivalenzVO_RefE.pdf
 - [209] DKG: Positionspapier "Nutzung von Künstlicher Intelligenz (KI) im Krankenhaus", 23. Oktober 2025. Cloud-Betrieb für KI als Notwendigkeit; KHZG 2.0 gefordert: https://www.dkgev.de/fileadmin/default/Mediapool/1_DKG/1.3_Politik/Positionen/2025-10-23_DKG-Positionspapier_KI_im_Krankenhaus.pdf
 - [210] AWS: Lobbyregister Bundestag, Regelungsvorhaben RV0008560 — Lobbytätigkeit zu § 393 SGB V / Digital-Gesetz: https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0008560/8636
+- [211] Corporate Europe Observatory: "Article by article, how Big Tech shaped the EU's roll-back of digital rights", Januar 2026. Dokumentiert 7 Fälle deckungsgleicher Übernahme von Big-Tech-Lobbyforderungen in den Digital Omnibus: https://corporateeurope.org/en/2026/01/article-article-how-big-tech-shaped-eus-roll-back-digital-rights
+- [212] Corporate Europe Observatory / LobbyControl: "Tech industry now spending record €151 million on lobbying the EU", Oktober 2025. 890 Lobbyisten, 437 Parlamentsausweise, 3 Treffen/Tag: https://corporateeurope.org/en/2025/10/revealed-tech-industry-now-spending-record-eu151-million-lobbying-eu
+- [213] noyb: "Digital Omnibus: EU Commission wants to wreck core GDPR principles", 2025. Analyse der DSGVO-Aufweichungen im Digital Omnibus: https://noyb.eu/en/digital-omnibus-eu-commission-wants-wreck-core-gdpr-principles
+- [214] netzpolitik.org: "Datenschutzkritik: Jens Spahn versucht, sein eigenes Versagen zu verschleiern", 2021. Spahn-Narrativ "Datenschutz ist etwas für Gesunde": https://netzpolitik.org/2021/datenschutzkritik-jens-spahn-versucht-sein-eigenes-versagen-zu-verschleiern/
 
 ---
 
-*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 22.0, April 2026. 210 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*
+*Dieses Dokument basiert ausschließlich auf öffentlich zugänglichen Quellen, wurde mit Claude (Anthropic) erstellt. Version 22.0, April 2026. 214 Quellen. 19 Kapitel. Es stellt keine Rechtsberatung dar.*
